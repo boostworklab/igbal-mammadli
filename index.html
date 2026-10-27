@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Igbal Mammadli | Interactive CV</title>
+<meta name="description" content="Igbal Mammadli - Mechanical, Piping & HVAC Engineer, Shipbuilding & Offshore.">
+<style>
+@font-face { font-family: "Plus Jakarta Sans"; font-style: normal; font-weight: 400 800; font-display: swap; src: url(fonts/PlusJakartaSans-latin.woff2) format("woff2"); }
+@font-face { font-family: "Geist"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/Geist-latin.woff2) format("woff2"); }
+:root {
+  color-scheme: light;
+  --bg: #ffffff; --ink: #0f1b2d; --muted: #53627a; --line: #dbe2ec; --ctl: #93a3bb; --dim: #6b7a90;
+  --accent: #1e3a8a; --soft: #eef3fa; --hit: #dce7f7;
+  --side: #0f2747; --side-ink: #ffffff; --side-muted: #b8c7dd;
+  --mono: "Geist", system-ui, "Segoe UI", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-wrap: break-word;
+  /* Plus Jakarta Sans draws the fi/ffi ligatures without the dot on the i, so keep letters separate */
+  font-variant-ligatures: no-common-ligatures; font-feature-settings: "liga" 0, "clig" 0; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+.side :focus-visible { outline-color: #fff; }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 10; background: #fff; color: var(--accent); padding: 8px 14px; border-radius: 2px; font-weight: 600; }
+.skip:focus { top: 12px; }
+.layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 100vh; }
+
+/* ---- sidebar ---- */
+.side { background: var(--side); color: var(--side-ink); padding: 40px 28px 32px; position: sticky; top: 0; height: 100vh; overflow-y: auto; display: flex; flex-direction: column; }
+.lang { display: flex; gap: 4px; margin: 0 0 28px; font: 600 12px/1 var(--mono); letter-spacing: 1.2px; }
+.lang button { font: inherit; letter-spacing: inherit; color: var(--side-muted); background: none; border: 0; border-bottom: 2px solid transparent; padding: 6px 8px 5px; cursor: pointer; transition: color .2s, border-color .2s; }
+.lang button:first-child { padding-left: 0; }
+.lang button:hover { color: #fff; }
+.lang button[aria-pressed="true"] { color: #fff; border-bottom-color: #fff; }
+.side h1 { margin: 0; font-size: 29px; white-space: nowrap; line-height: 1.12; font-weight: 700; letter-spacing: -.5px; }
+.side .title { margin: 12px 0 0; color: var(--side-muted); font-size: 15px; line-height: 1.5; }
+.side .title span { display: block; text-wrap: balance; }
+.side hr { border: 0; border-top: 1px solid rgba(255,255,255,.14); margin: 24px 0; }
+.contact { margin: 0; padding: 0; list-style: none; font-size: 14.5px; }
+.contact li { margin: 0 0 12px; }
+.contact .k { display: block; font: 600 10.5px/1.4 var(--mono); text-transform: uppercase; letter-spacing: 1px; color: var(--side-muted); margin-bottom: 1px; }
+.contact a { color: var(--side-ink); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.3); overflow-wrap: anywhere; }
+.contact a:hover { border-bottom-color: #fff; }
+.nav { margin: 0 0 28px; padding: 0; list-style: none; font-size: 14.5px; }
+.nav a { display: block; padding: 7px 0 7px 14px; color: var(--side-muted); text-decoration: none; border-left: 2px solid rgba(255,255,255,.14); transition: color .2s, border-color .2s; }
+.nav a:hover, .nav a.on { color: #fff; border-left-color: #fff; }
+.nav a.on { font-weight: 600; }
+.dl { margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 16px; border-radius: 2px; background: #fff; color: #0f2747; font-weight: 700; font-size: 15px; text-align: center; text-decoration: none; transition: background .2s, transform .2s; }
+.dl:hover { background: #eef3fa; transform: translateY(-1px); }
+.dl svg { width: 17px; height: 17px; flex: none; }
+
+/* ---- main ---- */
+main { padding: 56px clamp(20px, 5vw, 64px) 72px; max-width: 1040px; width: 100%; margin: 0 auto; }
+section { margin: 0 0 72px; }
+h2 { margin: 0 0 20px; padding-top: 16px; border-top: 2px solid var(--ink); font-size: 32px; line-height: 1.15; font-weight: 700; letter-spacing: -.6px; color: var(--ink); }
+#profile h2 { border-top: 0; padding-top: 0; }
+.sub { color: var(--muted); font-size: 15px; margin: -8px 0 0; max-width: 62ch; }
+.summary { font-size: 19px; line-height: 1.65; margin: 0; max-width: 62ch; }
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 32px; border-top: 1px solid var(--line); }
+.fact { padding: 18px 20px 0 0; }
+.fact + .fact { padding-left: 20px; border-left: 1px solid var(--line); }
+.fact .num { font: 700 40px/1 var(--mono); letter-spacing: -1px; color: var(--accent); }
+.fact .k { margin-top: 8px; font-size: 14px; line-height: 1.45; color: var(--muted); max-width: 26ch; }
+
+/* filter bar */
+.fbs { height: 1px; margin: 16px 0 -1px; }
+.filterbar { position: sticky; top: 0; z-index: 8; background: var(--bg); padding: 12px 0 8px; margin: 0 0 6px; border-bottom: 1px solid transparent; transition: border-color .2s; }
+.filterbar.stuck { border-bottom-color: var(--line); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: inherit; font-size: 14px; line-height: 1.2; padding: 8px 14px; min-height: 36px; border-radius: 2px; border: 1px solid var(--ctl); background: transparent; color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background .2s, border-color .2s, color .2s; }
+.chip:hover { border-color: var(--accent); background: var(--soft); }
+.chip .n { font: 600 11.5px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip[aria-pressed="true"] .n { color: inherit; opacity: .85; }
+.chip.std { font-family: var(--mono); font-size: 13px; }
+.subfilters { margin-top: 8px; padding-left: 14px; border-left: 2px solid var(--line); }
+.subfilters[hidden] { display: none; }
+.status { font-size: 14px; color: var(--muted); min-height: 22px; margin: 8px 0 0; }
+
+/* roles: dates and employer left, work right */
+.role { border-top: 1px solid var(--line); padding: 24px 0 16px; display: grid; grid-template-columns: 220px minmax(0, 1fr); column-gap: 28px; transition: opacity .2s; }
+.role.dim { opacity: .75; }
+/* the title and the date line share one baseline */
+.role h3 { grid-column: 2; grid-row: 1; align-self: baseline; margin: 0; font-size: 20px; line-height: 1.3; font-weight: 700; }
+.role-side { grid-column: 1; grid-row: 1 / span 4; align-self: baseline; }
+.role-side .dates { font: 600 13px/1.4 var(--mono); color: var(--accent); padding-left: 58px; }
+h2 .total { font-size: .5em; font-weight: 500; letter-spacing: 0; color: var(--muted); white-space: nowrap; }
+.role-side .dur { display: block; margin-top: 1px; font-weight: 500; color: var(--muted); }
+.role-side .org { margin-top: 8px; font-size: 14.5px; line-height: 1.45; }
+.role-side .org { display: flex; align-items: center; gap: 10px; }
+.org-btn { flex: none; display: block; padding: 0; margin: 0; border: 0; background: none; cursor: pointer; border-radius: 4px; }
+.org-logo { display: block; flex: none; width: 48px; height: 32px; object-fit: contain; object-position: left center; transform-origin: left center; transition: transform .2s cubic-bezier(.2,.7,.2,1); }
+.org-btn:hover .org-logo, .org-btn:focus-visible .org-logo { transform: scale(1.18); }
+.org-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.orgt { min-width: 0; }
+.role-side .co { display: block; font-weight: 600; }
+.role-side .loc { display: block; color: var(--muted); }
+/* the cards list the projects on screen; this text line is kept for print, where the cards are hidden */
+.projects { display: none; grid-column: 2; margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.role-side .about { display: block; margin-top: 2px; font-size: 13.5px; color: var(--muted); }
+.shelf-h { grid-column: 2; margin: 16px 0 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
+.shelf-h.has-nav { display: flex; align-items: center; gap: 12px; }
+.shelf-nav { display: inline-flex; gap: 6px; }
+.snav { width: 24px; height: 24px; display: grid; place-items: center; padding: 0; border: 1px solid var(--ctl); border-radius: 50%; background: #fff; color: var(--accent); cursor: pointer; transition: background .2s, border-color .2s, opacity .2s; }
+.snav svg { width: 10px; height: 10px; }
+.snav:hover:not(:disabled) { background: var(--hit); border-color: var(--accent); }
+.snav:disabled { opacity: .35; cursor: default; }
+.shelf-h b { font: 600 11.5px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.role ul { grid-column: 2; list-style: none; margin: 10px 0 0; padding: 0; }
+.role li { position: relative; padding: 8px 12px 8px 22px; margin: 2px 0; border-left: 3px solid transparent; transition: background .2s, color .2s; }
+/* list dashes are a text glyph, not a 2px box: at 125%/150% display scaling boxes round to 2 or 3 screen pixels line by line and some look bold */
+.role li::before { content: "\2013"; position: absolute; left: 0; top: 8px; font-weight: 700; color: var(--accent); }
+.role li.dim { color: var(--dim); }
+.role li.dim::before { color: var(--dim); }
+.role li.hit { background: var(--hit); border-left-color: var(--accent); padding-left: 36px; margin-left: -14px; padding-right: 8px; }
+.role li.hit::before { left: 14px; }
+
+/* tools and skills */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 20px; }
+.card { border-top: 1px solid var(--line); padding: 16px 0 0; }
+.card h3 { margin: 0 0 6px; font-size: 17px; line-height: 1.3; font-weight: 700; }
+.card h3.gap { margin-top: 18px; }
+.badge { display: block; font: 600 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .8px; color: var(--accent); margin-bottom: 8px; }
+.card p { margin: 0 0 8px; font-size: 15px; color: var(--muted); }
+.metric { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.metric .big { display: block; font: 700 30px/1.1 var(--mono); letter-spacing: -.8px; color: var(--accent); }
+.metric .cap { display: block; margin-top: 4px; font-size: 14px; line-height: 1.4; color: var(--ink); }
+.card p.fine { margin-top: 8px; font-size: 13.5px; }
+.tool-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.tool-head .badge { margin-bottom: 2px; }
+.tool-head h3 { margin: 0; }
+.tool-ico { flex: none; width: 44px; height: 44px; border-radius: 10px; }
+.tool-ico.tile { padding: 7px; background: #141a24; }
+.grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 20px; }
+.tags { margin-top: 8px; line-height: 1.9; }
+.tags span { display: inline-block; font-size: 15px; color: var(--ink); }
+.tags span:not(:last-child)::after { content: "\00b7"; color: var(--ctl); margin: 0 9px; font-weight: 700; }
+.plain { list-style: none; margin: 8px 0 0; padding: 0; font-size: 15px; }
+.plain li { position: relative; margin: 8px 0; padding-left: 20px; }
+.plain li::before { content: "\2013"; position: absolute; left: 0; top: 0; font-weight: 700; color: var(--accent); }
+footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 1px solid var(--line); }
+:lang(de) main p, :lang(de) main li { hyphens: auto; }
+
+
+/* ---- vessel cards: a fanned deck. The current card shows in full; cards after it slide right so every tab stays visible.
+   Positions (--x) are set in JS, so nothing scales or moves under the pointer. ---- */
+.shelf { --ow: 260px; --peek: 70px; --n: 4; --spill: 20px; position: relative; grid-column: 2; height: 109px; width: calc((var(--n) - 1) * var(--peek) + var(--ow) + var(--spill)); max-width: calc(100% + var(--spill)); margin: 12px 0 8px calc(var(--spill) * -1); overflow-x: clip; isolation: isolate; }
+.vcard { position: absolute; left: var(--spill); top: 0; width: var(--ow); height: 100%; margin: 0; padding: 0; border: 0; background: none; font: inherit; text-align: left; cursor: pointer; transform-origin: 50% 160%; translate: var(--x, 0px) 0; rotate: var(--r, 0deg); }
+.shelf.ready .vcard { transition: translate .4s cubic-bezier(.2,.7,.2,1), rotate .4s cubic-bezier(.2,.7,.2,1); }
+.vcard.cur { rotate: 0deg; }
+.shelf.engaged .vcard.cur { translate: var(--x, 0px) -8px; }
+.vface { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; background: #fff; border: 1px solid var(--ctl); border-radius: 3px; box-shadow: -6px 0 12px -6px rgba(15,39,71,.32), 0 2px 5px rgba(15,39,71,.10); transition: box-shadow .35s, border-color .35s; }
+.shelf.engaged .vcard.cur .vface { border-color: var(--accent); box-shadow: 0 12px 24px rgba(15,39,71,.24); }
+.vcard:not(.cur):hover .vtab { background: var(--hit); }
+.vtab { position: absolute; left: 0; top: 0; bottom: 0; width: 31px; display: flex; align-items: center; justify-content: center; background: var(--soft); border-right: 1px solid var(--line); transition: background .2s; }
+.vtab span { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; font: 600 11px/1 var(--mono); letter-spacing: .6px; color: var(--accent); }
+/* yacht name in its own lettering, turned to read bottom to top like the text tabs */
+.vtab-img { flex: none; width: 97px; height: auto; transform: rotate(-90deg); }
+.vart { position: absolute; top: 0; right: 0; bottom: 0; left: 31px; display: flex; align-items: flex-start; justify-content: center; padding-top: 8px; }
+.vart img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vart svg { width: 84%; height: auto; }
+.vart .ph { position: absolute; right: 8px; top: 7px; font: 600 9.5px/1 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: var(--muted); opacity: 0; transition: opacity .3s; }
+.vcap { position: absolute; left: 31px; right: 0; bottom: 0; padding: 18px 10px 7px; display: block; color: #fff; background: linear-gradient(0deg, rgba(15,39,71,.95), rgba(15,39,71,.9) 68%, rgba(15,39,71,0)); text-shadow: 0 1px 2px rgba(15,39,71,.5); opacity: 0; transition: opacity .25s; }
+.vcap-img { display: block; width: 110px; max-width: 100%; height: auto; object-fit: contain; margin: 2px 0 1px; filter: brightness(0) invert(1); }
+.vcap b { display: block; font: 600 10px/1.2 var(--mono); letter-spacing: .8px; text-transform: uppercase; opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vcap span { display: block; font-weight: 600; font-size: 14px; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vcard.cur .vcap, .shelf.engaged .vcard.cur .ph { opacity: 1; }
+.vcard:focus-visible { outline-offset: 3px; }
+.vmore { position: absolute; right: 7px; top: 7px; padding: 2.6px 5.81px 2.4px 6.19px; border-radius: 2px; background: rgba(15,39,71,.82); color: #fff; font: 600 8px/1 var(--mono); letter-spacing: .7px; text-transform: uppercase; opacity: 0; transition: opacity .25s; }
+.vcard.cur .vmore { opacity: 1; }
+
+/* ---- project dialog: vessel photo behind, facts from public sources ---- */
+.pdlg { padding: 0; border: 0; border-radius: 4px; width: min(600px, calc(100vw - 32px)); max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); overflow: auto; color: #fff; background: var(--side) center top / 100% auto no-repeat; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+.pdlg::backdrop { background: rgba(15,27,45,.6); backdrop-filter: blur(2px); }
+.pdlg[open] { animation: pdlg-in .28s cubic-bezier(.2,.7,.2,1); }
+@keyframes pdlg-in { from { opacity: 0; transform: translateY(10px) scale(.98); } }
+.pdlg-in { --pad: 200px; position: relative; padding: var(--pad) 28px 24px; background: linear-gradient(180deg, rgba(15,39,71,0) 0, rgba(15,39,71,.12) calc(var(--pad) - 90px), rgba(15,39,71,.82) calc(var(--pad) + 30px), rgba(15,39,71,.97) calc(var(--pad) + 140px), rgba(15,39,71,.97) 100%); }
+.pdlg-x { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: rgba(15,39,71,.65); color: #fff; cursor: pointer; transition: background .2s; }
+.pdlg-x:hover { background: rgba(15,39,71,.95); }
+.pdlg-nav { position: absolute; top: 12px; left: 12px; display: flex; gap: 8px; }
+.pdlg-nav[hidden] { display: none; }
+.pdlg-nav button { width: 36px; height: 36px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: rgba(15,39,71,.65); color: #fff; cursor: pointer; transition: background .2s, opacity .2s; }
+.pdlg-nav button:hover:not(:disabled) { background: rgba(15,39,71,.95); }
+.pdlg-nav button:disabled { opacity: .35; cursor: default; }
+.pdlg-nav svg { width: 14px; height: 14px; }
+.pdlg-x svg { width: 14px; height: 14px; }
+.pdlg :focus-visible { outline-color: #fff; }
+.pdlg-k { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font: 600 11px/1.3 var(--mono); letter-spacing: .9px; text-transform: uppercase; color: rgba(255,255,255,.85); }
+.pdlg-hull { font-weight: 700; color: #fff; }
+.pdlg-st { padding: 3px 7px; border: 1px solid rgba(255,255,255,.5); border-radius: 2px; }
+.pdlg-st.uc { background: #f2b544; border-color: #f2b544; color: #0f2747; }
+/* model lockup: wordmark with the model number to its right */
+.pdlg-brand { display: flex; align-items: flex-end; gap: 10px; margin-top: 12px; }
+.pdlg-brand[hidden] { display: none; }
+/* company logo: a white logo straight on the dialog's navy, nothing laid over it */
+.pdlg-banner { position: absolute; top: 0; left: 0; right: 0; height: 190px; display: grid; place-items: center; padding: 40px 48px 20px; }
+.pdlg-banner[hidden] { display: none; }
+.pdlg-banner img { display: block; height: 112px; width: auto; max-width: min(300px, 100%); object-fit: contain; }
+.pdlg-x, .pdlg-nav { z-index: 2; }
+/* company dialog: the same navy as the project dialogs, with the logo where their photo would be */
+.pdlg.co { background-color: var(--side); background-image: none; }
+.pdlg.co .pdlg-in { background: rgba(15,39,71,.97); }
+.pdlg.co h3 { font-size: 30px; }
+.pdlg-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 18px 0 0; }
+.pdlg-stats[hidden] { display: none; }
+.pdlg-stat { padding: 12px 12px 10px; border: 1px solid rgba(255,255,255,.2); border-radius: 4px; background: rgba(255,255,255,.06); }
+.pdlg-stat b { display: block; font-size: 24px; line-height: 1.1; font-weight: 700; letter-spacing: -.3px; }
+.pdlg-stat span { display: block; margin-top: 5px; font: 600 10px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: rgba(255,255,255,.68); }
+.pdlg-tl { margin: 20px 0 0; }
+.pdlg-tl[hidden] { display: none; }
+.pdlg-tl h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; margin: 0 0 8px; font: 600 10.5px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: rgba(255,255,255,.65); }
+.pdlg-tl h4 b { font-weight: 600; color: #fff; }
+.pdlg-tl h4 b::before { content: "\00b7"; margin-right: 8px; color: rgba(255,255,255,.65); }
+.pdlg-tl ul { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 2px solid rgba(255,255,255,.35); }
+.pdlg-tl li { position: relative; padding: 4px 0 8px 10px; }
+.pdlg-tl li::before { content: ""; position: absolute; left: -20px; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 3px rgba(15,39,71,.9); }
+.pdlg-tl time { display: block; font: 600 11.5px/1.4 var(--mono); letter-spacing: .4px; color: #cfe0ff; }
+.pdlg-tl strong { display: block; font-size: 15px; line-height: 1.35; }
+.pdlg-tl small { display: block; color: rgba(255,255,255,.65); font-size: 12.5px; }
+.pdlg-brand img { display: block; height: 20px; width: auto; }
+.pdlg-brand + h3 { margin-top: 12px; }
+/* yacht name sits under the model lockup, a size smaller */
+.pdlg-timg { display: block; height: 10.5px; width: auto; max-width: 100%; object-fit: contain; object-position: left; margin: 2px 0 4px; }
+.pdlg h3 { margin: 8px 0 10px; font-size: 27px; line-height: 1.15; font-weight: 700; letter-spacing: -.4px; }
+.pdlg-txt { margin: 0; font-size: 15.5px; line-height: 1.6; color: rgba(255,255,255,.92); }
+.pdlg dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin: 18px 0 0; }
+.pdlg dl div { padding: 9px 0; border-top: 1px solid rgba(255,255,255,.16); }
+.pdlg dt { overflow-wrap: normal; hyphens: auto; font: 600 10.5px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: rgba(255,255,255,.65); }
+.pdlg .cls-logo[src$="class-lr.svg"] { height: 18px; margin-right: 10px; }
+.pdlg .cls-logo[src$="class-rina.svg"] { height: 30px; }
+.pdlg .cls-logo { height: 24px; width: auto; margin-right: 8px; vertical-align: middle; position: relative; top: -1px; filter: brightness(0) invert(1); opacity: .95; }
+.pdlg dd a { color: #cfe0ff; }
+.pdlg dd { overflow-wrap: normal; hyphens: auto; margin: 3px 0 0; font-size: 15px; font-weight: 600; line-height: 1.35; }
+.pdlg-role { margin: 18px 0 0; padding-left: 12px; border-left: 2px solid #fff; font-size: 14.5px; line-height: 1.55; color: rgba(255,255,255,.92); }
+.pdlg-role ul { list-style: none; margin: 0; padding: 0; }
+.pdlg-role li { position: relative; margin: 3px 0 0; padding-left: 14px; }
+.pdlg-role li::before { content: "\2013"; position: absolute; left: 0; top: 0; font-weight: 700; color: rgba(255,255,255,.7); }
+.pdlg-role b { display: block; font: 600 10.5px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 2px; }
+.pdlg-src { margin: 18px 0 0; font-size: 12.5px; color: rgba(255,255,255,.65); }
+.pdlg-src a { color: #cfe0ff; }
+
+.mbar { display: none; }
+
+/* ---- tablet and phone ---- */
+@media (max-width: 880px) {
+  html { scroll-padding-top: calc(var(--mbar-h, 76px) + 12px); }
+  .mbar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "name title lang" "nav nav nav"; position: fixed; left: 0; right: 0; z-index: 20; align-items: center; gap: 0 16px; padding: 6px 16px 0; background: var(--side); color: var(--side-ink); box-shadow: 0 2px 12px rgba(15,39,71,.28); top: calc(-1 * var(--mbar-h, 120px) - 16px); visibility: hidden; transition: top .25s, visibility .25s; }
+  /* slides via top, not transform: a transformed bar can be left on its own layer with blurry text */
+  .mbar.show { top: 0; visibility: visible; }
+  .mbar-n { grid-area: name; font-weight: 700; font-size: 15px; letter-spacing: -.2px; white-space: nowrap; }
+  .mbar-t { grid-area: title; min-width: 0; text-align: center; font-size: 12px; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--side-muted); }
+  .mbar-t span + span::before { content: " "; }
+  .mbar .lang { grid-area: lang; position: static; margin: 0; }
+  .mnav { grid-area: nav; display: flex; gap: 18px; margin: 0 -16px; padding: 0 16px; overflow-x: auto; scrollbar-width: none; font-size: 13px; line-height: 1.2; }
+  .mnav::-webkit-scrollbar { display: none; }
+  .mnav a { flex: none; padding: 8px 0 7px; color: var(--side-muted); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .mnav a.on { color: #fff; border-bottom-color: #fff; }
+  /* the right-edge fade is a navy overlay, not a mask: a mask puts the links on their own layer and Chrome then blurs the text */
+  .mbar::after { content: ""; position: absolute; right: 0; bottom: 0; width: 36px; height: 32px; background: linear-gradient(90deg, rgba(15,39,71,0), var(--side)); pointer-events: none; opacity: 0; transition: opacity .2s; }
+  .mbar:has(.mnav.fade)::after { opacity: 1; }
+  /* EN/DE are touch targets here: at least 24px, about 31px tall */
+  .lang button { padding: 9px 8px 8px; }
+  .lang button:last-child { padding-right: 0; }
+  .shelf-h { grid-column: 1 / -1; grid-row: 4; margin-top: 18px; }
+  .snav { width: 32px; height: 32px; }
+  .shelf { --ow: 216px; --peek: 51px; grid-column: 1 / -1; grid-row: 5; margin-top: 10px; }
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .layout { align-content: start; }
+  .side { position: relative; height: auto; padding: 24px 16px 22px; overflow: visible; }
+  .lang { position: absolute; top: 20px; right: 16px; margin: 0; }
+  .side h1 { font-size: 28px; white-space: normal; padding-top: 28px; }
+  .side hr { margin: 18px 0 14px; }
+  .side hr.nav-sep, .nav { display: none; }
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .contact li { margin-bottom: 10px; min-width: 0; }
+  .dl { margin-top: 10px; padding: 11px 16px; }
+  main { padding: 32px 16px 48px; }
+  section { margin-bottom: 52px; }
+  h2 { font-size: 26px; }
+  .summary { font-size: 17.5px; }
+  .facts, .cards, .grid2 { grid-template-columns: 1fr; }
+  .fact, .fact + .fact { display: flex; gap: 16px; align-items: baseline; padding: 14px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .fact:last-child { border-bottom: 0; }
+  .fact .num { font-size: 32px; min-width: 44px; }
+  .fact .k { margin-top: 0; max-width: none; }
+  .tags { line-height: 1.4; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tags span { font-size: 14px; padding: 4px 9px; background: var(--soft); border-radius: 2px; }
+  .tags span:not(:last-child)::after { content: none; }
+  /* the filter bar sticks just under the compact top bar while the Experience section is on screen */
+  .filterbar { top: var(--mbar-h, 0px); padding-top: 8px; }
+  .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .filters::-webkit-scrollbar { display: none; }
+  /* fade the right edge only while more chips are hidden there */
+  .filters.fade { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }
+  .subfilters { -webkit-mask-image: none; mask-image: none; }
+  .chip { flex: none; scroll-snap-align: start; }
+  /* header: a 50px logo column spanning title, dates and company (centred vertically), text in the second column */
+  .role { grid-template-columns: 50px minmax(0, 1fr); column-gap: 10px; }
+  .role h3 { grid-column: 2; grid-row: 1; align-self: auto; font-size: 19px; }
+  .role-side, .role-side .org { display: contents; }
+  .role-side .dates { grid-column: 2; grid-row: 2; padding-left: 0; margin-top: 4px; }
+  .role-side .dur { margin: 0; }
+  .org-btn { grid-column: 1; grid-row: 1 / span 3; align-self: center; }
+  .org-logo { width: 50px; height: 32px; }
+  .orgt { grid-column: 2; grid-row: 3; margin-top: 2px; }
+  .pdlg-in { padding: 150px 20px 20px; background: linear-gradient(180deg, rgba(15,39,71,0) 0, rgba(15,39,71,.12) 80px, rgba(15,39,71,.85) 180px, rgba(15,39,71,.97) 260px, rgba(15,39,71,.97) 100%); }
+  .pdlg h3 { font-size: 23px; }
+  .vcap { padding-top: 14px; }
+  .vcap span { font-size: 13px; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  /* company and location on separate lines, so no separator is left dangling when the line wraps */
+  .role-side .co, .role-side .loc { display: block; }
+  .projects { grid-column: 1 / -1; grid-row: 6; }
+  .role ul { grid-column: 1 / -1; grid-row: 7; }
+}
+@media (min-width: 600px) and (max-width: 880px) {
+  .cards, .grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fact, .fact + .fact { border-bottom: 0; }
+  .fact + .fact { padding-left: 20px; border-left: 1px solid var(--line); }
+  #tools .cards { grid-template-columns: 1fr; }
+}
+@media (min-width: 720px) and (max-width: 880px) { #tools .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+/* narrow desktop windows: show a thin scrollbar so the chip row reads as scrollable */
+@media (max-width: 880px) and (pointer: fine) { .filters { scrollbar-width: thin; } }
+@media (max-width: 440px) { .contact { grid-template-columns: 1fr; } }
+@media (max-width: 400px) { .shelf { --ow: 198px; --peek: 40px; } .pdlg-stat b { font-size: 19px; } }
+/* phones: the title cannot fit beside the name, so it gets its own centred line under name and language */
+@media (max-width: 639px) {
+  .mbar { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name lang" "nav nav"; }
+  .mbar-t { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mbar, .shelf.ready .vcard, .vface, .vtab, .vcap, .vart .ph, .org-logo { transition: none !important; }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .dl:hover { transform: none; }
+}
+@media print {
+  .mbar, .pdlg, .shelf, .shelf-h, .lang, .nav, .nav-sep, .dl, .skip, .filterbar, .fbs, #filters, #subfilters, #status { display: none !important; }
+  :root { --bg: #fff; --ink: #000; --muted: #333; --side: #fff; --side-ink: #000; --side-muted: #333; }
+  body { background: #fff; font-size: 11pt; }
+  .layout { display: block; }
+  .side { position: static; height: auto; padding: 0 0 12px; overflow: visible; background: #fff; color: #000; }
+  .side hr { border-color: #999; }
+  .contact { display: block; }
+  .contact a { color: #000; border: 0; }
+  main { padding: 0; max-width: none; margin: 0; }
+  section { margin-bottom: 24px; }
+  .role, .card { break-inside: avoid; }
+  .projects { display: block; }
+  .role.dim, .role li.dim { opacity: 1; color: #000; }
+  .role li.hit { background: none; border-left-color: transparent; margin-left: 0; padding-left: 22px; }
+}
+/* ---- profile photo banner: photo on top of the sidebar, fading into the navy ---- */
+.side { padding-top: 0; }
+/* desktop: photo on top, name and title sit below the face where the photo has faded into the navy */
+.hero { position: relative; margin: 0 -28px; padding: 0 28px 2px; min-height: 286px; display: flex; flex-direction: column; justify-content: flex-end;
+  background: linear-gradient(180deg, rgba(15,39,71,0) 46%, rgba(15,39,71,.88) 66%, var(--side) 76%), linear-gradient(rgba(15,39,71,.18), rgba(15,39,71,.18)), url("pics/persona-600.jpg") 14% 20% / 132% auto no-repeat, var(--side); }
+.hero .lang { position: absolute; top: 18px; left: 28px; margin: 0; }
+.side hr { margin: 18px 0; }
+.side .title { margin-top: 8px; }
+.contact li { margin-bottom: 9px; }
+.nav { margin-bottom: 20px; }
+.nav a { padding: 5px 0 5px 14px; }
+.mbar-n { display: flex; align-items: center; gap: 8px; }
+.mbar-p { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; border: 1px solid rgba(255,255,255,.4); }
+@media (max-width: 880px) {
+  .side { padding-top: 0; }
+  /* phone: banner; the left side is darkened so the name and EN/DE read cleanly */
+  .hero { margin: 0 -16px; padding: 0 16px 2px; min-height: 260px;
+    background: linear-gradient(90deg, rgba(15,39,71,.8) 0, rgba(15,39,71,.35) 45%, rgba(15,39,71,0) 75%), linear-gradient(180deg, rgba(15,39,71,0) 52%, rgba(15,39,71,.85) 84%, var(--side) 100%), linear-gradient(rgba(15,39,71,.18), rgba(15,39,71,.18)), url("pics/persona-600.jpg") 62% 42% / cover no-repeat, var(--side); }
+  .hero .lang { left: 16px; right: auto; top: 12px; }
+  .lang button:first-child { padding-left: 0; }
+  .side h1 { padding-top: 0; }
+}
+/* tablets: the photo sits on the right and fades into the navy over a longer stretch to its left */
+@media (min-width: 600px) and (max-width: 880px) {
+  .hero { min-height: 240px; background: var(--side); }
+  .hero::before { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 60%; background: linear-gradient(rgba(15,39,71,.18), rgba(15,39,71,.18)), url("pics/persona-600.jpg") 58% 28% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 30%, #000 62%), linear-gradient(180deg, #000 62%, transparent 100%); -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 30%, #000 62%), linear-gradient(180deg, #000 62%, transparent 100%); mask-composite: intersect; }
+  .hero > * { position: relative; }
+  .hero .lang { position: absolute; }
+}
+
+/* ---- frosted language toggle: a white thumb slides under the active language ---- */
+.lang { display: inline-grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 3px; border-radius: 6px; isolation: isolate;
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); -webkit-backdrop-filter: blur(10px) saturate(120%); backdrop-filter: blur(10px) saturate(120%); box-shadow: 0 2px 10px rgba(15,39,71,.25); }
+.lang::before { content: ""; position: absolute; z-index: -1; top: 3px; bottom: 3px; left: 3px; width: calc(50% - 3px); border-radius: 4px; background: #fff; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+.lang:has([data-lang="de"][aria-pressed="true"])::before { transform: translateX(100%); }
+.lang button, .lang button:first-child, .lang button:last-child { min-width: 40px; padding: 7px 11px 6px; border: 0; border-radius: 4px; color: rgba(255,255,255,.85); }
+.lang button:hover { color: #fff; }
+.lang button[aria-pressed="true"] { color: var(--side); }
+.side .lang:not(.hero .lang) { position: relative; }
+.mbar .lang { position: relative; top: auto; right: auto; justify-self: end; }
+/* the top bar is solid navy, so the frosted blur adds nothing there and only makes Chrome render the bar's text blurry */
+.mbar .lang { -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; background: rgba(255,255,255,.12); }
+@media (max-width: 880px) { .lang button, .lang button:first-child, .lang button:last-child { padding: 8px 12px 7px; } }
+/* print: plain name block, no photo or navy fade */
+@media print { .hero, .hero::before { background: none !important; min-height: 0; margin: 0; padding: 0; } .hero::before { content: none; } .mbar-p { display: none; } }
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230f2747'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='700' font-size='15' fill='%23fff'%3EIM%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Igbal Mammadli | Interactive CV">
+<meta property="og:description" content="Mechanical, Piping &amp; HVAC Engineer. Shipbuilding &amp; Offshore.">
+</head>
+<body>
+<a class="skip" href="#profile">Skip to content</a>
+<div class="mbar" id="mbar">
+  <span class="mbar-n"><img class="mbar-p" src="pics/persona-600.jpg" alt="" width="28" height="28">Igbal Mammadli</span>
+  <span class="mbar-t"><span>Mechanical, Piping &amp; HVAC Engineer</span><span>in Shipbuilding &amp; Offshore</span></span>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" lang="en" aria-label="English" title="English" aria-pressed="true">EN</button><button type="button" data-lang="de" lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false">DE</button></div>
+  <nav class="mnav" id="mnav" aria-label="Sections"><a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#tools">Software I built</a><a href="#skills">Skills &amp; standards</a><a href="#education">Education &amp; certifications</a></nav>
+</div>
+<div class="layout">
+
+<aside class="side">
+  <div class="hero">
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" lang="en" aria-label="English" title="English" aria-pressed="true">EN</button><button type="button" data-lang="de" lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false">DE</button></div>
+  <h1>Igbal Mammadli</h1>
+  <p class="title"><span>Mechanical, Piping &amp; HVAC Engineer</span><span>Shipbuilding &amp; Offshore</span></p>
+  </div>
+  <hr>
+  <ul class="contact">
+    <li><span class="k">Location</span><span>Baku, Azerbaijan</span></li>
+    <li><span class="k">Phone</span><a href="tel:+994505092239">+994 50 509 22 39</a></li>
+    <li><span class="k">Email</span><a href="mailto:igbalmammadli@gmail.com">igbalmammadli@gmail.com</a></li>
+    <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/mammadligbal/" target="_blank" rel="noopener">linkedin.com/in/mammadligbal</a></li>
+  </ul>
+  <hr class="nav-sep">
+  <ul class="nav" id="nav">
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Software I built</a></li>
+    <li><a href="#skills">Skills &amp; standards</a></li>
+    <li><a href="#education">Education &amp; certifications</a></li>
+  </ul>
+</aside>
+
+<main>
+  <section id="profile">
+    <h2>Profile</h2>
+    <p class="summary">Mechanical engineer with 11 years in marine HVAC, piping and mechanical systems across the full shipbuilding cycle: site supervision and commissioning, basic design at marine HVAC supplier Heinen &amp; Hopman, and detailed design and equipment review at Baku Shipyard.</p>
+    <div class="facts">
+      <div class="fact"><div class="num">11</div><div class="k">years in marine HVAC, piping and mechanical systems</div></div>
+      <div class="fact"><div class="num">4</div><div class="k">roles at 2 companies, from site to design office</div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2><span>Experience</span> <span class="total" id="expTotal"></span></h2>
+    <p class="sub">Pick a discipline or standard to highlight the matching work across all four roles.</p>
+    <div class="fbs" id="fbs" aria-hidden="true"></div>
+    <div class="filterbar" id="filterbar"><div class="filters" id="filters" role="group" aria-label="Filter experience"></div>
+    <div class="filters subfilters" id="subfilters" role="group" hidden></div>
+    <div class="status" id="status" aria-live="polite"></div></div>
+    <div id="roles"></div>
+  </section>
+
+  <section id="tools">
+    <h2>Software I built</h2>
+    <p class="sub">Engineering tools I designed and built to automate repetitive design work.</p>
+    <div class="cards">
+      <div class="card"><div class="tool-head"><img class="tool-ico" src="pics/tools/coordipro-app-128.png" alt="" width="44" height="44"><div><span class="badge">In use at Baku Shipyard</span><h3>CoordiPRO</h3></div></div>
+        <p>C#/.NET AutoCAD plugin that gives coordinates referenced to frame, deck and longitudinal position, with instant checks.</p>
+        <div class="metric"><span class="big">USD 10-15k</span><span class="cap">estimated profit for the company over 5 years</span></div>
+        <p class="fine">About 8 users · 0.5-1 min saved per spool sketch</p></div>
+      <div class="card"><div class="tool-head"><img class="tool-ico tile" src="pics/tools/autotag-logo-128.png" alt="" width="44" height="44"><div><span class="badge">In development</span><h3>AutoTag Pro</h3></div></div>
+        <p>C#/.NET AutoCAD plugin for automated tagging and bill of materials (BOM) generation.</p></div>
+      <div class="card"><div class="tool-head"><img class="tool-ico" src="pics/tools/ducto-app-icon.png" alt="" width="44" height="44"><div><span class="badge">In development</span><h3>DUCTo</h3></div></div>
+        <p>Marine HVAC duct calculation web app, built with Claude Code and Google Antigravity.</p></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills &amp; standards</h2>
+    <div class="grid2">
+      <div class="card"><h3>Rules &amp; standards</h3><div class="tags"><span>SOLAS</span><span>International Load Line Convention</span><span>ABS</span><span>DNV</span><span>BV</span><span>ISO 7547</span><span>ISO 8861</span></div></div>
+      <div class="card"><h3>Software</h3><div class="tags"><span>SSI ShipConstructor</span><span>AutoCAD</span><span>Navisworks Manage</span><span>Rhinoceros</span><span>Netsis ERP</span><span>Microsoft Office</span><span>Adobe Illustrator</span><span>C#/.NET</span><span>Claude Code</span><span>Google Antigravity</span></div></div>
+      <div class="card"><h3>Engineering</h3><div class="tags"><span>Marine HVAC design</span><span>Basic &amp; detailed design</span><span>Heating &amp; cooling loads</span><span>Duct sizing &amp; pressure drop</span><span>Space pressurization</span><span>Piping systems</span><span>P&amp;ID / D&amp;ID</span><span>Vendor package review</span><span>Commissioning &amp; air balancing</span></div></div>
+      <div class="card"><h3>Languages</h3><div class="tags"><span>Azerbaijani (native)</span><span>Turkish (native)</span><span>English (fluent)</span><span>German (B1)</span></div></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education &amp; certifications</h2>
+    <div class="cards">
+      <div class="card"><h3>BSc, Naval Architecture and Marine Engineering</h3>
+        <p>Istanbul Technical University · Sep 2009 - Jun 2015</p>
+        <p>Includes one-year English preparatory program (2009-2010); degree taught 50% in English.</p></div>
+      <div class="card"><h3>Certifications</h3>
+        <ul class="plain">
+          <li>Google AI Professional Certificate, Coursera (May 2026)</li>
+          <li>BIM Fundamentals for Engineers, National Taiwan University, Coursera (Mar 2026)</li>
+          <li>Fundamentals of Fluid Power, University of Minnesota, Coursera (Sep 2025)</li>
+          <li>SSI ShipConstructor Mastery: Skilled User, Pipe Catalog, HVAC Modeling, NDAR &amp; SSI (2022-2024)</li>
+          <li>Bitzer Compressor Training, Schaufler Academy (Jun 2021)</li>
+        </ul></div>
+      <div class="card"><h3>Honors</h3><p>Certificate of Appreciation, Baku Shipyard (Oct 2024)</p>
+        <h3 class="gap">References</h3><p>Available upon request.</p></div>
+    </div>
+  </section>
+
+  <footer>Igbal Mammadli · <span>Baku, Azerbaijan</span> · <a href="mailto:igbalmammadli@gmail.com">igbalmammadli@gmail.com</a></footer>
+</main>
+</div>
+
+<dialog class="pdlg" id="pdlg" aria-labelledby="pdlg-t">
+  <div class="pdlg-in">
+    <div class="pdlg-banner" id="pdlg-banner" hidden><img alt=""></div>
+    <button type="button" class="pdlg-x" id="pdlg-x"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
+    <div class="pdlg-nav" id="pdlg-nav" hidden>
+      <button type="button" id="pdlg-prev"></button>
+      <button type="button" id="pdlg-next"></button>
+    </div>
+    <div class="pdlg-k" id="pdlg-k"></div>
+    <div class="pdlg-brand" id="pdlg-brand" role="img" hidden></div>
+    <h3 id="pdlg-t"></h3>
+    <p class="pdlg-txt" id="pdlg-txt"></p>
+    <div class="pdlg-stats" id="pdlg-stats" hidden></div>
+    <dl id="pdlg-dl"></dl>
+    <div class="pdlg-role" id="pdlg-role"></div>
+    <div class="pdlg-tl" id="pdlg-tl" hidden></div>
+    <p class="pdlg-src" id="pdlg-src"></p>
+  </div>
+</dialog>
+
+<script>
+const FILTERS = [
+  { id: "hvac",   label: "HVAC design" },
+  { id: "piping", label: "Piping & mechanical" },
+  { id: "class",  label: "Rules & classification" },
+  { id: "coord",  label: "Coordination & leadership" },
+  { id: "site",   label: "Site & commissioning" },
+  { id: "tools",  label: "Software & tools" }
+];
+const SUBS = [
+  { id: "iso7547", label: "ISO 7547", std: true },
+  { id: "iso8861", label: "ISO 8861", std: true }
+];
+
+const ROLES = [
+  { title: "Mechanical, Piping, HVAC Engineer", org: "Baku Shipyard LLC · Baku, Azerbaijan", dates: "Sep 2022 - Present",
+    projects: "Projects: H128, H129 dry cargo vessels; H119, H120, H121 crew boats; H114 Ro-Pax; H115 tanker; H117, H122, H123 tanker series.",
+    items: [
+      ["Technical review of HVAC and other mechanical packages: evaluation of supplier scopes, mechanical equipment and basic design drawings.", ["hvac"]],
+      ["Review mechanical system packages (pumps, manual valves, separators, exhaust system components, water heating equipment) against project specifications.", ["piping"]],
+      ["Review P&IDs from basic design houses and resolve technical discrepancies before the detailed design phase.", ["piping"]],
+      ["Detailed design: 3D modeling and layout of piping systems (SW cooling, fire main, compressed air, exhaust gas, domestic fresh water) and HVAC systems in SSI ShipConstructor, compliant with ABS, BV and RMRS rules.", ["hvac", "piping", "class", "tools"]],
+      ["Engineering Coordinator for the H119-H121 crew boat series: cross-discipline integration, clash resolution, and communication between design and production teams. Coordinated engineering and production on mechanical and piping systems during one phase of the H114 Ro-Pax project.", ["coord"]],
+      ["Lead and mentor junior engineers and 3D modelers through design reviews and technical guidance; check and approve their design and production drawings before they are issued for construction.", ["coord"]],
+      ["Developed CoordiPRO, a C#/.NET AutoCAD plugin that gives coordinates referenced to frame, deck and longitudinal position, with instant checks; used by about 8 colleagues, saving 0.5-1 min per spool sketch (estimated profit for the company: USD 10-15k over 5 years).", ["tools"]]
+    ] },
+  { title: "Project Engineer", org: "Heinen & Hopman Engineering · Istanbul, Turkey", dates: "Jul 2020 - Sep 2022",
+    about: "Marine HVAC system supplier.",
+    projects: "Projects: SeaXplorer 58 and 60 expedition yachts (Damen); H191, H192 rail ferries (Kuzey Star Shipyard); H108, H109 Ro-Pax ferries and H112, H113 tankers (Baku Shipyard); NB45, NB51, NB52, NB53, NB55 fish carriers (Sefine Shipyard).",
+    items: [
+      ["Owned the HVAC scope of multiple concurrent shipbuilding projects, from contract signature to commissioning sign-off.", ["hvac", "coord"]],
+      ["Calculated heating and cooling loads to ISO 7547, engine room ventilation to ISO 8861 and duct pressure drop.", ["hvac", "iso7547", "iso8861"]],
+      ["Prepared the HVAC basic design: single-line layouts, D&IDs and P&IDs to SOLAS and Class rules (DNV, LR, RMRS).", ["hvac", "class"]],
+      ["Selected and specified project-critical HVAC equipment.", ["hvac"]],
+      ["Managed procurement in Netsis ERP: purchase orders, tracking of critical materials and delivery coordination with the shipyards.", ["coord", "tools"]],
+      ["Compiled the technical documentation for shipyard delivery: manuals, test procedures, packing lists and as-built documents.", ["hvac", "coord"]],
+      ["Supported the shipyards during construction: answered technical queries, resolved discrepancies remotely and on site, and joined technical meetings with yard engineers on request.", ["coord", "site"]],
+      ["Provided hands-on commissioning support, including air balancing, through to sign-off of the commissioning test procedures.", ["site"]],
+      ["Mentored junior engineers and established design verification routines.", ["coord"]]
+    ] },
+  { title: "Junior Project Engineer", org: "Heinen & Hopman Engineering · Istanbul, Turkey", dates: "Mar 2019 - Jul 2020",
+    projects: "Projects: tug boats (Sanmar Shipyards); M/Y Blue II (Turquoise Yachts).",
+    items: [
+      ["Performed HVAC calculations (heating and cooling loads to ISO 7547) under senior engineer review.", ["hvac", "iso7547"]],
+      ["Drafted HVAC single-line layouts and revised Ducting & Instrumentation Diagrams (D&IDs) and P&IDs to SOLAS and Class rules, incorporating comments from Class and the shipyard.", ["hvac", "class"]],
+      ["Specified HVAC equipment under senior engineer review and compiled the technical documentation for shipyard delivery: manuals, test procedures, packing lists and as-built documents.", ["hvac"]]
+    ] },
+  { title: "Site Supervisor / Site Engineer", org: "Heinen & Hopman Engineering · Baku, Azerbaijan", dates: "Aug 2015 - Mar 2019",
+    projects: "Projects: H. Aliyev semi-submersible drilling rig (Caspian Shipyard); SCV Khankendi subsea construction vessel (Baku Shipyard).",
+    items: [
+      ["Responsible for all Heinen & Hopman site activities on the H. Aliyev drilling rig: HVAC installation, material and equipment inspection, permit-to-work (PTW) handling and coordination with yard management.", ["site", "hvac"]],
+      ["Directed HVAC duct installation in line with drawings and specifications; resolved on-site technical discrepancies as the primary liaison between the Heinen & Hopman Istanbul office and the yard.", ["site", "hvac", "coord"]],
+      ["Commissioning support: air balancing, equipment testing and system handover to the owner.", ["site"]],
+      ["Handled warranty claims for both projects after delivery.", ["site"]]
+    ] }
+];
+
+const FILTERS_DE = {"hvac": "HLK-Planung", "piping": "Rohrleitungen & Mechanik", "class": "Regelwerke & Klassifikation", "coord": "Koordination & Führung", "site": "Baustelle & Inbetriebnahme", "tools": "Software & Tools", "iso7547": "ISO 7547", "iso8861": "ISO 8861"};
+const ROLES_DE = [{"title": "Ingenieur Maschinenbau, Rohrleitungen und HLK", "org": "Baku Shipyard LLC · Baku, Aserbaidschan", "dates": "09/2022 – heute", "projects": "Projekte: H128, H129 Trockenfrachter; H119, H120, H121 Crewboote; H114 Ro-Pax-Fähre; H115 Tanker; H117, H122, H123 Tankerserie.", "items": ["Technische Prüfung von HLK- und weiteren mechanischen Paketen: Bewertung der Lieferumfänge, der mechanischen Ausrüstung und der Basic-Design-Zeichnungen.", "Prüfung mechanischer Systempakete (Pumpen, Handventile, Separatoren, Komponenten der Abgasanlage, Warmwasserbereiter) anhand der Projektspezifikationen.", "Prüfung der R&I-Fließbilder (P&IDs) der Basic-Design-Büros und Klärung technischer Abweichungen vor der Detailplanungsphase.", "Detailplanung: 3D-Modellierung und Anordnung von Rohrleitungssystemen (Seewasserkühlung, Feuerlöschleitung, Druckluft, Abgasanlage, Frischwasserversorgung) und HLK-Systemen in SSI ShipConstructor gemäß den Regeln von ABS, BV und RMRS.", "Engineering-Koordinator für die Crewboot-Serie H119–H121: disziplinübergreifende Integration, Auflösung von Kollisionen (Clash-Auflösung) und Kommunikation zwischen Konstruktion und Produktion. Koordination zwischen Konstruktion und Produktion für mechanische und Rohrleitungssysteme in einer Phase des Ro-Pax-Projekts H114.", "Anleitung und Betreuung von Nachwuchsingenieuren und 3D-Modellierern durch Design-Reviews und fachliche Begleitung; Prüfung und Freigabe ihrer Konstruktions- und Fertigungszeichnungen vor der Ausgabe an die Fertigung.", "Entwicklung von CoordiPRO, einem C#/.NET-AutoCAD-Plugin, das Koordinaten bezogen auf Spant, Deck und Längsposition mit sofortiger Prüfung liefert; genutzt von etwa 8 Kolleginnen und Kollegen, spart 0,5–1 Min. pro Rohrstrangskizze (geschätzter Gewinn für das Unternehmen: 10.000–15.000 USD über 5 Jahre)."]}, {"title": "Projektingenieur", "org": "Heinen & Hopman Engineering · Istanbul, Türkei", "dates": "07/2020 – 09/2022", "about": "Lieferant von Schiffs-HLK-Systemen.", "projects": "Projekte: Expeditionsyachten SeaXplorer 58 und 60 (Damen); H191, H192 Eisenbahnfähren (Kuzey Star Shipyard); H108, H109 Ro-Pax-Fähren und H112, H113 Tanker (Baku Shipyard); NB45, NB51, NB52, NB53, NB55 Fischtransportschiffe (Sefine Shipyard).", "items": ["Verantwortung für den HLK-Lieferumfang mehrerer parallel laufender Schiffbauprojekte, von der Vertragsunterzeichnung bis zur Abnahme der Inbetriebnahme.", "Berechnung der Heiz- und Kühllasten nach ISO 7547, der Maschinenraumlüftung nach ISO 8861 und des Druckverlusts in Luftkanälen.", "Erstellung des HLK-Basic-Designs: Einlinien-Layouts, D&IDs und R&I-Fließbilder (P&IDs) gemäß SOLAS und Klassevorschriften (DNV, LR, RMRS).", "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.", "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit den Werften.", "Zusammenstellung der technischen Dokumentation für die Werftlieferung: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation.", "Unterstützung der Werften während der Bauphase: Beantwortung technischer Anfragen, Klärung von Abweichungen aus der Ferne und vor Ort sowie Teilnahme an technischen Besprechungen mit Werftingenieuren auf Anfrage.", "Praktische Unterstützung bei der Inbetriebnahme, einschließlich Luftmengenabgleich, bis zur Freigabe der Inbetriebnahme-Prüfverfahren.", "Anleitung von Nachwuchsingenieuren und Einführung von Routinen zur Designverifizierung."]}, {"title": "Junior-Projektingenieur", "org": "Heinen & Hopman Engineering · Istanbul, Türkei", "dates": "03/2019 – 07/2020", "projects": "Projekte: Schlepper (Sanmar Shipyards); M/Y Blue II (Turquoise Yachts).", "items": ["Durchführung von HLK-Berechnungen (Heiz- und Kühllasten nach ISO 7547) unter Aufsicht erfahrener Ingenieure.", "Erstellung von HLK-Einlinien-Layouts und Überarbeitung der Lüftungs- und Instrumentenfließbilder (D&IDs) sowie R&I-Fließbilder (P&IDs) gemäß SOLAS und Klassevorschriften unter Einarbeitung von Kommentaren der Klasse und der Werft.", "Spezifikation der HLK-Ausrüstung unter Aufsicht erfahrener Ingenieure und Zusammenstellung der technischen Dokumentation für die Werftlieferung: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation."]}, {"title": "Bauleiter vor Ort / Site Engineer", "org": "Heinen & Hopman Engineering · Baku, Aserbaidschan", "dates": "08/2015 – 03/2019", "projects": "Projekte: halbtauchende Bohrplattform H. Aliyev (Caspian Shipyard); Unterwasser-Bauschiff SCV Khankendi (Baku Shipyard).", "items": ["Verantwortlich für sämtliche Baustellenaktivitäten von Heinen & Hopman auf der Bohrplattform H. Aliyev: HLK-Installation, Material- und Ausrüstungsprüfung, Arbeitsfreigabe (Permit to Work, PTW) und Abstimmung mit der Werftleitung.", "Leitung der HLK-Kanalinstallationen nach Zeichnungen und Spezifikationen; Klärung technischer Abweichungen vor Ort als zentrale Schnittstelle zwischen dem Büro von Heinen & Hopman in Istanbul und der Werft.", "Unterstützung bei der Inbetriebnahme: Luftmengenabgleich, Ausrüstungstests und Systemübergabe an den Eigner.", "Bearbeitung von Gewährleistungsansprüchen für beide Projekte nach der Ablieferung."]}];
+const DE = {"Skip to content": "Zum Inhalt springen", "Mechanical, Piping & HVAC Engineer": "Ingenieur Maschinenbau, Rohrleitungen und HLK", "Shipbuilding & Offshore": "Schiffbau & Offshore", "Download CV (PDF)": "Lebenslauf (PDF, EN)", "Location": "Standort", "Phone": "Telefon", "Email": "E-Mail", "Baku, Azerbaijan": "Baku, Aserbaidschan", "Profile": "Profil", "Experience": "Berufserfahrung", "Engineering tools": "Engineering-Tools", "Skills & standards": "Kompetenzen & Normen", "Education & certifications": "Ausbildung & Zertifikate", "Mechanical engineer with 11 years in marine HVAC, piping and mechanical systems across the full shipbuilding cycle: site supervision and commissioning, basic design at marine HVAC supplier Heinen & Hopman, and detailed design and equipment review at Baku Shipyard.": "Maschinenbauingenieur mit 11 Jahren Erfahrung in Schiffs-HLK, Rohrleitungs- und mechanischen Systemen über den gesamten Schiffbauzyklus: Bauleitung vor Ort und Inbetriebnahme, Basic Design beim Schiffs-HLK-Lieferanten Heinen & Hopman sowie Detailplanung und Ausrüstungsprüfung bei Baku Shipyard.", "Sectors": "Branchen", "Shipbuilding, offshore": "Schiffbau, Offshore", "Rules": "Regelwerke", "Languages": "Sprachen", "Pick a discipline or standard to highlight the matching work across all four roles.": "Wählen Sie ein Fachgebiet oder eine Norm, um die passenden Tätigkeiten in allen vier Positionen hervorzuheben.", "In use at Baku Shipyard": "Im Einsatz bei Baku Shipyard", "In development": "In Entwicklung", "C#/.NET AutoCAD plugin that gives coordinates referenced to frame, deck and longitudinal position, with instant checks.": "C#/.NET-AutoCAD-Plugin, das Koordinaten bezogen auf Spant, Deck und Längsposition mit sofortiger Prüfung liefert.", "About 8 users · 0.5-1 min saved per spool sketch · estimated profit for the company: USD 10-15k over 5 years.": "Etwa 8 Nutzer · 0,5–1 Min. Zeitersparnis pro Rohrstrangskizze · geschätzter Gewinn für das Unternehmen: 10.000–15.000 USD über 5 Jahre.", "C#/.NET AutoCAD plugin for automated tagging and bill of materials (BOM) generation.": "C#/.NET-AutoCAD-Plugin für automatisiertes Tagging und die Erstellung von Stücklisten (BOM).", "Marine HVAC duct calculation web app, built with Claude Code and Google Antigravity.": "Webanwendung zur Luftkanalberechnung in der Schiffs-HLK, entwickelt mit Claude Code und Google Antigravity.", "Rules & standards": "Regelwerke & Normen", "International Load Line Convention": "Internationales Freibord-Übereinkommen", "Software": "Software", "Engineering": "Fachkompetenz", "Marine HVAC design": "Schiffs-HLK-Planung", "Basic & detailed design": "Basic Design & Detailplanung", "Heating & cooling loads": "Heiz- und Kühllasten", "Duct sizing & pressure drop": "Kanaldimensionierung & Druckverlust", "Space pressurization": "Raumüberdruckhaltung", "Piping systems": "Rohrleitungssysteme", "P&ID / D&ID": "R&I-Fließbilder (P&ID) / Lüftungsfließbilder (D&ID)", "Vendor package review": "Prüfung von Lieferantenpaketen", "Commissioning & air balancing": "Inbetriebnahme & Luftmengenabgleich", "Azerbaijani (native)": "Aserbaidschanisch (Muttersprache)", "Turkish (native)": "Türkisch (Muttersprache)", "English (fluent)": "Englisch (fließend)", "German (B1)": "Deutsch (B1)", "BSc, Naval Architecture and Marine Engineering": "Bachelor of Science, Schiffbau und Schiffsmaschinenbau", "Istanbul Technical University · Sep 2009 - Jun 2015": "Technische Universität Istanbul · 09/2009 – 06/2015", "Includes one-year English preparatory program (2009-2010); degree taught 50% in English.": "Inklusive einjährigem Englisch-Vorbereitungsprogramm (2009–2010); Studium zu 50 % auf Englisch.", "Certifications": "Zertifikate", "Google AI Professional Certificate, Coursera (May 2026)": "Google AI Professional Certificate, Coursera (Mai 2026)", "BIM Fundamentals for Engineers, National Taiwan University, Coursera (Mar 2026)": "BIM Fundamentals for Engineers, National Taiwan University, Coursera (März 2026)", "Fundamentals of Fluid Power, University of Minnesota, Coursera (Sep 2025)": "Fundamentals of Fluid Power, University of Minnesota, Coursera (September 2025)", "SSI ShipConstructor Mastery: Skilled User, Pipe Catalog, HVAC Modeling, NDAR & SSI (2022-2024)": "SSI ShipConstructor Mastery: Skilled User, Pipe Catalog, HVAC Modeling, NDAR & SSI (2022–2024)", "Bitzer Compressor Training, Schaufler Academy (Jun 2021)": "Bitzer-Kompressorschulung, Schaufler Academy (Juni 2021)", "Honors": "Auszeichnungen", "Certificate of Appreciation, Baku Shipyard (Oct 2024)": "Anerkennungsurkunde, Baku Shipyard (Oktober 2024)", "References": "Referenzen", "Available upon request.": "Auf Anfrage erhältlich.", "Filter experience": "Berufserfahrung filtern", "{n} of {m} highlights match “{l}”.": "{n} von {m} Highlights passen zu „{l}“.", "years in marine HVAC, piping and mechanical systems": "Jahre in Schiffs-HLK, Rohrleitungs- und mechanischen Systemen", "roles at 2 companies, from site to design office": "Positionen bei 2 Unternehmen, von der Baustelle bis ins Konstruktionsbüro", "USD 10-15k": "10–15 Tsd. USD", "estimated profit for the company over 5 years": "geschätzter Gewinn für das Unternehmen über 5 Jahre", "About 8 users · 0.5-1 min saved per spool sketch": "Etwa 8 Nutzer · 0,5–1 Min. Zeitersparnis pro Rohrstrangskizze", "Igbal Mammadli | Interactive CV": "Igbal Mammadli | Interaktiver Lebenslauf", "Igbal Mammadli - Mechanical, Piping & HVAC Engineer, Shipbuilding & Offshore.": "Igbal Mammadli – Ingenieur Maschinenbau, Rohrleitungen und HLK, Schiffbau & Offshore.", "classification rules applied: ABS, DNV, BV": "angewandte Klassevorschriften: ABS, DNV, BV", "in Shipbuilding & Offshore": "im Schiffbau & Offshore", "Software I built": "Selbst entwickelte Software", "Engineering tools I designed and built to automate repetitive design work.": "Von mir konzipierte und entwickelte Engineering-Tools zur Automatisierung wiederkehrender Konstruktionsarbeiten."};
+
+// [start, end] as [year, month]; end null = still in the role. Durations are counted from these, up to the current month.
+const SPANS = [[[2022, 9], null], [[2020, 7], [2022, 9]], [[2019, 3], [2020, 7]], [[2015, 8], [2019, 3]]];
+function durText(ri) {
+  const [s, e] = SPANS[ri];
+  return spanText(s, e);
+}
+// whole career: first role's start to today
+function totalText() { return spanText(SPANS[SPANS.length - 1][0], null); }
+function spanText(s, e) {
+  const now = new Date(), end = e || [now.getFullYear(), now.getMonth() + 1];
+  const m =Math.max(0, (end[0] - s[0]) * 12 + end[1] - s[1]), y = Math.floor(m / 12), mo = m % 12, de = lang === "de";
+  const u = (n, one, many) => n + " " + (n === 1 ? one : many);
+  const parts = [];
+  if (y) parts.push(de ? u(y, "Jahr", "Jahre") : u(y, "yr", "yrs"));
+  if (mo) parts.push(de ? u(mo, "Monat", "Monate") : u(mo, "mo", "mos"));
+  return parts.length ? parts.join(" ") : (de ? "< 1 Monat" : "< 1 mo");
+}
+const LOGOS = { "Baku Shipyard LLC": "pics/BakuShipyard-logo.png", "Heinen & Hopman Engineering": "pics/HH-logo.png" };
+// white versions for the navy company dialog
+const LOGOS_DLG = { "Baku Shipyard LLC": "pics/BakuShipyard-logo-w.png", "Heinen & Hopman Engineering": "pics/HH-logo-w.png" };
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const rolesEl = document.getElementById("roles");
+const filtersEl = document.getElementById("filters");
+const statusEl = document.getElementById("status");
+let lang = "en", cur = "all", allLis = [];
+
+function tr(en) { return lang === "de" && DE[en] !== undefined ? DE[en] : en; }
+const filterLabel = f => lang === "de" ? FILTERS_DE[f.id] : f.label;
+const subEl = document.getElementById("subfilters");
+const isSub = id => SUBS.some(f => f.id === id);
+
+// ---- vessel cards under each role ----
+// To show a real photo, set img to the file path, e.g. img: "pics/h114.jpg"; pos is its object-position (photos are cropped to fit, never stretched). tab is the short label on the visible edge.
+const PROJECTS = [{"role": 0, "hull": "H117 · H122 · H123", "kind": "tanker", "img": "pics/card-tanker-series.jpg", "name": {"en": "Oil/chemical tankers", "de": "Öl-/Chemikalientanker"}, "tab": "H117·122·123", "pos": "50% 50%"}, {"role": 0, "hull": "H114", "kind": "ferry", "img": "pics/card-h114.jpg", "pos": "50% 50%", "name": {"en": "Ro-Pax ferry", "de": "Ro-Pax-Fähre"}, "tab": "H114"}, {"role": 0, "hull": "H115", "kind": "tanker", "img": "pics/card-dostlug.jpg", "name": {"en": "Oil tanker", "de": "Öltanker"}, "tab": "H115", "pos": "50% 50%"}, {"role": 0, "hull": "H119 · H120 · H121", "kind": "small", "img": "pics/card-crew-boats.jpg", "pos": "50% 50%", "name": {"en": "Crew boats", "de": "Crewboote"}, "tab": "H119–121"}, {"role": 0, "hull": "H128 · H129", "kind": "cargo", "img": "pics/card-dry-cargo.jpg", "pos": "50% 50%", "name": {"en": "Dry cargo vessels", "de": "Trockenfrachter"}, "tab": "H128–129"}, {"role": 1, "hull": "NB45", "kind": "ship", "img": "pics/card-nb45.jpg", "pos": "50% 50%", "name": {"en": "Live fish carrier", "de": "Lebendfischtransporter"}, "tab": "NB45"}, {"role": 1, "hull": "NB51", "kind": "ship", "img": "pics/card-nb51.jpg", "pos": "50% 50%", "name": {"en": "Live fish carrier", "de": "Lebendfischtransporter"}, "tab": "NB51"}, {"role": 1, "hull": "NB52 · NB53", "kind": "ship", "img": "pics/card-nb52-53.jpg", "pos": "50% 50%", "name": {"en": "Live fish carriers", "de": "Lebendfischtransporter"}, "tab": "NB52–53"}, {"role": 1, "hull": "NB55", "kind": "ship", "img": "pics/card-nb55.jpg", "pos": "50% 50%", "name": {"en": "Live fish carrier", "de": "Lebendfischtransporter"}, "tab": "NB55"}, {"role": 1, "hull": "H108 · H109", "kind": "ferry", "img": "pics/card-ro-pax.jpg", "pos": "50% 50%", "name": {"en": "Ro-Pax ferries", "de": "Ro-Pax-Fähren"}, "tab": "H108–109"}, {"role": 1, "hull": "H112 · H113", "kind": "tanker", "img": "pics/card-khoshbakht.jpg", "pos": "50% 50%", "name": {"en": "Oil/chemical tankers", "de": "Öl-/Chemikalientanker"}, "tab": "H112–113"}, {"role": 1, "hull": "H191 · H192", "kind": "ferry", "img": "pics/card-rail-ferries.jpg", "name": {"en": "Rail ferries", "de": "Eisenbahnfähren"}, "tab": "H191–192", "pos": "50% 55%"}, {"role": 1, "hull": "SeaXplorer 58", "kind": "yacht", "img": "pics/card-sx58.jpg", "pos": "50% 50%", "name": {"en": "Expedition yacht", "de": "Expeditionsyacht"}, "tab": "SX58", "noHull": true, "capImg": "pics/tab-sx58.png"}, {"role": 1, "hull": "SeaXplorer 60", "kind": "yacht", "img": "pics/card-sx60.jpg", "pos": "50% 50%", "name": {"en": "Expedition yacht", "de": "Expeditionsyacht"}, "tab": "SX60", "noHull": true, "capImg": "pics/tab-sx60.png"}, {"role": 2, "hull": "", "kind": "small", "img": "pics/card-tugs.jpg", "name": {"en": "Tug boats", "de": "Schlepper"}, "tab": {"en": "Tug boats", "de": "Schlepper"}, "key": "sanmar-tugs", "pos": "50% 50%"}, {"role": 2, "hull": "M/Y Blue II", "kind": "yacht", "img": "pics/card-blue2.jpg", "name": {"en": "Motor yacht", "de": "Motoryacht"}, "tab": "M/Y Blue II", "pos": "50% 60%"}, {"role": 3, "hull": "H. Aliyev", "kind": "rig", "img": "pics/card-h-aliyev.jpg", "pos": "50% 62%", "name": {"en": "Semi-submersible drilling rig", "de": "Halbtauchende Bohrplattform"}, "tab": "H. Aliyev"}, {"role": 3, "hull": "SCV Khankendi", "kind": "ship", "img": "pics/card-scv-khankendi.jpg", "pos": "50% 45%", "name": {"en": "Subsea construction vessel", "de": "Unterwasser-Bauschiff"}, "tab": "Khankendi"}];
+// Project details for the dialog, from public sources only (listed under sources).
+// status "construction" shows an Under construction badge; keep text and facts minimal for those.
+// dialogs are looked up by hull number, or by key for cards without one
+const infoKey = p => p.key || p.hull;
+const INFO = {
+  "H128 · H129": {
+    photo: "pics/dlg-dry-cargo.jpg", status: "construction", title: "H128–H129",
+    en: { text: "Two 780-TEU shallow-draft multipurpose container vessels for AD Ports Group, built to serve trade routes across the Caspian Sea. The keel of the first vessel was laid in June 2026.",
+      facts: [["Design", "Marine Engineering Bureau"], ["Class", "BV"], ["Length", "149.5 m"], ["Capacity", "780 TEU"], ["Draft", "4.5 m"]],
+      role: ["Responsible engineer for the HVAC system and piping systems (cooling, exhaust gas, domestic fresh water).",
+        "Technical review of mechanical equipment packages.",
+        "Review of the P&IDs received from the basic design house.",
+        "Leading 3D modelers, and checking and approving their design and production drawings before they are issued for construction."] },
+    de: { text: "Zwei Mehrzweck-Containerschiffe mit 780 TEU und geringem Tiefgang für AD Ports Group, für Handelsrouten im Kaspischen Meer. Der Kiel des ersten Schiffs wurde im Juni 2026 gelegt.",
+      facts: [["Entwurf", "Marine Engineering Bureau"], ["Klasse", "BV"], ["Länge", "149,5 m"], ["Kapazität", "780 TEU"], ["Tiefgang", "4,5 m"]],
+      role: ["Verantwortlicher Ingenieur für die HLK-Anlage und die Rohrleitungssysteme (Kühlung, Abgasanlage, Frischwasserversorgung).",
+        "Technische Prüfung mechanischer Ausrüstungspakete.",
+        "Prüfung der vom Basic-Design-Büro erhaltenen P&IDs.",
+        "Leitung von 3D-Modellierern; Prüfung und Freigabe ihrer Konstruktions- und Fertigungszeichnungen vor der Ausgabe an die Fertigung."] },
+    sources: [["AD Ports Group", "https://www.adportsgroup.com/en/news-and-media/2025/09/17/ad-ports-group-awards-contract-for-two-shallow-draft-container-vessels-for-caspian-sea-operations"], ["Marine Engineering Bureau", "https://meb.com.ua/news/2110.html"], ["Ports Europe", "https://www.portseurope.com/baku-shipyard-lays-keel-for-largest-caspian-container-ships/"]]
+  },
+  "H114": {
+    photo: "pics/dlg-h114.jpg", status: "construction", title: "H114",
+    en: { text: "The third Ro-Pax rail ferry ordered by ASCO (Azerbaijan Caspian Shipping Company) for cargo and passenger services across the Caspian Sea, including the Middle Corridor route.",
+      facts: [["Design", "Marine Engineering Bureau"], ["Class", "RMRS"], ["Length", "154.5 m"], ["Passengers", "Up to 100"], ["Cargo", "56 rail wagons + 50 trucks"]],
+      role: ["Technical review of mechanical and piping systems.",
+        "Detailed design revisions in SSI ShipConstructor: HVAC system changes to improve engine room airflow, and piping for an additional air-conditioning cooling system.",
+        "Coordination between engineering and production on mechanical and piping systems during one phase of the project."] },
+    de: { text: "Die dritte Ro-Pax-Eisenbahnfähre im Auftrag von ASCO (Azerbaijan Caspian Shipping Company) für den Fracht- und Passagierverkehr über das Kaspische Meer, einschließlich der Route des Mittleren Korridors.",
+      facts: [["Entwurf", "Marine Engineering Bureau"], ["Klasse", "RMRS"], ["Länge", "154,5 m"], ["Passagiere", "Bis 100"], ["Ladung", "56 Waggons + 50 Lkw"]],
+      role: ["Technische Prüfung der mechanischen und Rohrleitungssysteme.",
+        "Überarbeitung der Detailplanung in SSI ShipConstructor: Anpassungen der HLK-Anlage für eine bessere Luftführung im Maschinenraum sowie Rohrleitungsplanung für ein zusätzliches Kühlsystem der Klimaanlage.",
+        "Koordination zwischen Konstruktion und Produktion für mechanische und Rohrleitungssysteme in einer Projektphase."] },
+    sources: [["Report.az (text and photo)", "https://report.az/en/infrastructure/construction-of-third-ropax-vessel-ordered-by-asco-nears-completion"], ["Baird Maritime", "https://www.bairdmaritime.com/passenger/ro-pax/vessel-review-azerbaijan-first-in-series-of-new-russian-designed-caspian-sea-rail-ferries"]]
+  },
+  "H115": {
+    photo: "pics/dlg-dostlug.jpg", photoPos: "center -50px", pad: 260, status: "delivered", title: "Dostlug",
+    en: { when: "Delivered 2026",
+      text: "An RST12C oil tanker, the fifth 7,875 t tanker built at Baku Shipyard. Azerbaijan presented it to Turkmenistan in an online ceremony between the two presidents on June 22, 2026.",
+      facts: [["Design", "Marine Engineering Bureau (RST12C)"], ["Class", "RMRS"], ["Length", "141 m"], ["Deadweight", "7,875 t"], ["Cargo tanks", "9,190 m³"], ["Delivered", "Jun 2026"]],
+      role: ["Responsible engineer for the HVAC system.",
+        "Detailed design revisions of the air-conditioning system for the accommodation spaces."] },
+    de: { when: "Abgeliefert 2026",
+      text: "Ein RST12C-Öltanker, der fünfte bei Baku Shipyard gebaute Tanker mit 7.875 t Tragfähigkeit. Aserbaidschan übergab ihn am 22. Juni 2026 in einer Online-Zeremonie der beiden Präsidenten an Turkmenistan.",
+      facts: [["Entwurf", "Marine Engineering Bureau (RST12C)"], ["Klasse", "RMRS"], ["Länge", "141 m"], ["Tragfähigkeit", "7.875 t"], ["Ladetanks", "9.190 m³"], ["Ablieferung", "06/2026"]],
+      role: ["Verantwortlicher Ingenieur für die HLK-Anlage.",
+        "Überarbeitung der Detailplanung der Klimaanlage für die Unterkunftsbereiche."] },
+    sources: [["Marine Engineering Bureau (text and photo)", "https://meb.com.ua/news/2111.html"], ["Caspian Post", "https://caspianpost.com/turkmenistan/azerbaijan-gifts-dostlug-oil-tanker-to-turkmenistan-as-presidents-attend-virtual-ceremony"]]
+  },
+  "H117 · H122 · H123": {
+    photo: "pics/dlg-tanker-series.jpg", status: "construction", title: "H117 · H122 · H123",
+    en: { text: "A series of three oil and chemical tankers for ASCO, built to the same design as Zangilan. Their shallow-draft design lets them call at shallow-water ports fully loaded.",
+      facts: [["Design", "Marine Engineering Bureau (RST12C)"], ["Class", "ABS"], ["Length", "141 m"], ["Deadweight", "7,740 t"], ["Speed", "10 knots"]],
+      role: ["Responsible engineer for the HVAC system.",
+        "Detailed design revisions of the air-conditioning system for the accommodation spaces."] },
+    de: { text: "Eine Serie von drei Öl- und Chemikalientankern für ASCO nach demselben Entwurf wie die Zangilan. Dank des geringen Tiefgangs können sie auch flache Häfen voll beladen anlaufen.",
+      facts: [["Entwurf", "Marine Engineering Bureau (RST12C)"], ["Klasse", "ABS"], ["Länge", "141 m"], ["Tragfähigkeit", "7.740 t"], ["Geschwindigkeit", "10 Knoten"]],
+      role: ["Verantwortlicher Ingenieur für die HLK-Anlage.",
+        "Überarbeitung der Detailplanung der Klimaanlage für die Unterkunftsbereiche."] },
+    sources: [["Report.az (text and photo)", "https://report.az/en/infrastructure/construction-continues-on-tankers-being-built-at-bsy-under-asco-s-order"], ["Marine Engineering Bureau", "https://meb.com.ua/news/2105.html"]]
+  },
+  "H119 · H120 · H121": {
+    photo: "pics/dlg-crew-boats.jpg", status: "construction", title: "H119–H121",
+    en: { text: "A series of three 42-meter DP2 steel crew boats designed by Incat Crowther for an offshore energy services operator in Azerbaijan, built to serve existing offshore installations in the Caspian Sea. Each will be fitted with a Walk2Work gangway for personnel transfer.",
+      facts: [["Design", "Incat Crowther"], ["Class", "ABS"], ["Length", "42 m"], ["Personnel", "Up to 50"], ["Positioning", "DP2"]],
+      role: ["Engineering Coordinator for the series: cross-discipline integration, clash resolution and communication between design and production.",
+        "Responsible engineer for the HVAC system and piping systems (cooling, fire main, compressed air, exhaust gas).",
+        "Detailed design and 3D modeling in SSI ShipConstructor.",
+        "Technical review of mechanical equipment packages.",
+        "Leading 3D modelers and junior engineers."] },
+    de: { text: "Eine Serie von drei 42 Meter langen DP2-Crewbooten aus Stahl, entworfen von Incat Crowther für einen Offshore-Energiedienstleister in Aserbaidschan, zur Versorgung bestehender Offshore-Anlagen im Kaspischen Meer. Jedes Boot erhält eine Walk2Work-Gangway für den Personaltransfer.",
+      facts: [["Entwurf", "Incat Crowther"], ["Klasse", "ABS"], ["Länge", "42 m"], ["Personal", "Bis 50"], ["Positionierung", "DP2"]],
+      role: ["Engineering-Koordinator für die Serie: disziplinübergreifende Integration, Clash-Auflösung und Kommunikation zwischen Konstruktion und Produktion.",
+        "Verantwortlicher Ingenieur für die HLK-Anlage und die Rohrleitungssysteme (Kühlung, Feuerlöschleitung, Druckluft, Abgasanlage).",
+        "Detailplanung und 3D-Modellierung in SSI ShipConstructor.",
+        "Technische Prüfung mechanischer Ausrüstungspakete.",
+        "Leitung von 3D-Modellierern und Nachwuchsingenieuren."] },
+    sources: [["Incat Crowther", "https://www.incatcrowther.com/news/news-feed/posts/2025/dec/construction-underway-on-fleet-of-42-metre-dp2-fast-crew-boats-for-caspian-sea-energy-operator/"], ["New-Ships.com", "https://www.new-ships.com/ns/news/6124"], ["Incat Crowther (class)", "https://www.incatcrowther.com/products/ic23068/"]]
+  },
+  "SeaXplorer 60": {
+    photo: "pics/dlg-sx60.jpg", status: "delivered", title: "After You",
+    brand: ["pics/xplorer-wordmark.png", "pics/xplorer-60.png"], brandLabel: "Xplorer 60", titleImg: "pics/afteryou-wordmark.png",
+    en: { when: "Delivered 2025",
+      text: "The first SeaXplorer 60, built at Damen Yachting's yard in Antalya, Turkey: an ice-class expedition yacht with a certified helideck and hybrid propulsion.",
+      facts: [["Design", "Damen Yachting (exterior: Azure)"], ["Class", "Lloyd's Register"], ["Length", "60 m"], ["Guests", "12 in 6 suites"], ["Crew", "16 + captain"], ["Gross tonnage", "1,160 GT"], ["Delivered", "2025"]],
+      role: ["Calculated heating and cooling loads to ISO 7547 and engine room ventilation.",
+        "Prepared the HVAC basic design: single-line layouts, D&IDs and P&IDs.",
+        "Selected and specified project-critical HVAC equipment."] },
+    de: { when: "Abgeliefert 2025",
+      text: "Die erste SeaXplorer 60, gebaut auf der Werft von Damen Yachting in Antalya, Türkei: eine eisklassifizierte Expeditionsyacht mit zertifiziertem Hubschrauberdeck und Hybridantrieb.",
+      facts: [["Entwurf", "Damen Yachting (Exterieur: Azure)"], ["Klasse", "Lloyd's Register"], ["Länge", "60 m"], ["Gäste", "12 in 6 Suiten"], ["Crew", "16 + Kapitän"], ["Bruttoraumzahl", "1.160 GT"], ["Ablieferung", "2025"]],
+      role: ["Berechnung der Heiz- und Kühllasten nach ISO 7547 und der Maschinenraumlüftung.",
+        "Erstellung des HLK-Basic-Designs: Einlinien-Layouts, D&IDs und R&I-Fließbilder (P&IDs).",
+        "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung."] },
+    sources: [["Navis Yachts (text and photo)", "https://www.navisyachts.com/qr9"], ["SuperYacht Times", "https://www.superyachttimes.com/yacht-news/seaxplorer-60-unveiled-as-construction-begins"], ["Burgess (class)", "https://www.burgessyachts.com/en/buy-a-yacht/yachts-for-sale/xplorer-60-10001933"]]
+  },
+  "SeaXplorer 58": {
+    photo: "pics/dlg-sx58.jpg", status: "delivered", title: "Pink Shadow", titleImg: "pics/pinkshadow-wordmark.png",
+    brand: ["pics/xplorer-wordmark.png", "pics/xplorer-58.png"], brandLabel: "Xplorer 58",
+    en: { when: "Delivered 2023",
+      text: "The first SeaXplorer 58 and the first SeaXplorer built at Damen Yachting's yard in Antalya, Turkey: an ice-class expedition yacht able to operate for up to 30 days without a port call.",
+      facts: [["Design", "Damen Yachting (exterior: Azure)"], ["Class", "Lloyd's Register"], ["Length", "58.3 m"], ["Guests", "12 in 6 suites"], ["Crew", "15 + 2 expedition staff"], ["Gross tonnage", "1,090 GT"], ["Delivered", "2023"]],
+      role: ["Calculated heating and cooling loads to ISO 7547 and engine room ventilation.",
+        "Prepared the HVAC basic design: single-line layouts, D&IDs and P&IDs.",
+        "Selected and specified project-critical HVAC equipment.",
+        "Supported the H&H production team and the shipyard during construction: answered technical queries, resolved discrepancies remotely and on site, and joined technical meetings with yard engineers on request."] },
+    de: { when: "Abgeliefert 2023",
+      text: "Die erste SeaXplorer 58 und die erste auf der Werft von Damen Yachting in Antalya, Türkei, gebaute SeaXplorer: eine eisklassifizierte Expeditionsyacht, die bis zu 30 Tage ohne Hafenanlauf operieren kann.",
+      facts: [["Entwurf", "Damen Yachting (Exterieur: Azure)"], ["Klasse", "Lloyd's Register"], ["Länge", "58,3 m"], ["Gäste", "12 in 6 Suiten"], ["Crew", "15 + 2 Expeditionsmitglieder"], ["Bruttoraumzahl", "1.090 GT"], ["Ablieferung", "2023"]],
+      role: ["Berechnung der Heiz- und Kühllasten nach ISO 7547 und der Maschinenraumlüftung.",
+        "Erstellung des HLK-Basic-Designs: Einlinien-Layouts, D&IDs und R&I-Fließbilder (P&IDs).",
+        "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.",
+        "Unterstützung des H&H-Produktionsteams und der Werft während der Bauphase: Beantwortung technischer Anfragen, Klärung von Abweichungen aus der Ferne und vor Ort sowie Teilnahme an technischen Besprechungen mit Werftingenieuren auf Anfrage."] },
+    sources: [["Boat International (text and photo)", "https://www.boatinternational.com/yachts/news/damen-seaxplorer-58-yacht-sea-trials"], ["YachtCharterFleet", "https://www.yachtcharterfleet.com/news/damen-yachting-launches-first-custom-seaxplorer-58-in-antalya"]]
+  },
+  "H112 · H113": {
+    photo: "pics/dlg-khoshbakht.jpg", photoPos: "center -50px", pad: 260, status: "delivered", title: "Akademik Khoshbakht Yusifzade & Zangilan",
+    en: { when: "Delivered 2022–2024",
+      text: "Two oil and chemical tankers (Project RST12C) built at Baku Shipyard for ASCO (Azerbaijan Caspian Shipping Company): the third and fourth tankers of the yard's series, carrying crude oil and chemical products across the Caspian Sea.",
+      facts: [["Design", "Marine Engineering Bureau (RST12C)"], ["Class", "RMRS"], ["Length", "141 m"], ["Deadweight", "7,875 t"], ["Cargo tanks", "9,190 m³"], ["Delivered", "Dec 2022 · Jul 2024"]],
+      role: ["Prepared the HVAC basic design: single-line layouts.",
+        "Selected and specified project-critical HVAC equipment.",
+        "Managed procurement in Netsis ERP: purchase orders, tracking of critical materials and delivery coordination with the shipyard.",
+        "Supported the shipyard during construction: answered technical queries, resolved discrepancies remotely and on site, and joined technical meetings with yard engineers on request."] },
+    de: { when: "Abgeliefert 2022–2024",
+      text: "Zwei Öl- und Chemikalientanker (Projekt RST12C), gebaut bei Baku Shipyard für ASCO (Azerbaijan Caspian Shipping Company): der dritte und vierte Tanker der Serie der Werft, für den Transport von Rohöl und Chemikalien über das Kaspische Meer.",
+      facts: [["Entwurf", "Marine Engineering Bureau (RST12C)"], ["Klasse", "RMRS"], ["Länge", "141 m"], ["Tragfähigkeit", "7.875 t"], ["Ladetanks", "9.190 m³"], ["Ablieferung", "12/2022 · 07/2024"]],
+      role: ["Erstellung des HLK-Basic-Designs: Einlinien-Layouts.",
+        "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.",
+        "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit der Werft.",
+        "Unterstützung der Werft während der Bauphase: Beantwortung technischer Anfragen, Klärung von Abweichungen aus der Ferne und vor Ort sowie Teilnahme an technischen Besprechungen mit Werftingenieuren auf Anfrage."] },
+    sources: [["Report.az (Khoshbakht Yusifzade, text and photo)", "https://report.az/en/infrastructure/tanker-akademik-khoshbakht-yusifzade-successfully-completes-first-voyage"], ["Marine Engineering Bureau (Zangilan)", "https://meb.com.ua/news/2105.html"], ["Trend (Zangilan)", "https://www.trend.az/business/transport/3924312.html"]]
+  },
+  "H108 · H109": {
+    photo: "pics/dlg-ro-pax.jpg", photoPos: "center -60px", pad: 260, status: "delivered", title: "Azerbaijan & Zarifa Aliyeva",
+    en: { when: "Delivered 2021–2022",
+      text: "Two Ro-Pax rail ferries (Project CNF18C) built at Baku Shipyard for ASCO (Azerbaijan Caspian Shipping Company), carrying rail wagons, trucks and passengers across the Caspian Sea.",
+      facts: [["Design", "Marine Engineering Bureau (CNF18C)"], ["Class", "RMRS"], ["Length", "154.5 m"], ["Passengers", "Up to 100"], ["Cargo", "56 rail wagons + 50 trucks"], ["Delivered", "2021 · 2022"]],
+      role: ["Prepared the HVAC basic design: single-line layouts.",
+        "Selected and specified project-critical HVAC equipment.",
+        "Managed procurement in Netsis ERP: purchase orders, tracking of critical materials and delivery coordination with the shipyard.",
+        "Compiled the technical documentation for shipyard delivery: manuals, test procedures, packing lists and as-built documents.",
+        "Supported the shipyard during construction: answered technical queries, resolved discrepancies remotely and on site, and joined technical meetings with yard engineers on request.",
+        "Provided hands-on commissioning support, including air balancing, through to sign-off of the commissioning test procedures."] },
+    de: { when: "Abgeliefert 2021–2022",
+      text: "Zwei Ro-Pax-Eisenbahnfähren (Projekt CNF18C), gebaut bei Baku Shipyard für ASCO (Azerbaijan Caspian Shipping Company) zum Transport von Waggons, Lkw und Passagieren über das Kaspische Meer.",
+      facts: [["Entwurf", "Marine Engineering Bureau (CNF18C)"], ["Klasse", "RMRS"], ["Länge", "154,5 m"], ["Passagiere", "Bis 100"], ["Ladung", "56 Waggons + 50 Lkw"], ["Ablieferung", "2021 · 2022"]],
+      role: ["Erstellung des HLK-Basic-Designs: Einlinien-Layouts.",
+        "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.",
+        "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit der Werft.",
+        "Zusammenstellung der technischen Dokumentation für die Werftlieferung: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation.",
+        "Unterstützung der Werft während der Bauphase: Beantwortung technischer Anfragen, Klärung von Abweichungen aus der Ferne und vor Ort sowie Teilnahme an technischen Besprechungen mit Werftingenieuren auf Anfrage.",
+        "Praktische Unterstützung bei der Inbetriebnahme, einschließlich Luftmengenabgleich, bis zur Freigabe der Inbetriebnahme-Prüfverfahren."] },
+    sources: [["Baird Maritime, Azerbaijan (photo: MEB)", "https://www.bairdmaritime.com/passenger/ro-pax/vessel-review-azerbaijan-first-in-series-of-new-russian-designed-caspian-sea-rail-ferries"], ["Baird Maritime, Zarifa Aliyeva", "https://www.bairdmaritime.com/passenger/ro-pax/vessel-review-zarifa-aliyeva-azerbaijans-newest-large-capacity-rail-ferry-built-for-caspian-sea-sailings"]]
+  },
+  "H191 · H192": {
+    photo: "pics/dlg-rail-ferries.jpg", photoPos: "center -50px", pad: 250, status: "delivered", title: "Marshal Rokossovsky & General Chernyakhovsky",
+    en: { when: "Delivered 2022",
+      text: "Two LNG dual-fuel rail and road ferries (Project CNF19M) for Rosmorport's Ust-Luga–Baltiysk line in the Baltic Sea, built at Kuzey Star Shipyard in Tuzla, Turkey, in cooperation with Nevsky Shipyard.",
+      facts: [["Design", "Marine Engineering Bureau (CNF19M)"], ["Class", "RMRS"], ["Length", "200 m"], ["Cargo", "78 rail wagons + 80 vehicles"], ["Ice class", "Arc4"], ["Delivered", "2022"]],
+      role: ["Selected and specified project-critical HVAC equipment.",
+        "Managed procurement in Netsis ERP: purchase orders, tracking of critical materials and delivery coordination with the shipyards.",
+        "Compiled the technical documentation for shipyard delivery: manuals, test procedures, packing lists and as-built documents.",
+        "Supported the shipyards during construction: answered technical queries, resolved discrepancies remotely and on site, and joined technical meetings with yard engineers on request.",
+        "Provided hands-on commissioning support, including air balancing, through to sign-off of the commissioning test procedures."] },
+    de: { when: "Abgeliefert 2022",
+      text: "Zwei LNG-Dual-Fuel-Eisenbahn- und Straßenfähren (Projekt CNF19M) für die Linie Ust-Luga–Baltijsk von Rosmorport in der Ostsee, gebaut bei Kuzey Star Shipyard in Tuzla, Türkei, in Zusammenarbeit mit der Newski-Werft.",
+      facts: [["Entwurf", "Marine Engineering Bureau (CNF19M)"], ["Klasse", "RMRS"], ["Länge", "200 m"], ["Ladung", "78 Waggons + 80 Fahrzeuge"], ["Eisklasse", "Arc4"], ["Ablieferung", "2022"]],
+      role: ["Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.",
+        "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit den Werften.",
+        "Zusammenstellung der technischen Dokumentation für die Werftlieferung: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation.",
+        "Unterstützung der Werften während der Bauphase: Beantwortung technischer Anfragen, Klärung von Abweichungen aus der Ferne und vor Ort sowie Teilnahme an technischen Besprechungen mit Werftingenieuren auf Anfrage.",
+        "Praktische Unterstützung bei der Inbetriebnahme, einschließlich Luftmengenabgleich, bis zur Freigabe der Inbetriebnahme-Prüfverfahren."] },
+    sources: [["Baird Maritime (photo: Rosmorport)", "https://www.bairdmaritime.com/work-boat-world/passenger-vessel-world/ro-ro/vessel-review-marshal-rokossovsky-large-capacity-rail-ferry-for-russian-port-operator/"], ["LNG Prime", "https://lngprime.com/europe/turkeys-kuzey-star-launches-second-russian-lng-powered-vessel/20550/"]]
+  },
+  "NB45": {
+    photo: "pics/dlg-nb45.jpg", photoPos: "center -40px", pad: 250, status: "delivered", title: "Bakkafossur",
+    en: { when: "Delivered 2022",
+      text: "A hybrid live fish carrier (wellboat) for Bakkafrost of the Faroe Islands, built at Sefine Shipyard. A desalination plant produces up to 6,000 m³ of fresh water a day for treating salmon.",
+      facts: [["Design", "Knud E. Hansen"], ["Class", "DNV"], ["Length", "109 m"], ["Capacity", "1,000 t of live salmon"], ["Fish tanks", "7,000 m³"], ["Delivered", "Dec 2022"]],
+      role: ["Calculated heating and cooling loads to ISO 7547, engine room ventilation to ISO 8861 and duct pressure drop.",
+        "Prepared the HVAC basic design: single-line layouts.",
+        "Selected and specified project-critical HVAC equipment.",
+        "Managed procurement in Netsis ERP: purchase orders, tracking of critical materials and delivery coordination with the shipyard.",
+        "Mentored junior engineers and established design verification routines."] },
+    de: { when: "Abgeliefert 2022",
+      text: "Ein Hybrid-Lebendfischtransporter (Wellboot) für Bakkafrost von den Färöern, gebaut bei Sefine Shipyard. Eine Entsalzungsanlage erzeugt bis zu 6.000 m³ Frischwasser pro Tag zur Behandlung der Lachse.",
+      facts: [["Entwurf", "Knud E. Hansen"], ["Klasse", "DNV"], ["Länge", "109 m"], ["Kapazität", "1.000 t lebender Lachs"], ["Fischtanks", "7.000 m³"], ["Ablieferung", "12/2022"]],
+      role: ["Berechnung der Heiz- und Kühllasten nach ISO 7547, der Maschinenraumlüftung nach ISO 8861 und des Druckverlusts in Luftkanälen.",
+        "Erstellung des HLK-Basic-Designs: Einlinien-Layouts.",
+        "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.",
+        "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit der Werft.",
+        "Anleitung von Nachwuchsingenieuren und Einführung von Routinen zur Designverifizierung."] },
+    sources: [["Sefine Shipyard (NB45, photo)", "https://sefine.com.tr/projects/project_detail/23"], ["Knud E. Hansen (design data)", "https://www.knudehansen.com/reference/bakkafossur-hybrid-live-fish-carrier/"], ["Baird Maritime", "https://www.bairdmaritime.com/fishing/processing/vessel-review-bakkafossur-hybrid-wellboat-for-faroese-seafood-company"], ["Fish Farming Expert", "https://www.fishfarmingexpert.com/bakkafrost-sefine-shipyard-turkey-wellboat/bakkafrosts-giant-wellboat-takes-shape-in-turkey/1173057"]]
+  },
+  "NB51": {
+    photo: "pics/dlg-nb51.jpg", photoPos: "center -40px", pad: 250, status: "delivered", title: "Gåsø Odin",
+    en: { when: "Delivered 2023",
+      text: "A hybrid live fish carrier (wellboat) for Frøy Gruppen of Norway, delivered in April 2023 and working under a long-term contract for the salmon farmer SalMar.",
+      facts: [["Design", "Møre Maritime"], ["Class", "DNV"], ["Length", "85.4 m"], ["Fish wells", "4,500 m³"], ["Battery", "508 kWh"], ["Delivered", "Apr 2023"]],
+      role: ["Calculated heating and cooling loads to ISO 7547, engine room ventilation to ISO 8861 and duct pressure drop.",
+        "Prepared the HVAC basic design: single-line layouts.",
+        "Selected and specified project-critical HVAC equipment.",
+        "Managed procurement in Netsis ERP: purchase orders, tracking of critical materials and delivery coordination with the shipyard.",
+        "Mentored junior engineers and established design verification routines."] },
+    de: { when: "Abgeliefert 2023",
+      text: "Ein Hybrid-Lebendfischtransporter (Wellboot) für Frøy Gruppen aus Norwegen, im April 2023 abgeliefert und im Rahmen eines langfristigen Vertrags für den Lachszüchter SalMar im Einsatz.",
+      facts: [["Entwurf", "Møre Maritime"], ["Klasse", "DNV"], ["Länge", "85,4 m"], ["Fischtanks", "4.500 m³"], ["Batterie", "508 kWh"], ["Ablieferung", "04/2023"]],
+      role: ["Berechnung der Heiz- und Kühllasten nach ISO 7547, der Maschinenraumlüftung nach ISO 8861 und des Druckverlusts in Luftkanälen.",
+        "Erstellung des HLK-Basic-Designs: Einlinien-Layouts.",
+        "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.",
+        "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit der Werft.",
+        "Anleitung von Nachwuchsingenieuren und Einführung von Routinen zur Designverifizierung."] },
+    sources: [["Sefine Shipyard (NB51)", "https://sefine.com.tr/projects/project_detail/25"], ["Baird Maritime (photo: MarineTraffic/Kjell Arne Steinsvik)", "https://www.bairdmaritime.com/fishing/fishing-boat-world-reviews/vessel-review-gaso-odin-large-hybrid-wellboat-with-advanced-fish-treatment-and-transport-systems"], ["Frøy ASA", "https://live.euronext.com/en/products/equities/company-news/2023-04-18-froy-asa-delivery-wellboat-newbuild"]]
+  },
+  "NB52 · NB53": {
+    photo: "pics/dlg-nb52-53.jpg", photoPos: "center -40px", pad: 250, status: "delivered", title: "Ronja Herøy & Ronja Borøy",
+    en: { when: "Delivered 2023",
+      text: "Two large dual-fuel live fish carriers (wellboats) for Sølvtrans of Norway, built at Sefine Shipyard and delivered in July and November 2023. Ronja Herøy works under contract for the salmon farmer Mowi. Both are designed by Salt Ship Design.",
+      facts: [["Design", "Salt Ship Design"], ["Class", "DNV"], ["Length", "92.66 m"], ["Fish wells", "6,000 m³"], ["Fuel", "MGO, LNG or biogas"], ["Delivered", "Jul · Nov 2023"]],
+      role: ["Calculated heating and cooling loads to ISO 7547, engine room ventilation to ISO 8861 and duct pressure drop.",
+        "Prepared the HVAC basic design: single-line layouts.",
+        "Selected and specified project-critical HVAC equipment.",
+        "Managed procurement in Netsis ERP: purchase orders, tracking of critical materials and delivery coordination with the shipyard.",
+        "Mentored junior engineers and established design verification routines."] },
+    de: { when: "Abgeliefert 2023",
+      text: "Zwei große Dual-Fuel-Lebendfischtransporter (Wellboote) für Sølvtrans aus Norwegen, gebaut bei Sefine Shipyard und im Juli und November 2023 abgeliefert. Die Ronja Herøy ist im Rahmen eines Vertrags für den Lachszüchter Mowi im Einsatz. Beide wurden von Salt Ship Design entworfen.",
+      facts: [["Entwurf", "Salt Ship Design"], ["Klasse", "DNV"], ["Länge", "92,66 m"], ["Fischtanks", "6.000 m³"], ["Kraftstoff", "MGO, LNG oder Biogas"], ["Ablieferung", "07/2023 · 11/2023"]],
+      role: ["Berechnung der Heiz- und Kühllasten nach ISO 7547, der Maschinenraumlüftung nach ISO 8861 und des Druckverlusts in Luftkanälen.",
+        "Erstellung des HLK-Basic-Designs: Einlinien-Layouts.",
+        "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.",
+        "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit der Werft.",
+        "Anleitung von Nachwuchsingenieuren und Einführung von Routinen zur Designverifizierung."] },
+    sources: [["Sefine Shipyard (NB52 and NB53, photo)", "https://sefine.com.tr/projects/project_detail/26"], ["Salt Ship Design (Ronja Herøy)", "https://www.saltship.com/references-collection/ronja-hery"], ["Baird Maritime (Ronja Herøy)", "https://www.bairdmaritime.com/fishing-boat-world/processing/vessel-review-ronja-heroy-norways-solvtrans-places-large-capacity-wellboat-into-service"], ["Salt Ship Design (Ronja Borøy)", "https://www.saltship.com/references-collection/ronja-bory"], ["Salmon Business (Mowi contract)", "https://www.salmonbusiness.com/new-91-metre-wellboat-starts-work-for-mowi/"]]
+  },
+  "NB55": {
+    photo: "pics/dlg-nb55.jpg", photoPos: "center -40px", pad: 250, status: "delivered", title: "Caspian",
+    en: { when: "Delivered 2024",
+      text: "A hybrid live fish carrier (wellboat) for Brønnbåt Nord, built at Sefine Shipyard and handed over in 2024. It works from northern Norway, mainly in Troms and Nordland, and has accommodation for 10 people.",
+      facts: [["Design", "NSK Ship Design"], ["Class", "DNV"], ["Length", "79.9 m"], ["Fish wells", "2,800 m³"], ["Battery", "1,000 kWh"], ["Delivered", "2024"]],
+      role: ["Selected and specified project-critical HVAC equipment.",
+        "Managed procurement in Netsis ERP: purchase orders, tracking of critical materials and delivery coordination with the shipyard.",
+        "Mentored junior engineers and established design verification routines."] },
+    de: { when: "Abgeliefert 2024",
+      text: "Ein Hybrid-Lebendfischtransporter (Wellboot) für Brønnbåt Nord, gebaut bei Sefine Shipyard und 2024 übergeben. Er ist von Nordnorwegen aus im Einsatz, vor allem in Troms und Nordland, und bietet Unterkunft für 10 Personen.",
+      facts: [["Entwurf", "NSK Ship Design"], ["Klasse", "DNV"], ["Länge", "79,9 m"], ["Fischtanks", "2.800 m³"], ["Batterie", "1.000 kWh"], ["Ablieferung", "2024"]],
+      role: ["Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.",
+        "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit der Werft.",
+        "Anleitung von Nachwuchsingenieuren und Einführung von Routinen zur Designverifizierung."] },
+    sources: [["Baird Maritime (photo: Sefine Shipyard)", "https://www.bairdmaritime.com/fishing/processing/vessel-review-caspian-hybrid-wellboat-to-operate-in-northern-norways-remote-fish-farms"], ["Sefine Shipyard (NB55)", "https://sefine.com.tr/projects/project_detail/49"]]
+  },
+  "M/Y Blue II": {
+    photo: "pics/dlg-blue2.jpg", status: "delivered", title: "Blue II",
+    en: { when: "Delivered 2020",
+      text: "A 56-meter ice-class explorer yacht built by Turquoise Yachts in Istanbul, and the first motor yacht designed by André Hoek. She was launched in May 2020 as Project Lombok.",
+      facts: [["Design", "Hoek Design"], ["Class", "RINA"], ["Length", "56 m"], ["Guests", "12 in 6 cabins"], ["Gross tonnage", "706 GT"], ["Propulsion", "Diesel-electric"], ["Delivered", "2020"]],
+      role: ["Revised D&IDs and P&IDs after Class and shipyard comments.",
+        "Specified HVAC equipment under senior engineer review and compiled the technical documentation for shipyard delivery."] },
+    de: { when: "Abgeliefert 2020",
+      text: "Eine 56 Meter lange eisklassifizierte Explorer-Yacht, gebaut von Turquoise Yachts in Istanbul, und die erste von André Hoek entworfene Motoryacht. Sie lief im Mai 2020 als Project Lombok vom Stapel.",
+      facts: [["Entwurf", "Hoek Design"], ["Klasse", "RINA"], ["Länge", "56 m"], ["Gäste", "12 in 6 Kabinen"], ["Bruttoraumzahl", "706 GT"], ["Antrieb", "Dieselelektrisch"], ["Ablieferung", "2020"]],
+      role: ["Überarbeitung der D&IDs und R&I-Fließbilder (P&IDs) nach Kommentaren der Klasse und der Werft.",
+        "Spezifikation der HLK-Ausrüstung unter Aufsicht erfahrener Ingenieure und Zusammenstellung der technischen Dokumentation für die Werftlieferung."] },
+    sources: [["YachtCharterFleet (text and photo)", "https://www.yachtcharterfleet.com/news/turquoise-launches-56m-expedition-yacht-blue-ii-10928.htm"], ["Boat International", "https://www.boatinternational.com/yachts/the-superyacht-directory/blue-ii--89715"], ["Barche Magazine (class)", "https://www.barchemagazine.com/en/turquoise-yachts-56-blue-ii/"], ["Yachts International (class)", "https://yachtsinternational.com/yachts/turquoise-yachts-launches-blue-ii-a-184-foot-56-meter-explorer-yacht-with-styling-by-hoek-design/"]]
+  },
+  "sanmar-tugs": {
+    photo: "pics/dlg-tugs.jpg", photoPos: "center -50px", pad: 260, status: "delivered", title: "Sanmar tugs",
+    en: { when: "Sanmar Shipyards", title: "Sanmar tugs",
+      text: "Tugs built by Sanmar Shipyards in Turkey for operators worldwide, to Robert Allan designs. In 2020 alone Sanmar delivered a record 30 tugs, 13 of them to overseas clients. Pictured: Svitzer Sohar, one of three RAstar 2900SX tugs built for Svitzer in Oman.",
+      facts: [["Design", "Robert Allan Ltd."], ["Shipyard", "Sanmar Shipyards"], ["Length", "18–32 m"], ["Bollard pull", "30–85 t (2020 deliveries)"]],
+      role: ["Performed HVAC calculations (heating and cooling loads to ISO 7547) under senior engineer review.",
+        "Drafted HVAC single-line layouts.",
+        "Specified HVAC equipment under senior engineer review and compiled the technical documentation: manuals, test procedures, packing lists and as-built documents."] },
+    de: { when: "Sanmar Shipyards", title: "Sanmar-Schlepper",
+      text: "Schlepper, gebaut von Sanmar Shipyards in der Türkei für Betreiber weltweit nach Entwürfen von Robert Allan. Allein 2020 lieferte Sanmar die Rekordzahl von 30 Schleppern ab, 13 davon an Kunden im Ausland. Im Bild: Svitzer Sohar, einer von drei Schleppern des Typs RAstar 2900SX, die für Svitzer in Oman gebaut wurden.",
+      facts: [["Entwurf", "Robert Allan Ltd."], ["Werft", "Sanmar Shipyards"], ["Länge", "18–32 m"], ["Pfahlzug", "30–85 t (Ablieferungen 2020)"]],
+      role: ["Durchführung von HLK-Berechnungen (Heiz- und Kühllasten nach ISO 7547) unter Aufsicht erfahrener Ingenieure.",
+        "Erstellung von HLK-Einlinien-Layouts.",
+        "Spezifikation der HLK-Ausrüstung unter Aufsicht erfahrener Ingenieure und Zusammenstellung der technischen Dokumentation: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation."] },
+    sources: [["Riviera (2020 deliveries)", "https://www.rivieramm.com/news-content-hub/recond-breaking-year-for-sanmar-tug-production-62719"], ["Robert Allan Ltd. (photo)", "https://ral.ca/?p=7324"]]
+  },
+  "H. Aliyev": {
+    photo: "pics/dlg-h-aliyev.jpg", status: "delivered", title: "Heydar Aliyev",
+    en: { when: "Delivered 2017",
+      text: "The first modern semi-submersible drilling rig built almost entirely in Azerbaijan, for Caspian Drilling Company (SOCAR). Keppel's Caspian Shipyard carried out fabrication, integration, testing and commissioning in Baku; Baku Shipyard built the pontoons.",
+      facts: [["Design", "Keppel FELS DSS 38M"], ["Length", "106.5 m"], ["Owner", "Caspian Drilling Co. (SOCAR)"], ["Water depth", "Up to 1,000 m"], ["Drilling depth", "Up to 12,192 m (40,000 ft)"], ["Mooring", "Eight-point wire rope"], ["Delivered", "May 2017"]],
+      role: ["Responsible for all Heinen & Hopman site activities on the rig: HVAC installation, material and equipment inspection, permit-to-work (PTW) handling and coordination with yard management.",
+        "Directed HVAC duct installation in line with drawings and specifications; resolved on-site technical discrepancies as the primary liaison between the Heinen & Hopman Istanbul office and the yard.",
+        "Commissioning support: air balancing, equipment testing and system handover to the owner.",
+        "Handled warranty claims after delivery, for this rig and the SCV Khankendi."] },
+    de: { when: "Abgeliefert 2017",
+      text: "Gebaut für die Caspian Drilling Company (SOCAR): die erste moderne Halbtaucher-Bohrplattform, die fast vollständig in Aserbaidschan entstand. Keppels Caspian Shipyard übernahm in Baku Fertigung, Integration, Tests und Inbetriebnahme; die Pontons baute Baku Shipyard.",
+      facts: [["Entwurf", "Keppel FELS DSS 38M"], ["Länge", "106,5 m"], ["Eigner", "Caspian Drilling Co. (SOCAR)"], ["Wassertiefe", "Bis 1.000 m"], ["Bohrtiefe", "Bis 12.192 m (40.000 ft)"], ["Verankerung", "Acht-Punkt, Drahtseil"], ["Ablieferung", "05/2017"]],
+      role: ["Verantwortlich für alle Baustellenaktivitäten von Heinen & Hopman auf der Bohrplattform: HLK-Installation, Material- und Ausrüstungsprüfung, Arbeitsfreigaben (PTW) und Abstimmung mit der Werftleitung.",
+        "Leitung der Installation der HLK-Luftkanäle gemäß Zeichnungen und Spezifikationen; Klärung technischer Abweichungen vor Ort als zentraler Ansprechpartner zwischen dem Heinen-&-Hopman-Büro Istanbul und der Werft.",
+        "Unterstützung bei der Inbetriebnahme: Luftmengenabgleich, Ausrüstungstests und Systemübergabe an den Eigner.",
+        "Bearbeitung von Gewährleistungsansprüchen nach der Ablieferung, für diese Plattform und die SCV Khankendi."] },
+    sources: [["Offshore Magazine", "https://www.offshore-mag.com/drilling-completion/article/16801488/keppel-nears-delivery-of-semisubmersible-to-socar"], ["Drilling Contractor (May 2017)", "https://drillingcontractor.org/keppel-track-deliver-state-art-drilling-rig-azerbaijan-42923"], ["Drilling Contractor (Nov 2017)", "https://drillingcontractor.org/caspian-drilling-keppel-overcome-myriad-challenges-to-construct-heydar-aliyev-semi-in-azerbaijan-44764"]]
+  },
+  "SCV Khankendi": {
+    photo: "pics/dlg-scv-khankendi.jpg", status: "delivered", title: "SCV Khankendi",
+    en: { when: "Delivered 2017",
+      text: "A DP3 subsea construction vessel for the BP-operated Shah Deniz Stage 2 development in the Caspian Sea. Designed by Keppel's Marine Technology Development; hull sections were built in Singapore and the vessel was completed at Baku Shipyard.",
+      facts: [["Design", "Marine Technology Development (Keppel)"], ["Class", "DNV GL"], ["Length", "155 m"], ["Beam", "32 m"], ["People on board", "Up to 175"], ["Positioning", "DP3"], ["Main crane", "900 t (750 t to 600 m depth)"], ["Diving", "Two-bell system for 18 divers"], ["Field", "Shah Deniz Stage 2 (BP)"], ["Delivered", "Sep 2017"]],
+      role: ["Commissioning support: air balancing, equipment testing and system handover to the owner.", "Handled warranty claims after delivery, for this vessel and the H. Aliyev rig."] },
+    de: { when: "Abgeliefert 2017",
+      text: "Ein DP3-Unterwasser-Bauschiff für die von BP betriebene Entwicklung Shah Deniz Stage 2 im Kaspischen Meer. Entworfen von Keppels Marine Technology Development; die Rumpfsektionen entstanden in Singapur, fertiggestellt wurde das Schiff bei Baku Shipyard.",
+      facts: [["Entwurf", "Marine Technology Development (Keppel)"], ["Klasse", "DNV GL"], ["Länge", "155 m"], ["Breite", "32 m"], ["Personen an Bord", "Bis 175"], ["Positionierung", "DP3"], ["Hauptkran", "900 t (750 t bis 600 m Tiefe)"], ["Tauchsystem", "Zwei-Glocken-System, 18 Taucher"], ["Feld", "Shah Deniz Stage 2 (BP)"], ["Ablieferung", "09/2017"]],
+      role: ["Unterstützung bei der Inbetriebnahme: Luftmengenabgleich, Ausrüstungstests und Systemübergabe an den Eigner.", "Bearbeitung von Gewährleistungsansprüchen nach der Ablieferung, für dieses Schiff und die Bohrplattform H. Aliyev."] },
+    sources: [["Ship Technology", "https://www.ship-technology.com/projects/khankendi-subsea-construction-vessel-scv/"], ["BP Azerbaijan", "https://www.bp.com/en_az/azerbaijan/home/news/press-releases/the-newly-built-khankendi-re-floated-at-baku-shipyard.html"]]
+  }
+};
+// class society logos shown next to the class value (drawn white on the dialog)
+// logos that already spell the class name are shown without the text beside them
+const CLASS_LOGO_NAMED = new Set(["ABS", "DNV", "DNV GL", "RINA"]);
+const CLASS_LOGOS = { "ABS": "pics/class-abs.svg", "BV": "pics/class-bv.svg", "DNV GL": "pics/class-dnvgl.svg", "DNV": "pics/class-dnvgl.svg", "RINA": "pics/class-rina.svg", "RMRS": "pics/class-rmrs.svg", "Lloyd's Register": "pics/class-lr.svg" };
+const DLG_UI = { en: { role: "My role", src: "Sources", close: "Close", uc: "Under construction", more: "Details", co: "Company", mine: "My time here" },
+                 de: { role: "Meine Rolle", src: "Quellen", close: "Schließen", uc: "Im Bau", more: "Details", co: "Unternehmen", mine: "Meine Zeit hier" } };
+const PH = { en: "Photo to follow", de: "Foto folgt" };
+const SHELF_LABEL = { en: "Projects in this role", de: "Projekte in dieser Position" };
+// visible heading over each card deck; touch screens get "tap" instead of "select"
+const SHELF_HEAD = { en: "Key projects", de: "Ausgewählte Projekte" };
+// decks with more than NAV_MIN cards get previous/next arrows beside the heading (and in the dialog)
+const NAV_MIN = 1;
+const SHELF_NAV = { en: ["Previous project", "Next project"], de: ["Vorheriges Projekt", "Nächstes Projekt"] };
+const ARROW = d => '<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + (d < 0 ? 'M6.5 1.5 3 5l3.5 3.5' : 'M3.5 1.5 7 5 3.5 8.5') + '"/></svg>';
+const WAVE = '<path d="M0 104q20-7 40 0t40 0 40 0 40 0 40 0 40 0 40 0 40 0" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/>';
+const ART = {
+  ferry: '<path d="M24 76h272l-22 24H50z"/><rect x="66" y="54" width="178" height="22"/><rect x="98" y="38" width="114" height="16"/><rect x="140" y="22" width="14" height="16"/>',
+  tanker: '<path d="M14 78h292l-16 22H32z"/><rect x="248" y="50" width="40" height="28"/><rect x="260" y="38" width="12" height="12"/><rect x="38" y="68" width="200" height="4"/><rect x="38" y="72" width="200" height="6" opacity=".5"/>',
+  cargo: '<path d="M14 78h292l-16 22H32z"/><rect x="250" y="48" width="40" height="30"/><rect x="262" y="36" width="12" height="12"/><rect x="40" y="64" width="44" height="14"/><rect x="94" y="64" width="44" height="14"/><rect x="148" y="64" width="44" height="14"/><rect x="104" y="30" width="3" height="34"/><rect x="104" y="30" width="30" height="3"/>',
+  ship: '<path d="M18 78h284l-18 22H36z"/><rect x="226" y="48" width="48" height="30"/><rect x="240" y="36" width="12" height="12"/><rect x="50" y="62" width="150" height="16"/><rect x="70" y="34" width="3" height="28"/><rect x="70" y="34" width="34" height="3"/>',
+  small: '<path d="M80 80h160l-16 20H98z"/><rect x="126" y="58" width="74" height="22"/><rect x="146" y="44" width="34" height="14"/><rect x="161" y="24" width="3" height="20"/>',
+  yacht: '<path d="M56 84h208l-26 16H82z"/><rect x="96" y="66" width="120" height="18"/><rect x="122" y="52" width="70" height="14"/><rect x="156" y="26" width="3" height="26"/>',
+  rig: '<rect x="56" y="38" width="208" height="16"/><rect x="90" y="54" width="12" height="44"/><rect x="154" y="54" width="12" height="44"/><rect x="218" y="54" width="12" height="44"/><rect x="66" y="92" width="64" height="10" rx="3"/><rect x="190" y="92" width="64" height="10" rx="3"/><path d="M150 38l14-30 14 30z" opacity=".7"/>'
+};
+function shelfHtml(ri) {
+  const ps = PROJECTS.filter(p => p.role === ri);
+  if (!ps.length) return "";
+  const head = ps.length > NAV_MIN
+    ? '<div class="shelf-h has-nav"><b aria-hidden="true">' + SHELF_HEAD[lang] + '</b><span class="shelf-nav">' + [-1, 1].map((d, k) => '<button type="button" class="snav" data-d="' + d + '" aria-label="' + SHELF_NAV[lang][k] + '">' + ARROW(d) + '</button>').join("") + '</span></div>'
+    : '<div class="shelf-h" aria-hidden="true"><b>' + SHELF_HEAD[lang] + '</b></div>';
+  return head + '<div class="shelf" role="group" style="--n:' + ps.length + '" aria-label="' + SHELF_LABEL[lang] + '">' + ps.map((p, i) => {
+    const tilt = ((i - (ps.length - 1) / 2) * 1.6).toFixed(1);
+    const name = p.name[lang], label = p.hull ? p.hull + ", " + name : name;
+    const art = p.img ? '<img src="' + esc(p.img) + '" alt="" loading="lazy"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '>'
+      : '<svg viewBox="0 0 320 120" fill="currentColor" style="color:var(--accent)" aria-hidden="true">' + ART[p.kind] + WAVE + '</svg><span class="ph">' + PH[lang] + '</span>';
+    const info = INFO[infoKey(p)];
+    return '<button type="button" class="vcard" data-p="' + PROJECTS.indexOf(p) + '" style="--r:' + tilt + 'deg" aria-label="' + esc(label) + '"' + (info ? ' aria-haspopup="dialog"' : '') + '><span class="vface"><span class="vtab" aria-hidden="true">' + (p.tabImg ? '<img class="vtab-img" src="' + esc(p.tabImg) + '" alt="">' : '<span>' + esc(p.tab[lang] || p.tab) + '</span>') + '</span><span class="vart">' + art + '</span><span class="vcap">' + (p.hull && !p.tabImg && !p.noHull ? '<b>' + esc(p.hull) + '</b>' : '') + (p.capImg ? '<img class="vcap-img" src="' + esc(p.capImg) + '" alt="">' : '<span>' + esc(name) + '</span>') + '</span>' + (info ? '<span class="vmore" aria-hidden="true">' + DLG_UI[lang].more + '</span>' : '') + '</span></button>';
+  }).join("") + '</div>';
+}
+function renderRoles() {
+  const src = lang === "de" ? ROLES_DE : ROLES;
+  rolesEl.innerHTML = ROLES.map((base, ri) => {
+    const r = src[ri], org = r.org.split(" \u00b7 ");
+    return '<article class="role"><h3>' + esc(r.title) + '</h3>' + shelfHtml(ri) + '<div class="role-side"><div class="dates">' + esc(r.dates) + '<span class="dur">' + durText(ri) + '</span></div><div class="org">' + (LOGOS[org[0]] ? '<button type="button" class="org-btn" data-co="' + esc(org[0]) + '" aria-haspopup="dialog" aria-label="' + esc(CO_ABOUT[lang] + " " + (COMPANIES[org[0]] ? COMPANIES[org[0]][lang].name : org[0])) + '"><img class="org-logo" src="' + LOGOS[org[0]] + '" alt="" width="48" height="32"></button>' : '') + '<span class="orgt"><span class="co">' + esc(org[0]) +
+      '</span><span class="loc">' + esc(org[1] || "") + '</span>' + (r.about ? '<span class="about">' + esc(r.about) + '</span>' : '') + '</span></div></div><div class="projects">' + esc(r.projects) + '</div><ul>' +
+      base.items.map((it, ii) => '<li data-tags="' + it[1].join(" ") + '">' + esc(lang === "de" ? r.items[ii] : it[0]) + '</li>').join("") + '</ul></article>';
+  }).join("");
+  allLis = [...rolesEl.querySelectorAll("li")];
+}
+const countFor = id => allLis.filter(li => li.dataset.tags.split(" ").includes(id)).length;
+const chipHtml = f => '<button type="button" class="chip' + (f.std ? " std" : "") + '" data-f="' + f.id + '" data-label="' + esc(filterLabel(f)) + '" aria-pressed="false">' + esc(filterLabel(f)) + ' <span class="n" aria-hidden="true">' + countFor(f.id) + '</span></button>';
+function renderFilters() {
+  subEl.innerHTML = SUBS.map(chipHtml).join("");
+  const all = lang === "de" ? "Alle" : "All";
+  filtersEl.innerHTML = '<button type="button" class="chip" data-f="all" data-label="' + all + '" aria-pressed="true">' + all + '</button>' +
+    FILTERS.map(chipHtml).join("");
+}
+function apply(f) {
+  cur = f;
+  const grp = isSub(f) ? "class" : f;
+  filtersEl.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.f === grp));
+  subEl.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.f === f));
+  subEl.hidden = grp !== "class";
+  let hits = 0;
+  allLis.forEach(li => {
+    const on = f !== "all" && li.dataset.tags.split(" ").includes(f);
+    li.classList.toggle("hit", on);
+    li.classList.toggle("dim", f !== "all" && !on);
+    if (on) hits++;
+  });
+  rolesEl.querySelectorAll(".role").forEach(r => r.classList.toggle("dim", f !== "all" && !r.querySelector("li.hit")));
+  statusEl.textContent = f === "all" ? "" : tr("{n} of {m} highlights match \u201c{l}\u201d.").replace("{n}", hits).replace("{m}", allLis.length).replace("{l}", document.getElementById("filterbar").querySelector('[data-f="' + f + '"]').dataset.label);
+}
+filtersEl.addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) apply(b.dataset.f === "class" ? (cur === "class" ? "all" : "class") : b.dataset.f === cur ? "all" : b.dataset.f); });
+subEl.addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) apply(b.dataset.f === cur ? "class" : b.dataset.f); });
+
+// ---- deck control: card i shows in full, cards before it stack under it, cards after it sit to its right ----
+function layoutShelf(shelf, i, engaged) {
+  const cs = [...shelf.children], n = cs.length;
+  // the peek shrinks when the deck would be wider than the space it has (e.g. five cards on a phone)
+  const spill = parseFloat(getComputedStyle(shelf).getPropertyValue("--spill")) || 0;
+  const ow = cs[0].offsetWidth, peek = Math.min(parseFloat(getComputedStyle(shelf).getPropertyValue("--peek")), (shelf.clientWidth - spill - ow) / Math.max(1, n - 1));
+  cs.forEach((c, j) => {
+    c.style.setProperty("--x", (j <= i ? j * peek : (j - 1) * peek + ow) + "px");
+    c.style.zIndex = j === i ? n + 1 : j;
+    c.classList.toggle("cur", j === i);
+  });
+  shelf.classList.toggle("engaged", engaged);
+  const nav = shelf.previousElementSibling;
+  if (nav && nav.classList.contains("has-nav")) {
+    nav.querySelector('[data-d="-1"]').disabled = i <= 0;
+    nav.querySelector('[data-d="1"]').disabled = i >= n - 1;
+  }
+}
+// at rest every deck shows its rightmost card in front (on load, when the pointer or focus leaves, and on Esc);
+// decks are ordered so the most important project is the rightmost card
+const restShelf = shelf => layoutShelf(shelf, shelf.children.length - 1, false);
+const pick = c => { const sh = c.parentElement; layoutShelf(sh, [...sh.children].indexOf(c), true); };
+function initShelves() {
+  rolesEl.querySelectorAll(".shelf").forEach(sh => { sh.classList.remove("ready"); restShelf(sh); });
+  requestAnimationFrame(() => requestAnimationFrame(() => rolesEl.querySelectorAll(".shelf").forEach(sh => sh.classList.add("ready"))));
+}
+rolesEl.addEventListener("pointerover", e => {
+  const c = e.target.closest(".vcard");
+  if (c && e.pointerType === "mouse" && !(c.classList.contains("cur") && c.parentElement.classList.contains("engaged"))) pick(c);
+});
+rolesEl.addEventListener("pointerout", e => {
+  const sh = e.target.closest(".shelf");
+  const toNav = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(".snav");
+  if (sh && e.pointerType === "mouse" && !toNav && !sh.contains(e.relatedTarget) && !sh.contains(document.activeElement)) restShelf(sh);
+});
+// arrows beside a long deck's heading step to the previous or next card
+rolesEl.addEventListener("click", e => {
+  const b = e.target.closest(".snav"); if (!b || b.disabled) return;
+  const sh = b.closest(".shelf-h").nextElementSibling, cs = [...sh.children], i = cs.findIndex(c => c.classList.contains("cur"));
+  layoutShelf(sh, Math.max(0, Math.min(cs.length - 1, i + +b.dataset.d)), true);
+});
+// mouse and keyboard: click opens the details; touch: first tap brings the card forward, second tap opens it
+rolesEl.addEventListener("click", e => {
+  const c = e.target.closest(".vcard"); if (!c) return;
+  const p = PROJECTS[c.dataset.p], touch = e.pointerType === "touch" || e.pointerType === "pen";
+  const front = c.classList.contains("cur") && c.parentElement.classList.contains("engaged");
+  // the card in front at rest (last one) already shows its Details badge, so one tap opens it
+  const resting = c.classList.contains("cur") && !c.parentElement.classList.contains("engaged");
+  if (INFO[infoKey(p)] && (!touch || front || resting)) openProject(p);
+  else if (touch && front) restShelf(c.parentElement);
+  else pick(c);
+});
+
+// company details: public sources only; opened from the logo beside each role
+const CO_ABOUT = { en: "About", de: "Über" };
+const COMPANIES = {
+  "Heinen & Hopman Engineering": {
+    site: ["heinenhopman.com", "https://www.heinenhopman.com/"],
+    en: { name: "Heinen & Hopman", when: "Founded 1965",
+      text: "A Dutch family-founded company that designs, builds and services marine HVAC&R systems: heating, ventilation, air conditioning, refrigeration and air distribution for ships, yachts and offshore vessels.",
+      stats: [["1965", "Founded"], ["20,000+", "Vessels supplied"], ["8", "Market segments"]],
+      facts: [["Founders", "Melis Heinen and Cees Hopman"], ["Headquarters", "Bunschoten, Netherlands"], ["Focus", "Marine HVAC&R"], ["Segments", "Navy and government, yachting, merchant, renewables, specialized vessels, offshore, fisheries, cruise and ferry"]] },
+    de: { name: "Heinen & Hopman", when: "Gegründet 1965",
+      text: "Ein niederländisches, von einer Familie gegründetes Unternehmen, das Schiffs-HLKK-Anlagen entwirft, baut und wartet: Heizung, Lüftung, Klimatisierung, Kälte und Luftverteilung für Schiffe, Yachten und Offshore-Fahrzeuge.",
+      stats: [["1965", "Gegründet"], ["20.000+", "Gelieferte Schiffe"], ["8", "Marktsegmente"]],
+      facts: [["Gründer", "Melis Heinen und Cees Hopman"], ["Hauptsitz", "Bunschoten, Niederlande"], ["Schwerpunkt", "Schiffs-HLKK"], ["Segmente", "Marine und Behörden, Yachten, Handelsschiffe, Erneuerbare, Spezialschiffe, Offshore, Fischerei, Kreuzfahrt und Fähren"]] },
+    sources: [["Heinen & Hopman", "https://www.heinenhopman.com/"]] },
+  "Baku Shipyard LLC": {
+    site: ["bakushipyard.com", "https://bakushipyard.com/"],
+    en: { name: "Baku Shipyard", when: "Founded 2013",
+      text: "One of the largest shipyards in the Caspian region, part of AZCON Holding. It builds, repairs and converts commercial and offshore vessels, from oil and chemical tankers and road/rail ferries to crew boats and dry cargo vessels.",
+      stats: [["2013", "Founded"], ["1,100 m", "Quayside"], ["25,000 t", "Floating dock"]],
+      facts: [["Owner", "AZCON Holding"], ["Floating dock size", "168 × 40 m"], ["Ship transfer system", "Vessels up to 18,000 t"], ["Class societies", "DNV, ABS, LR, BV, RMRS, CCS"]] },
+    de: { name: "Baku Shipyard", when: "Gegründet 2013",
+      text: "Eine der größten Werften der Kaspischen Region, Teil von AZCON Holding. Sie baut, repariert und baut um: Handels- und Offshore-Schiffe, von Öl- und Chemikalientankern und Eisenbahn-/Straßenfähren bis zu Crewbooten und Trockenfrachtern.",
+      stats: [["2013", "Gegründet"], ["1.100 m", "Kaianlage"], ["25.000 t", "Schwimmdock"]],
+      facts: [["Eigentümer", "AZCON Holding"], ["Größe Schwimmdock", "168 × 40 m"], ["Schiffstransfersystem", "Schiffe bis 18.000 t"], ["Klassifikationsgesellschaften", "DNV, ABS, LR, BV, RMRS, CCS"]] },
+    sources: [["Baku Shipyard", "https://bakushipyard.com/"], ["AZCON Holding", "https://azcon.gov.az/en/portfolio/baku-shipyard-5"], ["Wikipedia", "https://en.wikipedia.org/wiki/Baku_Shipyard"]] }
+};
+
+const dlg = document.getElementById("pdlg");
+const $d = id => document.getElementById("pdlg-" + id);
+// the dialog steps through the cards of the same deck that have details, in deck order (decks over NAV_MIN cards)
+let dlgDeck = [], dlgAt = 0;
+function openProject(p) {
+  const info = INFO[infoKey(p)], t = info[lang], ui = DLG_UI[lang];
+  const deck = PROJECTS.filter(q => q.role === p.role);
+  dlgDeck = deck.length > NAV_MIN ? deck.filter(q => INFO[infoKey(q)]) : [];
+  dlgAt = dlgDeck.indexOf(p);
+  $d("nav").hidden = dlgAt < 0;
+  $d("prev").innerHTML = ARROW(-1); $d("next").innerHTML = ARROW(1);
+  $d("prev").setAttribute("aria-label", SHELF_NAV[lang][0]); $d("next").setAttribute("aria-label", SHELF_NAV[lang][1]);
+  $d("prev").disabled = dlgAt <= 0; $d("next").disabled = dlgAt >= dlgDeck.length - 1;
+  dlg.classList.remove("co"); $d("brand").classList.remove("plate"); $d("banner").hidden = true;
+  $d("stats").hidden = true; $d("tl").hidden = true;
+  dlg.style.backgroundImage = "url('" + info.photo + "')";
+  // optional per-photo framing: photoPos shifts the photo up, pad lengthens the clear area above the text
+  dlg.style.backgroundPosition = info.photoPos || "";
+  dlg.querySelector(".pdlg-in").style.setProperty("--pad", (info.pad || 200) + "px");
+  $d("k").innerHTML = (p.hull && !p.noHull ? '<span class="pdlg-hull">' + esc(p.hull) + '</span>' : '') + '<span>' + esc(p.name[lang]) + '</span><span class="pdlg-st' + (info.status === "construction" ? ' uc">' + ui.uc : '">' + esc(t.when)) + '</span>';
+  $d("brand").innerHTML = (info.brand || []).map(b => '<img src="' + b + '" alt="">').join("");
+  $d("brand").setAttribute("aria-label", info.brandLabel || "");
+  $d("brand").hidden = !info.brand;
+  // a yacht name can be shown in its own lettering, with the name kept as alt text
+  const title = t.title || info.title;
+  $d("t").innerHTML = info.titleImg ? '<img class="pdlg-timg" src="' + info.titleImg + '" alt="' + esc(title) + '">' : esc(title);
+  $d("txt").textContent = t.text || "";
+  $d("dl").innerHTML = (t.facts || []).map(f => '<div><dt>' + esc(f[0]) + '</dt><dd>' + (CLASS_LOGO_NAMED.has(f[1]) ? '<img class="cls-logo" src="' + CLASS_LOGOS[f[1]] + '" alt="' + esc(f[1]) + '">' : (CLASS_LOGOS[f[1]] ? '<img class="cls-logo" src="' + CLASS_LOGOS[f[1]] + '" alt="">' : '') + esc(f[1])) + '</dd></div>').join("");
+  // role is one sentence, or a list of responsibilities
+  $d("role").innerHTML = !t.role ? "" : '<b>' + ui.role + '</b>' + (Array.isArray(t.role) ? '<ul>' + t.role.map(r => '<li>' + esc(r) + '</li>').join("") + '</ul>' : esc(t.role));
+  $d("role").hidden = !t.role;
+  $d("src").innerHTML = ui.src + ": " + info.sources.map(s => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>').join(" \u00b7 ");
+  $d("x").setAttribute("aria-label", ui.close);
+  if (!dlg.open) dlg.showModal();
+  dlg.scrollTop = 0;
+}
+// step to the neighbouring card and keep the deck behind the dialog on the same card
+function stepProject(d) {
+  const q = dlgDeck[dlgAt + d]; if (!q) return;
+  openProject(q);
+  const c = rolesEl.querySelector('.vcard[data-p="' + PROJECTS.indexOf(q) + '"]');
+  if (c) layoutShelf(c.parentElement, [...c.parentElement.children].indexOf(c), true);
+}
+function openCompany(name) {
+  const c = COMPANIES[name]; if (!c) return;
+  const t = c[lang], ui = DLG_UI[lang];
+  dlg.classList.add("co"); dlg.style.backgroundImage = ""; dlg.style.backgroundPosition = "";
+  dlg.querySelector(".pdlg-in").style.setProperty("--pad", "210px");
+  $d("nav").hidden = true;
+  $d("banner").querySelector("img").src = LOGOS_DLG[name]; $d("banner").hidden = false;
+  $d("k").innerHTML = '<span>' + ui.co + '</span><span class="pdlg-st">' + esc(t.when) + '</span>';
+  $d("brand").innerHTML = ""; $d("brand").hidden = true;
+  $d("t").textContent = t.name;
+  $d("txt").textContent = t.text;
+  $d("stats").innerHTML = t.stats.map(x => '<div class="pdlg-stat"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>').join("");
+  $d("stats").hidden = false;
+  $d("dl").innerHTML = t.facts.map(f => '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>').join("")
+    + '<div><dt>' + (lang === "de" ? "Webseite" : "Website") + '</dt><dd><a href="' + esc(c.site[1]) + '" target="_blank" rel="noopener">' + esc(c.site[0]) + '</a></dd></div>';
+  $d("role").innerHTML = ""; $d("role").hidden = true;
+  // my roles at this company, newest first, taken from the experience section
+  const src = lang === "de" ? ROLES_DE : ROLES;
+  const mine = ROLES.map((r, ri) => ({ r: src[ri], ri })).filter(x => x.r.org.split(" \u00b7 ")[0] === name);
+  // total time at the company: earliest start to latest end (today for a current role), counted live
+  const mk = d => d[0] * 12 + d[1];
+  const starts = mine.map(x => SPANS[x.ri][0]), ends = mine.map(x => SPANS[x.ri][1]);
+  const first = starts.sort((a, b) => mk(a) - mk(b))[0];
+  const last = ends.includes(null) ? null : ends.sort((a, b) => mk(b) - mk(a))[0];
+  $d("tl").innerHTML = '<h4><span>' + ui.mine + '</span>' + (mine.length ? '<b>' + spanText(first, last) + '</b>' : '') + '</h4><ul>' + mine.map(x => '<li><time>' + esc(x.r.dates) + '</time><strong>' + esc(x.r.title) + '</strong><small>' + durText(x.ri) + '</small></li>').join("") + '</ul>';
+  $d("tl").hidden = !mine.length;
+  $d("src").innerHTML = ui.src + ": " + c.sources.map(s => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>').join(" \u00b7 ");
+  $d("x").setAttribute("aria-label", ui.close);
+  if (!dlg.open) dlg.showModal();
+  dlg.scrollTop = 0;
+}
+rolesEl.addEventListener("click", e => { const b = e.target.closest(".org-btn"); if (b) openCompany(b.dataset.co); });
+$d("prev").addEventListener("click", () => stepProject(-1));
+$d("next").addEventListener("click", () => stepProject(1));
+dlg.addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft" && !$d("nav").hidden) { e.preventDefault(); stepProject(-1); }
+  else if (e.key === "ArrowRight" && !$d("nav").hidden) { e.preventDefault(); stepProject(1); }
+});
+$d("x").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+rolesEl.addEventListener("focusin", e => { const c = e.target.closest(".vcard"); if (c) pick(c); });
+rolesEl.addEventListener("focusout", e => {
+  const sh = e.target.closest(".shelf");
+  if (sh && !sh.contains(e.relatedTarget) && !sh.matches(":hover")) restShelf(sh);
+});
+rolesEl.addEventListener("keydown", e => {
+  const c = e.target.closest(".vcard"); if (!c) return;
+  if (e.key === "Escape") { restShelf(c.parentElement); return; }
+  const cs = [...c.parentElement.children], i = cs.indexOf(c);
+  const j = { ArrowLeft: i - 1, ArrowRight: i + 1, Home: 0, End: cs.length - 1 }[e.key];
+  if (j === undefined) return;
+  e.preventDefault();
+  cs[Math.max(0, Math.min(cs.length - 1, j))].focus();
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest(".shelf, .snav")) rolesEl.querySelectorAll(".shelf.engaged").forEach(restShelf);
+});
+// card sizes change at the phone breakpoint; mobile browsers also fire resize on scroll, so only react to width changes
+let resizeT, lastW = innerWidth;
+window.addEventListener("resize", () => {
+  if (innerWidth === lastW) return;
+  lastW = innerWidth; clearTimeout(resizeT); resizeT = setTimeout(initShelves, 150);
+});
+
+function setLang(l) {
+  lang = l;
+  if (dlg.open) dlg.close();
+  document.documentElement.lang = l;
+  document.querySelectorAll(".skip, aside *, main *, .mbar *").forEach(el => {
+    if (el.children.length || el.closest("#roles, #filters, #subfilters, .lang") || el.id === "status" || el.id === "expTotal") return;
+    if (el.dataset.en === undefined) el.dataset.en = el.textContent;
+    el.textContent = tr(el.dataset.en);
+  });
+  filtersEl.setAttribute("aria-label", tr("Filter experience"));
+  document.title = tr("Igbal Mammadli | Interactive CV");
+  document.querySelector('meta[name="description"]').content = tr("Igbal Mammadli - Mechanical, Piping & HVAC Engineer, Shipbuilding & Offshore.");
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
+  document.querySelectorAll(".lang").forEach(g => g.setAttribute("aria-label", l === "de" ? "Sprache" : "Language"));
+  document.getElementById("mnav").setAttribute("aria-label", l === "de" ? "Abschnitte" : "Sections");
+  syncFades();
+  document.getElementById("expTotal").textContent = "(" + totalText() + ")";
+  renderRoles(); renderFilters(); apply(cur); initShelves();
+  try { localStorage.setItem("cv-lang", l); } catch (e) {}
+}
+document.querySelectorAll(".lang").forEach(g => g.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setLang(b.dataset.lang); }));
+let startLang = "en";
+try { const q = new URLSearchParams(location.search).get("lang") || localStorage.getItem("cv-lang"); if (q === "de" || q === "en") startLang = q; } catch (e) {}
+
+// phone: show the compact top bar once the profile block has scrolled out of view
+const mbar = document.getElementById("mbar"), side = document.querySelector(".side");
+const sideLang = side.querySelector(".lang");
+// only one language switch is exposed to screen readers at a time
+const syncMbar = () => { const on = side.getBoundingClientRect().bottom < 0; mbar.classList.toggle("show", on); sideLang.inert = on; };
+addEventListener("scroll", syncMbar, { passive: true });
+syncMbar();
+// the sticky filter bar and anchor scrolling sit below the top bar, so they need its real height
+const syncMbarH = () => document.documentElement.style.setProperty("--mbar-h", getComputedStyle(mbar).display === "none" ? "0px" : mbar.offsetHeight + "px");
+// fade the right edge of a sideways-scrolling row only while more of it is hidden there
+const fadeRows = [filtersEl, document.getElementById("mnav")];
+function syncFades() { fadeRows.forEach(el => el.classList.toggle("fade", el.scrollWidth - el.clientWidth - el.scrollLeft > 2)); syncMbarH(); }
+fadeRows.forEach(el => el.addEventListener("scroll", syncFades, { passive: true }));
+addEventListener("resize", syncFades);
+syncFades();
+
+// hairline under the sticky filter bar once it sticks
+const fbar = document.getElementById("filterbar");
+new IntersectionObserver(([e]) => fbar.classList.toggle("stuck", !e.isIntersecting && e.boundingClientRect.top < 0)).observe(document.getElementById("fbs"));
+
+// side nav highlight
+const links = [...document.querySelectorAll("#nav a, #mnav a")];
+const secs = [...new Set(links.map(a => a.getAttribute("href")))].map(h => document.querySelector(h));
+links.forEach(a => a.getAttribute("href") === "#profile" && a.classList.add("on"));
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => {
+  const on = a.getAttribute("href") === "#" + e.target.id; a.classList.toggle("on", on);
+  if (on && a.closest("#mnav")) { const m = a.parentElement; m.scrollTo({ left: a.offsetLeft - (m.clientWidth - a.offsetWidth) / 2, behavior: "smooth" }); }
+}); }), { rootMargin: "-30% 0px -60% 0px" });
+secs.forEach(s => s && io.observe(s));
+
+setLang(startLang);
+
+</script>
+</body>
+</html>
