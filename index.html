@@ -58,6 +58,11 @@ main { padding: 56px clamp(20px, 5vw, 64px) 72px; max-width: 1040px; width: 100%
 section { margin: 0 0 72px; }
 h2 { margin: 0 0 20px; padding-top: 16px; border-top: 2px solid var(--ink); font-size: 32px; line-height: 1.15; font-weight: 700; letter-spacing: -.6px; color: var(--ink); }
 #profile h2 { border-top: 0; padding-top: 0; }
+/* a section heading with a badge on its right: the rule moves from the h2 to the whole row */
+.sec-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; margin: 0 0 20px; padding-top: 16px; border-top: 2px solid var(--ink); }
+.sec-head h2 { margin: 0; padding: 0; border: 0; }
+.sec-adsk { display: block; height: 32px; width: auto; }
+footer .tm { display: block; margin-top: 6px; font-size: 12px; }
 .sub { color: var(--muted); font-size: 15px; margin: -8px 0 0; max-width: 62ch; }
 .summary { font-size: 19px; line-height: 1.65; margin: 0; max-width: 62ch; }
 .facts { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 32px; border-top: 1px solid var(--line); }
@@ -135,6 +140,32 @@ h2 .total { font-size: .5em; font-weight: 500; letter-spacing: 0; color: var(--m
 .tool-head h3 { margin: 0; }
 .tool-ico { flex: none; width: 44px; height: 44px; border-radius: 10px; }
 .tool-ico.tile { padding: 7px; background: #141a24; }
+/* software: the logo and the Details button open the tool's dialog; Details sits at the foot of every card */
+#tools .card { display: flex; flex-direction: column; }
+.tool-btn { flex: none; display: block; margin: 0; padding: 0; border: 0; border-radius: 10px; background: none; cursor: pointer; }
+.tool-btn .tool-ico { display: block; transition: transform .2s cubic-bezier(.2,.7,.2,1), box-shadow .2s; }
+.tool-btn:hover .tool-ico, .tool-btn:focus-visible .tool-ico { transform: scale(1.08); box-shadow: 0 6px 14px rgba(15,39,71,.22); }
+/* proof of use: figure on the left, what it means on the right */
+/* the two figures sit side by side, and stack when the card is too narrow for both */
+.tool-use { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 10px 16px; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.tool-use b { display: block; font: 700 22px/1.1 var(--mono); letter-spacing: -.4px; color: var(--accent); white-space: nowrap; }
+.tool-use span { display: block; margin-top: 4px; font-size: 13.5px; line-height: 1.4; color: var(--ink); overflow-wrap: normal; hyphens: auto; }
+/* the saving estimate leads, across both columns, with usage and time saved underneath */
+.tool-use .lead { grid-column: 1 / -1; margin-bottom: 2px; }
+.tool-use .lead b { font-size: 26px; }
+/* label codes stay whole and read as drawing text */
+.code { font-family: var(--mono); white-space: nowrap; }
+/* versions keep their lower-case v inside upper-case badges and pills */
+.nc { text-transform: none; }
+/* in development: muted, with the same yellow as the dialog's pill */
+.badge.dev { color: var(--muted); }
+.badge.dev::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 7px 1px 0; border-radius: 50%; background: #f2b544; }
+/* print keeps a way to the tool: its web address */
+.tool-url { display: none; }
+.tool-more { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 14px 0 2px; border: 0; background: none; color: var(--accent); font: inherit; font-size: 14px; font-weight: 600; line-height: 1.3; cursor: pointer; }
+.tool-more span { text-decoration: underline; text-decoration-color: rgba(30,58,138,.35); text-underline-offset: 4px; transition: text-decoration-color .2s; }
+.tool-more:hover span { text-decoration-color: var(--accent); }
+.tool-more svg { flex: none; width: 10px; height: 10px; }
 .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 20px; }
 .tags { margin-top: 8px; line-height: 1.9; }
 .tags span { display: inline-block; font-size: 15px; color: var(--ink); }
@@ -208,7 +239,7 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
 .pdlg-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 18px 0 0; }
 .pdlg-stats[hidden] { display: none; }
 .pdlg-stat { padding: 12px 12px 10px; border: 1px solid rgba(255,255,255,.2); border-radius: 4px; background: rgba(255,255,255,.06); }
-.pdlg-stat b { display: block; font-size: 24px; line-height: 1.1; font-weight: 700; letter-spacing: -.3px; }
+.pdlg-stat b { display: block; font-size: 24px; line-height: 1.1; font-weight: 700; letter-spacing: -.3px; white-space: nowrap; }
 .pdlg-stat span { display: block; margin-top: 5px; font: 600 10px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: rgba(255,255,255,.68); }
 .pdlg-tl { margin: 20px 0 0; }
 .pdlg-tl[hidden] { display: none; }
@@ -233,7 +264,7 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
 .pdlg .cls-logo[src$="class-lr.svg"] { height: 18px; margin-right: 10px; }
 .pdlg .cls-logo[src$="class-rina.svg"] { height: 30px; }
 .pdlg .cls-logo { height: 24px; width: auto; margin-right: 8px; vertical-align: middle; position: relative; top: -1px; filter: brightness(0) invert(1); opacity: .95; }
-.pdlg dd a { color: #cfe0ff; }
+.pdlg dd a { color: #cfe0ff; overflow-wrap: anywhere; }
 .pdlg dd { overflow-wrap: normal; hyphens: auto; margin: 3px 0 0; font-size: 15px; font-weight: 600; line-height: 1.35; }
 .pdlg-role { margin: 18px 0 0; padding-left: 12px; border-left: 2px solid #fff; font-size: 14.5px; line-height: 1.55; color: rgba(255,255,255,.92); }
 .pdlg-role ul { list-style: none; margin: 0; padding: 0; }
@@ -242,6 +273,114 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
 .pdlg-role b { display: block; font: 600 10.5px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 2px; }
 .pdlg-src { margin: 18px 0 0; font-size: 12.5px; color: rgba(255,255,255,.65); }
 .pdlg-src a { color: #cfe0ff; }
+/* tool dialog: the app icon in the banner, then how it works, its commands and the publisher */
+/* tool dialogs show the icon's glyph alone, without its app-icon tile */
+.pdlg.tool .pdlg-banner img { height: 88px; }
+/* two stats share the row */
+.pdlg-stats.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pdlg-fig { margin: 12px 0 0; }
+.pdlg-fig svg { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.15); border-radius: 3px; }
+.pdlg-fig figcaption { margin-top: 6px; font-size: 12.5px; line-height: 1.4; color: rgba(255,255,255,.65); }
+.pdlg-cmds { list-style: none; margin: 8px 0 0; padding: 0; }
+.pdlg-cmds li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 2px 14px; align-items: start; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.16); }
+.pdlg-cmds li:first-child { border-top: 0; padding-top: 4px; }
+.pdlg-cmds .ico { grid-row: span 2; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 6px; background: #3b4453; }
+.pdlg-cmds .ico svg { width: 24px; height: 24px; }
+.pdlg-cmds img.ico { background: none; }
+.pdlg-cmds b { font-size: 15px; line-height: 1.35; font-weight: 700; }
+.pdlg-cmds code { margin-left: 8px; font: 600 11.5px/1 var(--mono); letter-spacing: .3px; color: #cfe0ff; }
+.pdlg-part .pdlg-cmds p { font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.85); }
+.pdlg-split { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 22px; align-items: center; margin-top: 10px; }
+.pdlg-split .shot { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.18); border-radius: 14px; }
+.pdlg-feat { list-style: none; margin: 0; padding: 0; font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,.92); }
+.pdlg-feat li { position: relative; margin: 0 0 7px; padding-left: 14px; }
+.pdlg-feat li::before { content: "\2013"; position: absolute; left: 0; top: 0; font-weight: 700; color: rgba(255,255,255,.7); }
+.pdlg-pub div { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.pdlg-pub b { font-size: 15px; font-weight: 700; }
+.pdlg-adsk { display: block; height: 28px; width: auto; }
+@media (max-width: 480px) { .pdlg-split { grid-template-columns: minmax(0, 1fr); } .pdlg-split figure { width: 100%; max-width: 240px; margin-inline: auto !important; } }
+
+/* university dialog: the program and where the degree is recognized, each under its own rule */
+.pdlg-sec[hidden] { display: none; }
+.pdlg-part { margin: 22px 0 0; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.28); }
+.pdlg-part h4 { margin: 0 0 6px; font: 600 10.5px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: rgba(255,255,255,.65); }
+.pdlg-part h5 { margin: 0 0 8px; font-size: 20px; line-height: 1.25; font-weight: 700; letter-spacing: -.2px; }
+.pdlg-part p { margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.92); }
+.pdlg-part dl { margin-top: 14px; }
+.pdlg-rec { list-style: none; margin: 8px 0 0; padding: 0; }
+.pdlg-rec li { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 4px 16px; padding: 12px 0; border-top: 1px solid rgba(255,255,255,.16); }
+.pdlg-rec li:first-child { border-top: 0; padding-top: 4px; }
+.pdlg-rec b { display: block; font-size: 15px; line-height: 1.35; font-weight: 700; }
+.pdlg-rec span { display: block; margin-top: 3px; font: 600 10.5px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: #cfe0ff; }
+.pdlg-rec span a { color: inherit; text-underline-offset: 2px; }
+/* the verdict in a pill, so each row can be read at a glance */
+.pdlg-rec .pdlg-st { display: inline-block; margin-top: 8px; font: 600 10.5px/1.3 var(--mono); letter-spacing: .8px; text-transform: uppercase; color: #fff; }
+.pdlg-rec p { font-size: 14.5px; line-height: 1.55; }
+@media (max-width: 480px) { .pdlg-rec li { grid-template-columns: minmax(0, 1fr); } .pdlg-rec b, .pdlg-rec span { display: inline; } .pdlg-rec span::before { content: "\00b7"; margin: 0 8px; color: rgba(255,255,255,.65); } .pdlg-rec .pdlg-st { margin: 0 0 0 10px; vertical-align: 1px; } }
+/* the timeline gets the same rule as the parts above it */
+.pdlg-sec:not([hidden]) ~ .pdlg-tl { margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.28); }
+
+/* ---- certificates: a list of names, each with its certificate as a small thumbnail on the left;
+   hover enlarges the thumbnail, a click anywhere on the row opens the certificate ---- */
+.cert-list { list-style: none; margin: 4px 0 0; padding: 0; }
+.cert-list li + li { border-top: 1px solid var(--line); }
+/* the thumbnail grows from its centre: at 1.3x it gains 12-13px on each side, which the 16px gap beside the text absorbs */
+.cert { display: grid; grid-template-columns: 84px minmax(0, 1fr); align-items: center; gap: 16px; width: 100%; margin: 0; padding: 10px 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: zoom-in; }
+.cert-th { position: relative; display: block; aspect-ratio: 5 / 4; padding: 6px; border: 1px solid var(--line); border-radius: 3px; background: var(--soft); transform-origin: center; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .3s, background-color .3s; }
+/* portrait sheets get a thinner top and bottom mat, so they read closer in size to the landscape ones */
+.cert-th.is-p { padding: 3px 6px; }
+/* contain, never cover: the whole certificate shows, unstretched, and the shadow follows its own edges */
+.cert-th img { display: block; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 1px 1px rgba(15,39,71,.22)) drop-shadow(0 3px 6px rgba(15,39,71,.10)); }
+.cert-t { display: block; font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--ink); transition: color .2s; }
+.cert-m { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.4; color: var(--muted); }
+.cert-m time { font: 600 12.5px/1.4 var(--mono); color: var(--accent); white-space: nowrap; }
+.cert:focus-visible .cert-th { z-index: 2; transform: scale(1.3); border-color: var(--accent); background-color: #fff; box-shadow: 0 10px 24px rgba(15,39,71,.24); }
+.cert:focus-visible .cert-t { color: var(--accent); }
+@media (hover: hover) {
+  .cert:hover .cert-th { z-index: 2; transform: scale(1.3); border-color: var(--accent); background-color: #fff; box-shadow: 0 10px 24px rgba(15,39,71,.24); }
+  .cert:hover .cert-t { color: var(--accent); }
+}
+
+/* certificate viewer: the certificate alone on a dark backdrop; click the image to read it at full size */
+.cdlg { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; overflow: hidden; }
+.cdlg::backdrop { background: rgba(10,22,40,.9); backdrop-filter: blur(3px); }
+.cdlg[open] { animation: cdlg-in .25s ease-out; }
+@keyframes cdlg-in { from { opacity: 0; } }
+.cdlg-stage { position: absolute; inset: 0; display: flex; padding: 64px 88px; overflow: auto; overscroll-behavior: contain; }
+/* margin auto centres the image and still lets a zoomed one scroll to every edge */
+/* flex: none, or the stage would shrink a zoomed image back to its own width */
+.cdlg-stage img { flex: none; display: block; margin: auto; max-width: 100%; max-height: 100%; width: auto; height: auto; background: #fff; border-radius: 2px; box-shadow: 0 24px 60px rgba(0,0,0,.5); cursor: zoom-in; }
+.cdlg.zoom .cdlg-stage img { max-width: none; max-height: none; cursor: zoom-out; }
+/* vertical pans and pinch stay with the browser; sideways moves are left to the swipe */
+.cdlg:not(.zoom) .cdlg-stage { touch-action: pan-y pinch-zoom; }
+.cdlg-stage:focus { outline: none; }
+.cdlg-btn { position: absolute; z-index: 2; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: rgba(15,39,71,.7); color: #fff; cursor: pointer; transition: background .2s, opacity .2s; }
+.cdlg-btn:hover:not(:disabled) { background: rgba(15,39,71,.98); }
+.cdlg-btn:disabled { opacity: .3; cursor: default; }
+.cdlg-btn svg { width: 14px; height: 14px; }
+.cdlg-x { top: 14px; right: 16px; }
+.cdlg-z { top: 14px; right: 70px; }
+.cdlg.zoom .cdlg-z .zi { display: none; }
+.cdlg-z[aria-pressed="true"] { background: #fff; color: var(--side); }
+.cdlg-z[aria-pressed="true"]:hover { background: #e8eef7; }
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.cdlg-prev, .cdlg-next { top: 50%; margin-top: -22px; }
+.cdlg-prev { left: 20px; }
+.cdlg-next { right: 20px; }
+.cdlg-n { position: absolute; top: 26px; left: 0; right: 0; text-align: center; font: 600 12px/1 var(--mono); letter-spacing: 1px; color: rgba(255,255,255,.75); pointer-events: none; }
+.cdlg :focus-visible { outline-color: #fff; }
+.cdlg.zoom .cdlg-n { visibility: hidden; }
+
+/* ---- education: laid out like a role, with the university seal in place of the company logo ---- */
+.edu .org-logo { width: 48px; height: 64px; }
+.edu .facts { grid-column: 2; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 18px; }
+.edu .fact .num { font-size: 28px; }
+/* the seal is taller than a company logo, so it grows less on hover and stays clear of the name and the focus ring */
+.edu .org-btn:hover .org-logo, .edu .org-btn:focus-visible .org-logo { transform: scale(1.06); }
+.edu-more { grid-column: 2; justify-self: start; display: inline-flex; align-items: center; gap: 10px; margin: 22px 0 0; padding: 9px 14px; min-height: 40px; border: 1px solid var(--ctl); border-radius: 2px; background: transparent; color: var(--accent); font: inherit; font-size: 14.5px; font-weight: 600; line-height: 1.3; text-align: left; cursor: pointer; transition: background .2s, border-color .2s; }
+.edu-more:hover { background: var(--soft); border-color: var(--accent); }
+.edu-more:active { background: var(--hit); }
+.edu-more svg { flex: none; width: 10px; height: 10px; }
 
 .mbar { display: none; }
 
@@ -281,6 +420,7 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
   main { padding: 32px 16px 48px; }
   section { margin-bottom: 52px; }
   h2 { font-size: 26px; }
+  .sec-adsk { height: 26px; }
   .summary { font-size: 17.5px; }
   .facts, .cards, .grid2 { grid-template-columns: 1fr; }
   .fact, .fact + .fact { display: flex; gap: 16px; align-items: baseline; padding: 14px 0; border-left: 0; border-bottom: 1px solid var(--line); }
@@ -307,6 +447,9 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
   .org-btn { grid-column: 1; grid-row: 1 / span 3; align-self: center; }
   .org-logo { width: 50px; height: 32px; }
   .orgt { grid-column: 2; grid-row: 3; margin-top: 2px; }
+  /* company and university dialogs: a smaller logo, with the text starting below it */
+  .pdlg.co .pdlg-banner { height: 158px; padding: 28px 56px 14px; }
+  .pdlg.co .pdlg-banner img { height: 96px; }
   .pdlg-in { padding: 150px 20px 20px; background: linear-gradient(180deg, rgba(15,39,71,0) 0, rgba(15,39,71,.12) 80px, rgba(15,39,71,.85) 180px, rgba(15,39,71,.97) 260px, rgba(15,39,71,.97) 100%); }
   .pdlg h3 { font-size: 23px; }
   .vcap { padding-top: 14px; }
@@ -315,6 +458,19 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
   .role-side .co, .role-side .loc { display: block; }
   .projects { grid-column: 1 / -1; grid-row: 6; }
   .role ul { grid-column: 1 / -1; grid-row: 7; }
+  .edu .facts { grid-column: 1 / -1; grid-row: 8; grid-template-columns: minmax(0, 1fr); }
+  .edu .fact .num { flex: none; min-width: 84px; }
+  .pdlg.co .pdlg-in { padding-top: 168px; }
+  .edu-more { grid-column: 1 / -1; grid-row: 9; }
+}
+@media (max-width: 599px) {
+  .cert { grid-template-columns: 72px minmax(0, 1fr); gap: 14px; }
+  /* phone viewer: the arrows move under the certificate, beside the counter */
+  .cdlg-stage { padding: 64px 12px 84px; }
+  .cdlg-prev, .cdlg-next { top: auto; bottom: 18px; margin-top: 0; }
+  .cdlg-prev { left: calc(50% - 92px); }
+  .cdlg-next { right: calc(50% - 92px); }
+  .cdlg-n { top: auto; bottom: 34px; }
 }
 @media (min-width: 600px) and (max-width: 880px) {
   .cards, .grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
@@ -322,12 +478,22 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
   .fact, .fact + .fact { border-bottom: 0; }
   .fact + .fact { padding-left: 20px; border-left: 1px solid var(--line); }
   #tools .cards { grid-template-columns: 1fr; }
+  .edu .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .edu .fact { display: block; }
+  .edu .fact .k { margin-top: 6px; }
 }
 @media (min-width: 720px) and (max-width: 880px) { #tools .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
 /* narrow desktop windows: show a thin scrollbar so the chip row reads as scrollable */
 @media (max-width: 880px) and (pointer: fine) { .filters { scrollbar-width: thin; } }
 @media (max-width: 440px) { .contact { grid-template-columns: 1fr; } }
-@media (max-width: 400px) { .shelf { --ow: 198px; --peek: 40px; } .pdlg-stat b { font-size: 19px; } }
+@media (max-width: 400px) { .shelf { --ow: 198px; --peek: 40px; } }
+/* phones: stats stack as rows, so long German labels are not broken mid-word */
+@media (max-width: 480px) {
+  .pdlg-stats, .pdlg-stats.two { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .pdlg-stat { display: flex; align-items: baseline; gap: 12px; padding: 10px 12px; }
+  .pdlg-stat b { flex: none; min-width: 5.2em; font-size: 20px; }
+  .pdlg-stat span { margin-top: 0; }
+}
 /* phones: the title cannot fit beside the name, so it gets its own centred line under name and language */
 @media (max-width: 639px) {
   .mbar { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "name lang" "nav nav"; }
@@ -340,7 +506,9 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
   .dl:hover { transform: none; }
 }
 @media print {
-  .mbar, .pdlg, .shelf, .shelf-h, .lang, .nav, .nav-sep, .dl, .skip, .filterbar, .fbs, #filters, #subfilters, #status { display: none !important; }
+  .mbar, .pdlg, .shelf, .shelf-h, .lang, .nav, .nav-sep, .dl, .skip, .filterbar, .fbs, #filters, #subfilters, #status, .edu-more, .tool-more, .cert-th, .cdlg { display: none !important; }
+  .tool-url { display: block; margin-top: 6px; font-size: 12px; }
+  .cert { display: block; padding: 4px 0; }
   :root { --bg: #fff; --ink: #000; --muted: #333; --side: #fff; --side-ink: #000; --side-muted: #333; }
   body { background: #fff; font-size: 11pt; }
   .layout { display: block; }
@@ -414,7 +582,7 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
   <span class="mbar-n"><img class="mbar-p" src="pics/persona-600.jpg" alt="" width="28" height="28">Igbal Mammadli</span>
   <span class="mbar-t"><span>Mechanical, Piping &amp; HVAC Engineer</span><span>in Shipbuilding &amp; Offshore</span></span>
   <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" lang="en" aria-label="English" title="English" aria-pressed="true">EN</button><button type="button" data-lang="de" lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false">DE</button></div>
-  <nav class="mnav" id="mnav" aria-label="Sections"><a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#tools">Software I built</a><a href="#skills">Skills &amp; standards</a><a href="#education">Education &amp; certifications</a></nav>
+  <nav class="mnav" id="mnav" aria-label="Sections"><a href="#profile">Profile</a><a href="#experience">Experience</a><a href="#tools">Software I built</a><a href="#skills">Skills &amp; standards</a><a href="#education">Education</a><a href="#certificates">Certificates</a></nav>
 </div>
 <div class="layout">
 
@@ -437,7 +605,8 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
     <li><a href="#experience">Experience</a></li>
     <li><a href="#tools">Software I built</a></li>
     <li><a href="#skills">Skills &amp; standards</a></li>
-    <li><a href="#education">Education &amp; certifications</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certificates">Certificates</a></li>
   </ul>
 </aside>
 
@@ -462,50 +631,48 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
   </section>
 
   <section id="tools">
-    <h2>Software I built</h2>
-    <p class="sub">Engineering tools I designed and built to automate repetitive design work.</p>
-    <div class="cards">
-      <div class="card"><div class="tool-head"><img class="tool-ico" src="pics/tools/coordipro-app-128.png" alt="" width="44" height="44"><div><span class="badge">In use at Baku Shipyard</span><h3>CoordiPRO</h3></div></div>
-        <p>C#/.NET AutoCAD plugin that gives coordinates referenced to frame, deck and longitudinal position, with instant checks.</p>
-        <div class="metric"><span class="big">USD 10-15k</span><span class="cap">estimated profit for the company over 5 years</span></div>
-        <p class="fine">About 8 users · 0.5-1 min saved per spool sketch</p></div>
-      <div class="card"><div class="tool-head"><img class="tool-ico tile" src="pics/tools/autotag-logo-128.png" alt="" width="44" height="44"><div><span class="badge">In development</span><h3>AutoTag Pro</h3></div></div>
-        <p>C#/.NET AutoCAD plugin for automated tagging and bill of materials (BOM) generation.</p></div>
-      <div class="card"><div class="tool-head"><img class="tool-ico" src="pics/tools/ducto-app-icon.png" alt="" width="44" height="44"><div><span class="badge">In development</span><h3>DUCTo</h3></div></div>
-        <p>Marine HVAC duct calculation web app, built with Claude Code and Google Antigravity.</p></div>
-    </div>
+    <div class="sec-head"><h2>Software I built</h2><img class="sec-adsk" src="pics/tools/autodesk-authorized-developer-dark.png" alt="Autodesk Authorized Developer" width="125" height="32"></div>
+    <p class="sub">Engineering tools I designed and built with AI coding tools (Claude Code, Google Antigravity) to automate repetitive design work. Published under BoostWorkLab, an Autodesk Authorized Developer.</p>
+    <div class="cards" id="toolCards"></div>
   </section>
 
   <section id="skills">
     <h2>Skills &amp; standards</h2>
     <div class="grid2">
       <div class="card"><h3>Rules &amp; standards</h3><div class="tags"><span>SOLAS</span><span>International Load Line Convention</span><span>ABS</span><span>DNV</span><span>BV</span><span>ISO 7547</span><span>ISO 8861</span></div></div>
-      <div class="card"><h3>Software</h3><div class="tags"><span>SSI ShipConstructor</span><span>AutoCAD</span><span>Navisworks Manage</span><span>Rhinoceros</span><span>Netsis ERP</span><span>Microsoft Office</span><span>Adobe Illustrator</span><span>C#/.NET</span><span>Claude Code</span><span>Google Antigravity</span></div></div>
+      <div class="card"><h3>Software</h3><div class="tags"><span>SSI ShipConstructor</span><span>AutoCAD</span><span>Navisworks Manage</span><span>Rhinoceros</span><span>Netsis ERP</span><span>Microsoft Office</span><span>Adobe Illustrator</span><span>Claude Code</span><span>Google Antigravity</span></div></div>
       <div class="card"><h3>Engineering</h3><div class="tags"><span>Marine HVAC design</span><span>Basic &amp; detailed design</span><span>Heating &amp; cooling loads</span><span>Duct sizing &amp; pressure drop</span><span>Space pressurization</span><span>Piping systems</span><span>P&amp;ID / D&amp;ID</span><span>Vendor package review</span><span>Commissioning &amp; air balancing</span></div></div>
       <div class="card"><h3>Languages</h3><div class="tags"><span>Azerbaijani (native)</span><span>Turkish (native)</span><span>English (fluent)</span><span>German (B1)</span></div></div>
     </div>
   </section>
 
   <section id="education">
-    <h2>Education &amp; certifications</h2>
-    <div class="cards">
-      <div class="card"><h3>BSc, Naval Architecture and Marine Engineering</h3>
-        <p>Istanbul Technical University · Sep 2009 - Jun 2015</p>
-        <p>Includes one-year English preparatory program (2009-2010); degree taught 50% in English.</p></div>
-      <div class="card"><h3>Certifications</h3>
-        <ul class="plain">
-          <li>Google AI Professional Certificate, Coursera (May 2026)</li>
-          <li>BIM Fundamentals for Engineers, National Taiwan University, Coursera (Mar 2026)</li>
-          <li>Fundamentals of Fluid Power, University of Minnesota, Coursera (Sep 2025)</li>
-          <li>SSI ShipConstructor Mastery: Skilled User, Pipe Catalog, HVAC Modeling, NDAR &amp; SSI (2022-2024)</li>
-          <li>Bitzer Compressor Training, Schaufler Academy (Jun 2021)</li>
-        </ul></div>
-      <div class="card"><h3>Honors</h3><p>Certificate of Appreciation, Baku Shipyard (Oct 2024)</p>
-        <h3 class="gap">References</h3><p>Available upon request.</p></div>
-    </div>
+    <h2>Education</h2>
+    <article class="role edu">
+      <h3>BSc, Naval Architecture and Marine Engineering</h3>
+      <div class="role-side">
+        <div class="dates">Sep 2009 - Jun 2015</div>
+        <div class="org"><button type="button" class="org-btn" data-uni="itu" aria-haspopup="dialog" aria-label="About Istanbul Technical University"><img class="org-logo" src="pics/itu-emblem.png" alt="" width="48" height="64"></button><span class="orgt"><span class="co">Istanbul Technical University</span><span class="loc">Istanbul, Turkey</span></span></div>
+      </div>
+      <ul>
+        <li>Faculty of Naval Architecture and Ocean Engineering, the oldest of its kind in Turkey.</li>
+        <li>Includes one-year English preparatory program (2009-2010); degree taught 50% in English.</li>
+      </ul>
+      <div class="facts">
+        <div class="fact"><div class="num">1773</div><div class="k">ITU founded, as a school of naval engineering</div></div>
+        <div class="fact"><div class="num">ABET</div><div class="k">program accreditation (EAC) since 2009</div></div>
+        <div class="fact"><div class="num">H+</div><div class="k">anabin, Germany: degree equivalent to a bachelor's</div></div>
+      </div>
+      <button type="button" class="edu-more" data-uni="itu" aria-haspopup="dialog"><span>University, program &amp; recognition</span><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5"/></svg></button>
+    </article>
   </section>
 
-  <footer>Igbal Mammadli · <span>Baku, Azerbaijan</span> · <a href="mailto:igbalmammadli@gmail.com">igbalmammadli@gmail.com</a></footer>
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <div class="grid2" id="certs"></div>
+  </section>
+
+  <footer>Igbal Mammadli · <span>Baku, Azerbaijan</span> · <a href="mailto:igbalmammadli@gmail.com">igbalmammadli@gmail.com</a> · <span>References available upon request</span><span class="tm">Autodesk and the Autodesk Authorized Developer logo are trademarks of Autodesk, Inc.</span></footer>
 </main>
 </div>
 
@@ -523,10 +690,21 @@ footer { color: var(--muted); font-size: 13.5px; padding-top: 24px; border-top: 
     <p class="pdlg-txt" id="pdlg-txt"></p>
     <div class="pdlg-stats" id="pdlg-stats" hidden></div>
     <dl id="pdlg-dl"></dl>
+    <div class="pdlg-sec" id="pdlg-sec" hidden></div>
     <div class="pdlg-role" id="pdlg-role"></div>
     <div class="pdlg-tl" id="pdlg-tl" hidden></div>
     <p class="pdlg-src" id="pdlg-src"></p>
   </div>
+</dialog>
+
+<dialog class="cdlg" id="cdlg">
+  <div class="cdlg-stage" id="cdlg-stage" tabindex="-1"><img id="cdlg-img" alt=""></div>
+  <button type="button" class="cdlg-btn cdlg-x" id="cdlg-x"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12"/></svg></button>
+  <button type="button" class="cdlg-btn cdlg-prev" id="cdlg-prev"></button>
+  <button type="button" class="cdlg-btn cdlg-next" id="cdlg-next"></button>
+  <button type="button" class="cdlg-btn cdlg-z" id="cdlg-z" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="m11 11 3.5 3.5M5 7h4"/><path class="zi" d="M7 5v4"/></svg></button>
+  <span class="cdlg-n" id="cdlg-n" aria-hidden="true"></span>
+  <span class="sr" id="cdlg-live" aria-live="polite"></span>
 </dialog>
 
 <script>
@@ -553,7 +731,7 @@ const ROLES = [
       ["Detailed design: 3D modeling and layout of piping systems (SW cooling, fire main, compressed air, exhaust gas, domestic fresh water) and HVAC systems in SSI ShipConstructor, compliant with ABS, BV and RMRS rules.", ["hvac", "piping", "class", "tools"]],
       ["Engineering Coordinator for the H119-H121 crew boat series: cross-discipline integration, clash resolution, and communication between design and production teams. Coordinated engineering and production on mechanical and piping systems during one phase of the H114 Ro-Pax project.", ["coord"]],
       ["Lead and mentor junior engineers and 3D modelers through design reviews and technical guidance; check and approve their design and production drawings before they are issued for construction.", ["coord"]],
-      ["Developed CoordiPRO, a C#/.NET AutoCAD plugin that gives coordinates referenced to frame, deck and longitudinal position, with instant checks; used by about 8 colleagues, saving 0.5-1 min per spool sketch (estimated profit for the company: USD 10-15k over 5 years).", ["tools"]]
+      ["Developed CoordiPro, an AutoCAD plugin that gives coordinates referenced to frame, deck and longitudinal position, with instant checks; now in use at Baku Shipyard by about 8 colleagues, saving 0.5-1 min per spool sketch (estimated savings: USD 10-15k over 5 years).", ["tools"]]
     ] },
   { title: "Project Engineer", org: "Heinen & Hopman Engineering · Istanbul, Turkey", dates: "Jul 2020 - Sep 2022",
     about: "Marine HVAC system supplier.",
@@ -587,8 +765,8 @@ const ROLES = [
 ];
 
 const FILTERS_DE = {"hvac": "HLK-Planung", "piping": "Rohrleitungen & Mechanik", "class": "Regelwerke & Klassifikation", "coord": "Koordination & Führung", "site": "Baustelle & Inbetriebnahme", "tools": "Software & Tools", "iso7547": "ISO 7547", "iso8861": "ISO 8861"};
-const ROLES_DE = [{"title": "Ingenieur Maschinenbau, Rohrleitungen und HLK", "org": "Baku Shipyard LLC · Baku, Aserbaidschan", "dates": "09/2022 – heute", "projects": "Projekte: H128, H129 Trockenfrachter; H119, H120, H121 Crewboote; H114 Ro-Pax-Fähre; H115 Tanker; H117, H122, H123 Tankerserie.", "items": ["Technische Prüfung von HLK- und weiteren mechanischen Paketen: Bewertung der Lieferumfänge, der mechanischen Ausrüstung und der Basic-Design-Zeichnungen.", "Prüfung mechanischer Systempakete (Pumpen, Handventile, Separatoren, Komponenten der Abgasanlage, Warmwasserbereiter) anhand der Projektspezifikationen.", "Prüfung der R&I-Fließbilder (P&IDs) der Basic-Design-Büros und Klärung technischer Abweichungen vor der Detailplanungsphase.", "Detailplanung: 3D-Modellierung und Anordnung von Rohrleitungssystemen (Seewasserkühlung, Feuerlöschleitung, Druckluft, Abgasanlage, Frischwasserversorgung) und HLK-Systemen in SSI ShipConstructor gemäß den Regeln von ABS, BV und RMRS.", "Engineering-Koordinator für die Crewboot-Serie H119–H121: disziplinübergreifende Integration, Auflösung von Kollisionen (Clash-Auflösung) und Kommunikation zwischen Konstruktion und Produktion. Koordination zwischen Konstruktion und Produktion für mechanische und Rohrleitungssysteme in einer Phase des Ro-Pax-Projekts H114.", "Anleitung und Betreuung von Nachwuchsingenieuren und 3D-Modellierern durch Design-Reviews und fachliche Begleitung; Prüfung und Freigabe ihrer Konstruktions- und Fertigungszeichnungen vor der Ausgabe an die Fertigung.", "Entwicklung von CoordiPRO, einem C#/.NET-AutoCAD-Plugin, das Koordinaten bezogen auf Spant, Deck und Längsposition mit sofortiger Prüfung liefert; genutzt von etwa 8 Kolleginnen und Kollegen, spart 0,5–1 Min. pro Rohrstrangskizze (geschätzter Gewinn für das Unternehmen: 10.000–15.000 USD über 5 Jahre)."]}, {"title": "Projektingenieur", "org": "Heinen & Hopman Engineering · Istanbul, Türkei", "dates": "07/2020 – 09/2022", "about": "Lieferant von Schiffs-HLK-Systemen.", "projects": "Projekte: Expeditionsyachten SeaXplorer 58 und 60 (Damen); H191, H192 Eisenbahnfähren (Kuzey Star Shipyard); H108, H109 Ro-Pax-Fähren und H112, H113 Tanker (Baku Shipyard); NB45, NB51, NB52, NB53, NB55 Fischtransportschiffe (Sefine Shipyard).", "items": ["Verantwortung für den HLK-Lieferumfang mehrerer parallel laufender Schiffbauprojekte, von der Vertragsunterzeichnung bis zur Abnahme der Inbetriebnahme.", "Berechnung der Heiz- und Kühllasten nach ISO 7547, der Maschinenraumlüftung nach ISO 8861 und des Druckverlusts in Luftkanälen.", "Erstellung des HLK-Basic-Designs: Einlinien-Layouts, D&IDs und R&I-Fließbilder (P&IDs) gemäß SOLAS und Klassevorschriften (DNV, LR, RMRS).", "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.", "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit den Werften.", "Zusammenstellung der technischen Dokumentation für die Werftlieferung: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation.", "Unterstützung der Werften während der Bauphase: Beantwortung technischer Anfragen, Klärung von Abweichungen aus der Ferne und vor Ort sowie Teilnahme an technischen Besprechungen mit Werftingenieuren auf Anfrage.", "Praktische Unterstützung bei der Inbetriebnahme, einschließlich Luftmengenabgleich, bis zur Freigabe der Inbetriebnahme-Prüfverfahren.", "Anleitung von Nachwuchsingenieuren und Einführung von Routinen zur Designverifizierung."]}, {"title": "Junior-Projektingenieur", "org": "Heinen & Hopman Engineering · Istanbul, Türkei", "dates": "03/2019 – 07/2020", "projects": "Projekte: Schlepper (Sanmar Shipyards); M/Y Blue II (Turquoise Yachts).", "items": ["Durchführung von HLK-Berechnungen (Heiz- und Kühllasten nach ISO 7547) unter Aufsicht erfahrener Ingenieure.", "Erstellung von HLK-Einlinien-Layouts und Überarbeitung der Lüftungs- und Instrumentenfließbilder (D&IDs) sowie R&I-Fließbilder (P&IDs) gemäß SOLAS und Klassevorschriften unter Einarbeitung von Kommentaren der Klasse und der Werft.", "Spezifikation der HLK-Ausrüstung unter Aufsicht erfahrener Ingenieure und Zusammenstellung der technischen Dokumentation für die Werftlieferung: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation."]}, {"title": "Bauleiter vor Ort / Site Engineer", "org": "Heinen & Hopman Engineering · Baku, Aserbaidschan", "dates": "08/2015 – 03/2019", "projects": "Projekte: halbtauchende Bohrplattform H. Aliyev (Caspian Shipyard); Unterwasser-Bauschiff SCV Khankendi (Baku Shipyard).", "items": ["Verantwortlich für sämtliche Baustellenaktivitäten von Heinen & Hopman auf der Bohrplattform H. Aliyev: HLK-Installation, Material- und Ausrüstungsprüfung, Arbeitsfreigabe (Permit to Work, PTW) und Abstimmung mit der Werftleitung.", "Leitung der HLK-Kanalinstallationen nach Zeichnungen und Spezifikationen; Klärung technischer Abweichungen vor Ort als zentrale Schnittstelle zwischen dem Büro von Heinen & Hopman in Istanbul und der Werft.", "Unterstützung bei der Inbetriebnahme: Luftmengenabgleich, Ausrüstungstests und Systemübergabe an den Eigner.", "Bearbeitung von Gewährleistungsansprüchen für beide Projekte nach der Ablieferung."]}];
-const DE = {"Skip to content": "Zum Inhalt springen", "Mechanical, Piping & HVAC Engineer": "Ingenieur Maschinenbau, Rohrleitungen und HLK", "Shipbuilding & Offshore": "Schiffbau & Offshore", "Download CV (PDF)": "Lebenslauf (PDF, EN)", "Location": "Standort", "Phone": "Telefon", "Email": "E-Mail", "Baku, Azerbaijan": "Baku, Aserbaidschan", "Profile": "Profil", "Experience": "Berufserfahrung", "Engineering tools": "Engineering-Tools", "Skills & standards": "Kompetenzen & Normen", "Education & certifications": "Ausbildung & Zertifikate", "Mechanical engineer with 11 years in marine HVAC, piping and mechanical systems across the full shipbuilding cycle: site supervision and commissioning, basic design at marine HVAC supplier Heinen & Hopman, and detailed design and equipment review at Baku Shipyard.": "Maschinenbauingenieur mit 11 Jahren Erfahrung in Schiffs-HLK, Rohrleitungs- und mechanischen Systemen über den gesamten Schiffbauzyklus: Bauleitung vor Ort und Inbetriebnahme, Basic Design beim Schiffs-HLK-Lieferanten Heinen & Hopman sowie Detailplanung und Ausrüstungsprüfung bei Baku Shipyard.", "Sectors": "Branchen", "Shipbuilding, offshore": "Schiffbau, Offshore", "Rules": "Regelwerke", "Languages": "Sprachen", "Pick a discipline or standard to highlight the matching work across all four roles.": "Wählen Sie ein Fachgebiet oder eine Norm, um die passenden Tätigkeiten in allen vier Positionen hervorzuheben.", "In use at Baku Shipyard": "Im Einsatz bei Baku Shipyard", "In development": "In Entwicklung", "C#/.NET AutoCAD plugin that gives coordinates referenced to frame, deck and longitudinal position, with instant checks.": "C#/.NET-AutoCAD-Plugin, das Koordinaten bezogen auf Spant, Deck und Längsposition mit sofortiger Prüfung liefert.", "About 8 users · 0.5-1 min saved per spool sketch · estimated profit for the company: USD 10-15k over 5 years.": "Etwa 8 Nutzer · 0,5–1 Min. Zeitersparnis pro Rohrstrangskizze · geschätzter Gewinn für das Unternehmen: 10.000–15.000 USD über 5 Jahre.", "C#/.NET AutoCAD plugin for automated tagging and bill of materials (BOM) generation.": "C#/.NET-AutoCAD-Plugin für automatisiertes Tagging und die Erstellung von Stücklisten (BOM).", "Marine HVAC duct calculation web app, built with Claude Code and Google Antigravity.": "Webanwendung zur Luftkanalberechnung in der Schiffs-HLK, entwickelt mit Claude Code und Google Antigravity.", "Rules & standards": "Regelwerke & Normen", "International Load Line Convention": "Internationales Freibord-Übereinkommen", "Software": "Software", "Engineering": "Fachkompetenz", "Marine HVAC design": "Schiffs-HLK-Planung", "Basic & detailed design": "Basic Design & Detailplanung", "Heating & cooling loads": "Heiz- und Kühllasten", "Duct sizing & pressure drop": "Kanaldimensionierung & Druckverlust", "Space pressurization": "Raumüberdruckhaltung", "Piping systems": "Rohrleitungssysteme", "P&ID / D&ID": "R&I-Fließbilder (P&ID) / Lüftungsfließbilder (D&ID)", "Vendor package review": "Prüfung von Lieferantenpaketen", "Commissioning & air balancing": "Inbetriebnahme & Luftmengenabgleich", "Azerbaijani (native)": "Aserbaidschanisch (Muttersprache)", "Turkish (native)": "Türkisch (Muttersprache)", "English (fluent)": "Englisch (fließend)", "German (B1)": "Deutsch (B1)", "BSc, Naval Architecture and Marine Engineering": "Bachelor of Science, Schiffbau und Schiffsmaschinenbau", "Istanbul Technical University · Sep 2009 - Jun 2015": "Technische Universität Istanbul · 09/2009 – 06/2015", "Includes one-year English preparatory program (2009-2010); degree taught 50% in English.": "Inklusive einjährigem Englisch-Vorbereitungsprogramm (2009–2010); Studium zu 50 % auf Englisch.", "Certifications": "Zertifikate", "Google AI Professional Certificate, Coursera (May 2026)": "Google AI Professional Certificate, Coursera (Mai 2026)", "BIM Fundamentals for Engineers, National Taiwan University, Coursera (Mar 2026)": "BIM Fundamentals for Engineers, National Taiwan University, Coursera (März 2026)", "Fundamentals of Fluid Power, University of Minnesota, Coursera (Sep 2025)": "Fundamentals of Fluid Power, University of Minnesota, Coursera (September 2025)", "SSI ShipConstructor Mastery: Skilled User, Pipe Catalog, HVAC Modeling, NDAR & SSI (2022-2024)": "SSI ShipConstructor Mastery: Skilled User, Pipe Catalog, HVAC Modeling, NDAR & SSI (2022–2024)", "Bitzer Compressor Training, Schaufler Academy (Jun 2021)": "Bitzer-Kompressorschulung, Schaufler Academy (Juni 2021)", "Honors": "Auszeichnungen", "Certificate of Appreciation, Baku Shipyard (Oct 2024)": "Anerkennungsurkunde, Baku Shipyard (Oktober 2024)", "References": "Referenzen", "Available upon request.": "Auf Anfrage erhältlich.", "Filter experience": "Berufserfahrung filtern", "{n} of {m} highlights match “{l}”.": "{n} von {m} Highlights passen zu „{l}“.", "years in marine HVAC, piping and mechanical systems": "Jahre in Schiffs-HLK, Rohrleitungs- und mechanischen Systemen", "roles at 2 companies, from site to design office": "Positionen bei 2 Unternehmen, von der Baustelle bis ins Konstruktionsbüro", "USD 10-15k": "10–15 Tsd. USD", "estimated profit for the company over 5 years": "geschätzter Gewinn für das Unternehmen über 5 Jahre", "About 8 users · 0.5-1 min saved per spool sketch": "Etwa 8 Nutzer · 0,5–1 Min. Zeitersparnis pro Rohrstrangskizze", "Igbal Mammadli | Interactive CV": "Igbal Mammadli | Interaktiver Lebenslauf", "Igbal Mammadli - Mechanical, Piping & HVAC Engineer, Shipbuilding & Offshore.": "Igbal Mammadli – Ingenieur Maschinenbau, Rohrleitungen und HLK, Schiffbau & Offshore.", "classification rules applied: ABS, DNV, BV": "angewandte Klassevorschriften: ABS, DNV, BV", "in Shipbuilding & Offshore": "im Schiffbau & Offshore", "Software I built": "Selbst entwickelte Software", "Engineering tools I designed and built to automate repetitive design work.": "Von mir konzipierte und entwickelte Engineering-Tools zur Automatisierung wiederkehrender Konstruktionsarbeiten."};
+const ROLES_DE = [{"title": "Ingenieur Maschinenbau, Rohrleitungen und HLK", "org": "Baku Shipyard LLC · Baku, Aserbaidschan", "dates": "09/2022 – heute", "projects": "Projekte: H128, H129 Trockenfrachter; H119, H120, H121 Crewboote; H114 Ro-Pax-Fähre; H115 Tanker; H117, H122, H123 Tankerserie.", "items": ["Technische Prüfung von HLK- und weiteren mechanischen Paketen: Bewertung der Lieferumfänge, der mechanischen Ausrüstung und der Basic-Design-Zeichnungen.", "Prüfung mechanischer Systempakete (Pumpen, Handventile, Separatoren, Komponenten der Abgasanlage, Warmwasserbereiter) anhand der Projektspezifikationen.", "Prüfung der R&I-Fließbilder (P&IDs) der Basic-Design-Büros und Klärung technischer Abweichungen vor der Detailplanungsphase.", "Detailplanung: 3D-Modellierung und Anordnung von Rohrleitungssystemen (Seewasserkühlung, Feuerlöschleitung, Druckluft, Abgasanlage, Frischwasserversorgung) und HLK-Systemen in SSI ShipConstructor gemäß den Regeln von ABS, BV und RMRS.", "Engineering-Koordinator für die Crewboot-Serie H119–H121: disziplinübergreifende Integration, Auflösung von Kollisionen (Clash-Auflösung) und Kommunikation zwischen Konstruktion und Produktion. Koordination zwischen Konstruktion und Produktion für mechanische und Rohrleitungssysteme in einer Phase des Ro-Pax-Projekts H114.", "Anleitung und Betreuung von Nachwuchsingenieuren und 3D-Modellierern durch Design-Reviews und fachliche Begleitung; Prüfung und Freigabe ihrer Konstruktions- und Fertigungszeichnungen vor der Ausgabe an die Fertigung.", "Entwicklung von CoordiPro, einem AutoCAD-Plugin, das Koordinaten bezogen auf Spant, Deck und Längsposition mit sofortiger Prüfung liefert; heute bei Baku Shipyard von etwa 8 Kolleginnen und Kollegen genutzt, spart 0,5–1 Min. pro Rohrstrangskizze (geschätzte Einsparung: 10.000–15.000 USD über 5 Jahre)."]}, {"title": "Projektingenieur", "org": "Heinen & Hopman Engineering · Istanbul, Türkei", "dates": "07/2020 – 09/2022", "about": "Lieferant von Schiffs-HLK-Systemen.", "projects": "Projekte: Expeditionsyachten SeaXplorer 58 und 60 (Damen); H191, H192 Eisenbahnfähren (Kuzey Star Shipyard); H108, H109 Ro-Pax-Fähren und H112, H113 Tanker (Baku Shipyard); NB45, NB51, NB52, NB53, NB55 Fischtransportschiffe (Sefine Shipyard).", "items": ["Verantwortung für den HLK-Lieferumfang mehrerer parallel laufender Schiffbauprojekte, von der Vertragsunterzeichnung bis zur Abnahme der Inbetriebnahme.", "Berechnung der Heiz- und Kühllasten nach ISO 7547, der Maschinenraumlüftung nach ISO 8861 und des Druckverlusts in Luftkanälen.", "Erstellung des HLK-Basic-Designs: Einlinien-Layouts, D&IDs und R&I-Fließbilder (P&IDs) gemäß SOLAS und Klassevorschriften (DNV, LR, RMRS).", "Auswahl und Spezifikation projektkritischer HLK-Ausrüstung.", "Steuerung der Beschaffung in Netsis ERP: Bestellungen, Nachverfolgung kritischer Materialien und Abstimmung der Lieferungen mit den Werften.", "Zusammenstellung der technischen Dokumentation für die Werftlieferung: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation.", "Unterstützung der Werften während der Bauphase: Beantwortung technischer Anfragen, Klärung von Abweichungen aus der Ferne und vor Ort sowie Teilnahme an technischen Besprechungen mit Werftingenieuren auf Anfrage.", "Praktische Unterstützung bei der Inbetriebnahme, einschließlich Luftmengenabgleich, bis zur Freigabe der Inbetriebnahme-Prüfverfahren.", "Anleitung von Nachwuchsingenieuren und Einführung von Routinen zur Designverifizierung."]}, {"title": "Junior-Projektingenieur", "org": "Heinen & Hopman Engineering · Istanbul, Türkei", "dates": "03/2019 – 07/2020", "projects": "Projekte: Schlepper (Sanmar Shipyards); M/Y Blue II (Turquoise Yachts).", "items": ["Durchführung von HLK-Berechnungen (Heiz- und Kühllasten nach ISO 7547) unter Aufsicht erfahrener Ingenieure.", "Erstellung von HLK-Einlinien-Layouts und Überarbeitung der Lüftungs- und Instrumentenfließbilder (D&IDs) sowie R&I-Fließbilder (P&IDs) gemäß SOLAS und Klassevorschriften unter Einarbeitung von Kommentaren der Klasse und der Werft.", "Spezifikation der HLK-Ausrüstung unter Aufsicht erfahrener Ingenieure und Zusammenstellung der technischen Dokumentation für die Werftlieferung: Handbücher, Prüfverfahren, Packlisten und Bestandsdokumentation."]}, {"title": "Bauleiter vor Ort / Site Engineer", "org": "Heinen & Hopman Engineering · Baku, Aserbaidschan", "dates": "08/2015 – 03/2019", "projects": "Projekte: halbtauchende Bohrplattform H. Aliyev (Caspian Shipyard); Unterwasser-Bauschiff SCV Khankendi (Baku Shipyard).", "items": ["Verantwortlich für sämtliche Baustellenaktivitäten von Heinen & Hopman auf der Bohrplattform H. Aliyev: HLK-Installation, Material- und Ausrüstungsprüfung, Arbeitsfreigabe (Permit to Work, PTW) und Abstimmung mit der Werftleitung.", "Leitung der HLK-Kanalinstallationen nach Zeichnungen und Spezifikationen; Klärung technischer Abweichungen vor Ort als zentrale Schnittstelle zwischen dem Büro von Heinen & Hopman in Istanbul und der Werft.", "Unterstützung bei der Inbetriebnahme: Luftmengenabgleich, Ausrüstungstests und Systemübergabe an den Eigner.", "Bearbeitung von Gewährleistungsansprüchen für beide Projekte nach der Ablieferung."]}];
+const DE = {"Skip to content": "Zum Inhalt springen", "Mechanical, Piping & HVAC Engineer": "Ingenieur Maschinenbau, Rohrleitungen und HLK", "Shipbuilding & Offshore": "Schiffbau & Offshore", "Location": "Standort", "Phone": "Telefon", "Email": "E-Mail", "Baku, Azerbaijan": "Baku, Aserbaidschan", "Profile": "Profil", "Experience": "Berufserfahrung", "Skills & standards": "Kompetenzen & Normen", "Mechanical engineer with 11 years in marine HVAC, piping and mechanical systems across the full shipbuilding cycle: site supervision and commissioning, basic design at marine HVAC supplier Heinen & Hopman, and detailed design and equipment review at Baku Shipyard.": "Maschinenbauingenieur mit 11 Jahren Erfahrung in Schiffs-HLK, Rohrleitungs- und mechanischen Systemen über den gesamten Schiffbauzyklus: Bauleitung vor Ort und Inbetriebnahme, Basic Design beim Schiffs-HLK-Lieferanten Heinen & Hopman sowie Detailplanung und Ausrüstungsprüfung bei Baku Shipyard.", "Languages": "Sprachen", "Pick a discipline or standard to highlight the matching work across all four roles.": "Wählen Sie ein Fachgebiet oder eine Norm, um die passenden Tätigkeiten in allen vier Positionen hervorzuheben.", "Rules & standards": "Regelwerke & Normen", "International Load Line Convention": "Internationales Freibord-Übereinkommen", "Software": "Software", "Engineering": "Fachkompetenz", "Marine HVAC design": "Schiffs-HLK-Planung", "Basic & detailed design": "Basic Design & Detailplanung", "Heating & cooling loads": "Heiz- und Kühllasten", "Duct sizing & pressure drop": "Kanaldimensionierung & Druckverlust", "Space pressurization": "Raumüberdruckhaltung", "Piping systems": "Rohrleitungssysteme", "P&ID / D&ID": "R&I-Fließbilder (P&ID) / Lüftungsfließbilder (D&ID)", "Vendor package review": "Prüfung von Lieferantenpaketen", "Commissioning & air balancing": "Inbetriebnahme & Luftmengenabgleich", "Azerbaijani (native)": "Aserbaidschanisch (Muttersprache)", "Turkish (native)": "Türkisch (Muttersprache)", "English (fluent)": "Englisch (fließend)", "German (B1)": "Deutsch (B1)", "BSc, Naval Architecture and Marine Engineering": "Bachelor of Science, Schiffbau und Schiffsmaschinenbau", "Includes one-year English preparatory program (2009-2010); degree taught 50% in English.": "Inklusive einjährigem Englisch-Vorbereitungsprogramm (2009–2010); Studium zu 50 % auf Englisch.", "Filter experience": "Berufserfahrung filtern", "{n} of {m} highlights match “{l}”.": "{n} von {m} Highlights passen zu „{l}“.", "years in marine HVAC, piping and mechanical systems": "Jahre in Schiffs-HLK, Rohrleitungs- und mechanischen Systemen", "roles at 2 companies, from site to design office": "Positionen bei 2 Unternehmen, von der Baustelle bis ins Konstruktionsbüro", "Igbal Mammadli | Interactive CV": "Igbal Mammadli | Interaktiver Lebenslauf", "Igbal Mammadli - Mechanical, Piping & HVAC Engineer, Shipbuilding & Offshore.": "Igbal Mammadli – Ingenieur Maschinenbau, Rohrleitungen und HLK, Schiffbau & Offshore.", "in Shipbuilding & Offshore": "im Schiffbau & Offshore", "Software I built": "Selbst entwickelte Software", "Education": "Ausbildung", "Certificates": "Zertifikate", "Sep 2009 - Jun 2015": "09/2009 – 06/2015", "Istanbul Technical University": "Technische Universität Istanbul", "Istanbul, Turkey": "Istanbul, Türkei", "Faculty of Naval Architecture and Ocean Engineering, the oldest of its kind in Turkey.": "Fakultät für Schiffbau und Meerestechnik, die älteste ihrer Art in der Türkei.", "ITU founded, as a school of naval engineering": "Gründung der ITU, als Schule für Schiffbauingenieure", "program accreditation (EAC) since 2009": "Akkreditierung des Studiengangs (EAC) seit 2009", "anabin, Germany: degree equivalent to a bachelor's": "anabin: Abschluss entspricht einem deutschen Bachelor", "University, program & recognition": "Universität, Studiengang & Anerkennung", "References available upon request": "Referenzen auf Anfrage", "Engineering tools I designed and built with AI coding tools (Claude Code, Google Antigravity) to automate repetitive design work. Published under BoostWorkLab, an Autodesk Authorized Developer.": "Von mir konzipierte und mit KI-Coding-Tools (Claude Code, Google Antigravity) entwickelte Engineering-Tools zur Automatisierung wiederkehrender Konstruktionsarbeiten. Veröffentlicht unter BoostWorkLab, einem Autodesk Authorized Developer.", "Autodesk and the Autodesk Authorized Developer logo are trademarks of Autodesk, Inc.": "Autodesk und das Autodesk-Authorized-Developer-Logo sind Marken von Autodesk, Inc."};
 
 // [start, end] as [year, month]; end null = still in the role. Durations are counted from these, up to the current month.
 const SPANS = [[[2022, 9], null], [[2020, 7], [2022, 9]], [[2019, 3], [2020, 7]], [[2015, 8], [2019, 3]]];
@@ -1105,8 +1283,8 @@ function openProject(p) {
   $d("prev").innerHTML = ARROW(-1); $d("next").innerHTML = ARROW(1);
   $d("prev").setAttribute("aria-label", SHELF_NAV[lang][0]); $d("next").setAttribute("aria-label", SHELF_NAV[lang][1]);
   $d("prev").disabled = dlgAt <= 0; $d("next").disabled = dlgAt >= dlgDeck.length - 1;
-  dlg.classList.remove("co"); $d("brand").classList.remove("plate"); $d("banner").hidden = true;
-  $d("stats").hidden = true; $d("tl").hidden = true;
+  dlg.classList.remove("co", "tool"); $d("brand").classList.remove("plate"); $d("banner").hidden = true;
+  $d("stats").hidden = true; $d("stats").classList.remove("two"); $d("tl").hidden = true; $d("sec").hidden = true;
   dlg.style.backgroundImage = "url('" + info.photo + "')";
   // optional per-photo framing: photoPos shifts the photo up, pad lengthens the clear area above the text
   dlg.style.backgroundPosition = info.photoPos || "";
@@ -1135,22 +1313,37 @@ function stepProject(d) {
   const c = rolesEl.querySelector('.vcard[data-p="' + PROJECTS.indexOf(q) + '"]');
   if (c) layoutShelf(c.parentElement, [...c.parentElement.children].indexOf(c), true);
 }
-function openCompany(name) {
-  const c = COMPANIES[name]; if (!c) return;
-  const t = c[lang], ui = DLG_UI[lang];
-  dlg.classList.add("co"); dlg.style.backgroundImage = ""; dlg.style.backgroundPosition = "";
+// company and university dialogs share this head: white logo where a project photo would be, then the key facts
+function orgHead(logo, kind, t, site) {
+  dlg.classList.add("co"); dlg.classList.remove("tool"); dlg.style.backgroundImage = ""; dlg.style.backgroundPosition = "";
   dlg.querySelector(".pdlg-in").style.setProperty("--pad", "210px");
   $d("nav").hidden = true;
-  $d("banner").querySelector("img").src = LOGOS_DLG[name]; $d("banner").hidden = false;
-  $d("k").innerHTML = '<span>' + ui.co + '</span><span class="pdlg-st">' + esc(t.when) + '</span>';
+  $d("banner").querySelector("img").src = logo; $d("banner").querySelector("img").className = ""; $d("banner").hidden = false;
+  $d("k").innerHTML = '<span>' + kind + '</span><span class="pdlg-st">' + esc(t.when) + '</span>';
   $d("brand").innerHTML = ""; $d("brand").hidden = true;
   $d("t").textContent = t.name;
   $d("txt").textContent = t.text;
   $d("stats").innerHTML = t.stats.map(x => '<div class="pdlg-stat"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>').join("");
-  $d("stats").hidden = false;
-  $d("dl").innerHTML = t.facts.map(f => '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>').join("")
-    + '<div><dt>' + (lang === "de" ? "Webseite" : "Website") + '</dt><dd><a href="' + esc(c.site[1]) + '" target="_blank" rel="noopener">' + esc(c.site[0]) + '</a></dd></div>';
+  $d("stats").hidden = !t.stats.length;
+  $d("stats").classList.toggle("two", t.stats.length === 2);
+  $d("dl").innerHTML = factsHtml(t.facts)
+    + '<div><dt>' + (lang === "de" ? "Webseite" : "Website") + '</dt><dd><a href="' + esc(site[1]) + '" target="_blank" rel="noopener">' + esc(site[0]) + '</a></dd></div>';
+  $d("sec").innerHTML = ""; $d("sec").hidden = true;
   $d("role").innerHTML = ""; $d("role").hidden = true;
+}
+const factsHtml = fs => fs.map(f => '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>').join("");
+function showDlg(sources) {
+  const ui = DLG_UI[lang];
+  $d("src").hidden = !sources.length;
+  $d("src").innerHTML = ui.src + ": " + sources.map(s => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>').join(" · ");
+  $d("x").setAttribute("aria-label", ui.close);
+  if (!dlg.open) dlg.showModal();
+  dlg.scrollTop = 0;
+}
+function openCompany(name) {
+  const c = COMPANIES[name]; if (!c) return;
+  const t = c[lang], ui = DLG_UI[lang];
+  orgHead(LOGOS_DLG[name], ui.co, t, c.site);
   // my roles at this company, newest first, taken from the experience section
   const src = lang === "de" ? ROLES_DE : ROLES;
   const mine = ROLES.map((r, ri) => ({ r: src[ri], ri })).filter(x => x.r.org.split(" \u00b7 ")[0] === name);
@@ -1161,12 +1354,198 @@ function openCompany(name) {
   const last = ends.includes(null) ? null : ends.sort((a, b) => mk(b) - mk(a))[0];
   $d("tl").innerHTML = '<h4><span>' + ui.mine + '</span>' + (mine.length ? '<b>' + spanText(first, last) + '</b>' : '') + '</h4><ul>' + mine.map(x => '<li><time>' + esc(x.r.dates) + '</time><strong>' + esc(x.r.title) + '</strong><small>' + durText(x.ri) + '</small></li>').join("") + '</ul>';
   $d("tl").hidden = !mine.length;
-  $d("src").innerHTML = ui.src + ": " + c.sources.map(s => '<a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + '</a>').join(" \u00b7 ");
-  $d("x").setAttribute("aria-label", ui.close);
-  if (!dlg.open) dlg.showModal();
-  dlg.scrollTop = 0;
+  showDlg(c.sources);
 }
 rolesEl.addEventListener("click", e => { const b = e.target.closest(".org-btn"); if (b) openCompany(b.dataset.co); });
+
+// university details: public sources only; opened from the seal or the button in the education section
+const SCHOOLS = {
+  itu: {
+    logo: "pics/itu-logo-w.png", site: ["itu.edu.tr", "https://www.itu.edu.tr/en"],
+    en: { name: "Istanbul Technical University", kind: "University", when: "Founded 1773",
+      label: "About Istanbul Technical University",
+      text: "ITU began as a school of naval engineering, founded in 1773 by Sultan Mustafa III, where it trained specialists in shipbuilding and hydrography. It took its present name in 1944 and is Turkey's first technical university.",
+      stats: [["37,000+", "Students"], ["2,400+", "Academic staff"], ["1st", "Technical university in Turkey"]],
+      facts: [["Original name", "Mühendishâne-i Bahrî-i Hümâyûn"], ["Meaning", "Imperial School of Naval Engineering"], ["Type", "Public university"], ["Main campus", "Ayaza\u011fa, Istanbul"]],
+      program: { h: "The program", name: "Naval Architecture and Marine Engineering",
+        text: "Taught at the Faculty of Naval Architecture and Ocean Engineering, the oldest faculty of its kind in Turkey. The program trains engineers to design surface and underwater vessels: hull form, hydrodynamics, ship structures, propulsion and marine machinery.",
+        facts: [["Degree", "Bachelor of Science (Lisans), 4\u00a0years"], ["Test facility", "Ata Nutku Ship Model Testing Laboratory, 160 m towing tank"]] },
+      rec: { h: "Where the degree is recognized", items: [
+        ["United States", "ABET", "Accredited by the Engineering Accreditation Commission of ABET, the body that accredits engineering programs in the US, since October 2009. In force when I graduated in 2015.", "Accredited"],
+        ["Germany", "anabin", "ITU is rated H+, a recognized university, and this exact degree is listed as equivalent to a German bachelor's degree, which in principle gives access to master's programs.", "Equivalent"],
+        ["Europe", "EHEA", "Turkey has been part of the European Higher Education Area (Bologna Process) since 2001, where the degree is a first-cycle (bachelor's) qualification.", "First cycle"]] },
+      span: "Sep\u00a02009 - Jun\u00a02015",
+      mine: [["Sep\u00a02009 - Jun\u00a02010", "English preparatory program"], ["Sep\u00a02010 - Jun\u00a02015", "BSc, Naval Architecture and Marine Engineering"]] },
+    de: { name: "Technische Universität Istanbul", kind: "Universität", when: "Gegründet 1773",
+      label: "Über die Technische Universität Istanbul",
+      text: "Die ITU entstand 1773 als Schule für Schiffbauingenieure, gegründet von Sultan Mustafa III.; dort wurden Fachleute für Schiffbau und Hydrografie ausgebildet. Ihren heutigen Namen trägt sie seit 1944, und sie ist die erste technische Universität der Türkei.",
+      stats: [["37.000+", "Studierende"], ["2.400+", "Wissenschaftliches Personal"], ["1.", "Technische Universität der Türkei"]],
+      facts: [["Ursprünglicher Name", "Mühendishâne-i Bahrî-i Hümâyûn"], ["Bedeutung", "Kaiserliche Schule für Schiffbauingenieure"], ["Typ", "Staatliche Universität"], ["Hauptcampus", "Ayaza\u011fa, Istanbul"]],
+      program: { h: "Der Studiengang", name: "Schiffbau und Schiffsmaschinenbau",
+        text: "Angeboten von der Fakultät für Schiffbau und Meerestechnik, der ältesten Fakultät ihrer Art in der Türkei. Der Studiengang bildet Ingenieurinnen und Ingenieure für den Entwurf von Über- und Unterwasserfahrzeugen aus: Rumpfform, Hydrodynamik, Schiffsfestigkeit, Antrieb und Schiffsmaschinen.",
+        facts: [["Abschluss", "Bachelor of Science (Lisans), 4\u00a0Jahre"], ["Versuchsanstalt", "Ata Nutku Ship Model Testing Laboratory, 160-m-Schlepptank"]] },
+      rec: { h: "Wo der Abschluss anerkannt ist", items: [
+        ["USA", "ABET", "Seit Oktober 2009 akkreditiert von der Engineering Accreditation Commission der ABET, die in den USA Ingenieurstudiengänge akkreditiert. Gültig bei meinem Abschluss 2015.", "Akkreditiert"],
+        ["Deutschland", "anabin", "Die ITU hat den Status H+ (anerkannte Hochschule), und genau dieser Abschluss ist als einem deutschen Bachelorabschluss entsprechend eingestuft; der Zugang zu Masterstudiengängen ist damit grundsätzlich möglich.", "Entspricht"],
+        ["Europa", "EHEA", "Die Türkei gehört seit 2001 dem Europäischen Hochschulraum (Bologna-Prozess) an; dort ist der Abschluss ein Abschluss des ersten Zyklus (Bachelor).", "Erster Zyklus"]] },
+      span: "09/2009 \u2013 06/2015",
+      mine: [["09/2009 \u2013 06/2010", "Englisch-Vorbereitungsprogramm"], ["09/2010 \u2013 06/2015", "Bachelor of Science, Schiffbau und Schiffsmaschinenbau"]] },
+    sources: [["ITU history", "https://hst.itu.edu.tr/en/about/history-of-itu"], ["ITU timeline", "https://www.itu.edu.tr/en/history"], ["ITU in numbers", "https://www.itu.edu.tr/en"], ["Department", "https://gigm.itu.edu.tr/en"], ["Faculty", "https://gidb.itu.edu.tr/en"], ["Towing tank", "https://gidb.itu.edu.tr/haberdetay/2025/07/07/itu-ata-nutku-ship-model-testing-laboratory's-2025-projects"], ["ABET", "https://amspub.abet.org/aps/name-search?searchType=institution&keyword=Istanbul%20Technical%20University"], ["anabin", "https://anabin.kmk.org/db/institutionen"], ["EHEA", "https://ehea.info/page-T%C3%BCrkiye"], ["Wikipedia", "https://en.wikipedia.org/wiki/Istanbul_Technical_University"]] }
+};
+function openSchool(key) {
+  const s = SCHOOLS[key]; if (!s) return;
+  const t = s[lang], ui = DLG_UI[lang];
+  orgHead(s.logo, t.kind, t, s.site);
+  $d("sec").innerHTML = '<section class="pdlg-part"><h4>' + esc(t.program.h) + '</h4><h5>' + esc(t.program.name) + '</h5><p>' + esc(t.program.text) + '</p><dl>' + factsHtml(t.program.facts) + '</dl></section>'
+    + '<section class="pdlg-part"><h4>' + esc(t.rec.h) + '</h4><ul class="pdlg-rec">' + t.rec.items.map(r => {
+      const src = s.sources.find(x => x[0] === r[1]);
+      return '<li><div><b>' + esc(r[0]) + '</b><span>' + (src ? '<a href="' + esc(src[1]) + '" target="_blank" rel="noopener">' + esc(r[1]) + '</a>' : esc(r[1])) + '</span><em class="pdlg-st">' + esc(r[3]) + '</em></div><p>' + esc(r[2]) + '</p></li>';
+    }).join("") + '</ul></section>';
+  $d("sec").hidden = false;
+  $d("tl").innerHTML = '<h4><span>' + ui.mine + '</span><b>' + esc(t.span) + '</b></h4><ul>' + t.mine.map(m => '<li><time>' + esc(m[0]) + '</time><strong>' + esc(m[1]) + '</strong></li>').join("") + '</ul>';
+  $d("tl").hidden = false;
+  showDlg(s.sources);
+}
+const eduEl = document.getElementById("education");
+eduEl.addEventListener("click", e => { const b = e.target.closest("[data-uni]"); if (b) openSchool(b.dataset.uni); });
+// software I built: facts from boostworklab.com (the product site) and the plugin sources it cites; the cards and dialogs are built from TOOLS
+const TOOL_UI = { en: { more: "Details", pub: "Publisher", tm: "Autodesk, AutoCAD and the Autodesk Authorized Developer logo are trademarks of Autodesk, Inc." },
+                  de: { more: "Details", pub: "Herausgeber", tm: "Autodesk, AutoCAD und das Autodesk-Authorized-Developer-Logo sind Marken von Autodesk, Inc." } };
+const ADSK = '<img class="pdlg-adsk" src="pics/tools/autodesk-authorized-developer-108.webp" alt="Autodesk Authorized Developer" width="110" height="28">';
+// CoordiPro's label on a ship profile: frames, baseline, a deck and one multileader (redrawn from the product site)
+function coordiSvg(aria, spacing) {
+  const fr = [10, 11, 12, 13, 14].map((n, i) => { const x = 50 + i * 80; return '<line x1="' + x + '" y1="46" x2="' + x + '" y2="240" stroke="#3f3f46" stroke-dasharray="4 4"/><text x="' + x + '" y="264" fill="#a1a1aa" font-size="16" text-anchor="middle">FR' + n + '</text>'; }).join("");
+  return '<svg viewBox="0 30 440 268" role="img" aria-label="' + esc(aria) + '" style="font-family:var(--mono)"><rect y="30" width="440" height="268" fill="#0b0d12"/>' + fr
+    + '<path d="M290 278 H370 M290 273 v10 M370 273 v10" stroke="#52525b"/><text x="330" y="294" text-anchor="middle" font-size="13.5" fill="#a1a1aa">' + spacing + '</text>'
+    + '<line x1="24" y1="240" x2="416" y2="240" stroke="#71717a" stroke-width="1.5"/><text x="56" y="231" fill="#a1a1aa" font-size="16">BL</text>'
+    + '<line x1="24" y1="74" x2="416" y2="74" stroke="#52525b"/><text x="56" y="65" fill="#a1a1aa" font-size="16">MAIN DECK</text>'
+    + '<path d="M237 163 V240" stroke="#7fb2e5" stroke-opacity=".45" stroke-dasharray="2 3" fill="none"/><circle cx="237" cy="154" r="4" fill="#f4f4f5"/><circle cx="237" cy="154" r="9" fill="none" stroke="#f4f4f5" stroke-opacity=".35"/>'
+    + '<path d="M237 154 L295 106 H312" fill="none" stroke="#e4e4e7" stroke-width="1.2"/><path d="M237 154 l9.5 -3.2 l-4.3 -5.3 z" fill="#e4e4e7"/>'
+    + '<g font-size="18" fill="#7fb2e5"><text x="316" y="90">FR12+150</text><text x="316" y="112">CL+500</text><text x="316" y="134">BL+3000</text></g></svg>';
+}
+// Auto-Tag PRO: three fire dampers on a duct, tagged in their own sequence, and the BOM table built from the tags (redrawn from the product site)
+function tagSvg(aria) {
+  const tags = [["FD-001", 52, 74], ["FD-002", 150, 172], ["FD-003", 248, 268]], by = 22, top = 66;
+  const rows = [["1", "FD-001", "Fire damper Ø250"], ["2", "FD-002", "Fire damper Ø250"], ["3", "FD-003", "Fire damper 400×300"]];
+  const duct = '<g fill="none" stroke="#71717a" stroke-width="1.2"><path d="M10 66 H310 M10 84 H310"/>' + tags.map(t => '<rect x="' + (t[2] - 5) + '" y="66" width="10" height="18" stroke="#a1a1aa"/><path d="M' + (t[2] - 5) + ' 84 L' + (t[2] + 5) + ' 66" stroke="#a1a1aa"/>').join("") + '</g>';
+  const bubbles = tags.map(([tag, bx, dx]) => {
+    const lx = bx + 34, ty = top - 1, a = Math.atan2(ty - by, dx - lx), s = 6;
+    const pt = d => (dx - s * Math.cos(a + d)).toFixed(2) + " " + (ty - s * Math.sin(a + d)).toFixed(2);
+    return '<path d="M' + (bx + 26) + " " + by + " H" + lx + " L" + dx + " " + ty + '" fill="none" stroke="#d4d4d8"/><path d="M' + dx + " " + ty + " L" + pt(-.3) + " L" + pt(.3) + ' Z" fill="#d4d4d8"/>'
+      + '<ellipse cx="' + bx + '" cy="' + by + '" rx="26" ry="11" fill="#0b0d12" stroke="#7fb2e5" stroke-width="1.3"/><text x="' + bx + '" y="' + (by + 3.8) + '" text-anchor="middle" font-size="10.5" fill="#f4f4f5">' + tag + '</text>';
+  }).join("");
+  const bom = '<g font-size="10"><rect x="10" y="114" width="300" height="114" fill="#0b0d12" stroke="#52525b"/><path d="M10 136 H310 M10 158 H310 M10 181 H310 M10 204 H310 M58 136 V228 M132 136 V228" stroke="#3f3f46"/>'
+    + '<text x="160" y="129" text-anchor="middle" fill="#e4e4e7">Auto-Tag Pro BOM - Fire Dampers</text><text x="34" y="151" text-anchor="middle" fill="#a1a1aa">Item No.</text><text x="95" y="151" text-anchor="middle" fill="#a1a1aa">Tag Number</text><text x="142" y="151" fill="#a1a1aa">Item Name</text>'
+    + rows.map((r, i) => '<text x="34" y="' + (173 + i * 23) + '" text-anchor="middle" fill="#e4e4e7">' + r[0] + '</text><text x="95" y="' + (173 + i * 23) + '" text-anchor="middle" fill="#7fb2e5">' + r[1] + '</text><text x="142" y="' + (173 + i * 23) + '" fill="#e4e4e7">' + r[2] + '</text>').join("") + '</g>';
+  return '<svg viewBox="0 0 320 236" role="img" aria-label="' + esc(aria) + '" style="font-family:var(--mono)"><rect width="320" height="236" fill="#0b0d12"/>' + duct + bubbles + bom + '</svg>';
+}
+// Auto-Tag PRO ribbon icons, as on the product site (24-unit grid)
+const AT_ICON = {
+  tag: '<path d="M13.5 2.5 A5.5 5.5 0 1 1 13.49 2.5 Z" fill="#00A3C4" stroke="#181B20" stroke-width="2" stroke-linejoin="round"/><path d="M13.5 6.2 A1.8 1.8 0 1 1 13.49 6.2 Z" fill="#F8FAFC" stroke="#181B20"/><path d="M9.61 11.89 L2.5 19" fill="none" stroke="#181B20" stroke-width="2.2" stroke-linecap="round"/><path d="M2.5 19 L4.62 14.76 L6.74 16.88 Z" fill="#F8FAFC" stroke="#181B20" stroke-width="1.8" stroke-linejoin="round"/>',
+  bom: '<path d="M3 8 H21 V21 H3 Z" fill="#F8FAFC" stroke="#181B20" stroke-width="2" stroke-linejoin="round"/><path d="M3 14 H21 M9 8 V21 M15 8 V21" fill="none" stroke="#181B20" stroke-width="1.4"/><path d="M3 3 H21 V8 H3 Z" fill="#00A3C4" stroke="#181B20" stroke-width="2" stroke-linejoin="round"/>',
+  xls: '<path d="M7 3 H15 L21 9 V21 H7 Z" fill="#F8FAFC" stroke="#181B20" stroke-width="2" stroke-linejoin="round"/><path d="M15 3 V9 H21 Z" fill="#E2E8F0" stroke="#181B20" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 13 H21 M7 17 H21 M14 13 V21" fill="none" stroke="#475569" stroke-width="1.2"/><path d="M2 13 H10 V21 H2 Z" fill="#16A34A" stroke="#181B20" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 15 L8 19 M8 15 L4 19" fill="none" stroke="#F8FAFC" stroke-width="1.8" stroke-linecap="round"/>'
+};
+const TOOLS = [
+  { id: "coordipro", icon: "pics/tools/coordipro-app-128.png", icon2x: "pics/tools/coordipro-app-256.png", logo: "pics/tools/coordipro-glyph.png", adsk: true,
+    site: ["boostworklab.com/coordipro", "https://boostworklab.com/coordipro"], draw: coordiSvg,
+    cmds: [{ img: "pics/tools/cpcoordinates-128.png", name: "Place Coordinate", code: "CPCOORDINATES", en: "Places the label as a multileader from a layout viewport; spool continuation can be added", de: "Setzt die Beschriftung als Multiführung aus einem Layout-Ansichtsfenster; eine Spool-Fortsetzung kann ergänzt werden" },
+      { img: "pics/tools/cpid-128.png", name: "3D Coordinate", code: "CPID", en: "Checks a point's ship coordinates while modeling in model space", de: "Prüft beim Modellieren im Modellbereich die Schiffskoordinaten eines Punkts" },
+      { img: "pics/tools/cpship-128.png", name: "Ship Mode", code: "CPSHIPMODE", en: "Switches the output between X/Y/Z and FR/CL/BL", de: "Schaltet die Ausgabe zwischen X/Y/Z und FR/CL/BL um" },
+      { img: "pics/tools/cpconfigurations-128.png", name: "Settings", code: "CPCONFIGURATIONS", en: "Manages projects, frames, decks and longitudinals, the leader style and licensing", de: "Verwaltet Projekte, Spanten, Decks und Längsverbände, den Führungsstil und die Lizenz" }],
+    en: { name: "CoordiPro", kind: "AutoCAD plugin", when: "Released · v1.1.0", badge: "Released · v1.1.0",
+      card: "AutoCAD plugin that labels a picked point in ship coordinates, from frame, centerline and baseline, e.g. FR12+150 · CL+500 · BL+3000.",
+      save: ["$10–15k", "estimated savings at Baku Shipyard over 5 years"],
+      use: [["About 8", "colleagues use it"], ["0.5–1 min", "saved per piping spool sketch"]],
+      text: "AutoCAD gives X, Y, Z; the yard reads frames, decks and longitudinals. CoordiPro converts a picked point into ship coordinates and labels it in one click.",
+      stats: [["$10–15k", "Est. savings over 5 years"], ["About 8", "Users at Baku Shipyard"], ["0.5–1 min", "Saved per piping spool sketch"]],
+      facts: [["Platform", "AutoCAD 2025\u2060–\u20602027, Windows 64‑bit"], ["Works in", "Layout viewports and model space"], ["Label", "Standard AutoCAD multileader"]],
+      how: { h: "How it works", text: "Each value is measured from a line already on the drawing: X from the closest frame, Y from CL or the closest longitudinal, Z from BL or the closest deck, in millimeters.",
+        cap: "The label CoordiPro places (illustration)", spacing: "spacing", aria: "Drawing: a point between frames 12 and 13 labeled FR12+150, CL+500, BL+3000" },
+      cmdsH: "Ribbon commands", pub: "BoostWorkLab, where I publish my engineering tools" },
+    de: { name: "CoordiPro", kind: "AutoCAD-Plugin", when: "Veröffentlicht · v1.1.0", badge: "Veröffentlicht · v1.1.0",
+      card: "AutoCAD-Plugin, das einen gewählten Punkt in Schiffskoordinaten beschriftet, bezogen auf Spant, Mittellinie und Basislinie, z. B. FR12+150 · CL+500 · BL+3000.",
+      save: ["10–15 Tsd. $", "geschätzte Einsparung bei Baku Shipyard über 5 Jahre"],
+      use: [["Etwa 8", "Kolleginnen und Kollegen nutzen es"], ["0,5–1 Min.", "Ersparnis pro Rohrstrangskizze"]],
+      text: "AutoCAD liefert X, Y, Z; die Werft liest Spanten, Decks und Längsverbände. CoordiPro rechnet einen gewählten Punkt in Schiffskoordinaten um und beschriftet ihn mit einem Klick.",
+      stats: [["10–15 Tsd. $", "Geschätzte Einsparung in 5 Jahren"], ["Etwa 8", "Nutzer bei Baku Shipyard"], ["0,5–1 Min.", "Ersparnis pro Rohrstrangskizze"]],
+      facts: [["Plattform", "AutoCAD 2025\u2060–\u20602027, Windows 64‑Bit"], ["Arbeitet in", "Layout-Ansichtsfenstern und im Modellbereich"], ["Beschriftung", "Standard-AutoCAD-Multiführung"]],
+      how: { h: "So funktioniert es", text: "Jeder Wert wird von einer Linie gemessen, die schon in der Zeichnung ist: X vom nächsten Spant, Y von CL oder dem nächsten Längsverband, Z von BL oder dem nächsten Deck, in Millimetern.",
+        cap: "Die Beschriftung, die CoordiPro setzt (Illustration)", spacing: "Spantabstand", aria: "Zeichnung: ein Punkt zwischen Spant 12 und 13, beschriftet mit FR12+150, CL+500, BL+3000" },
+      cmdsH: "Befehle im Menüband", pub: "BoostWorkLab, unter dem ich meine Engineering-Tools veröffentliche" } },
+  { id: "autotag", icon: "pics/tools/autotag-logo-128.png", logo: "pics/tools/autotag-glyph.png", tile: true, dev: true, adsk: true,
+    site: ["boostworklab.com", "https://boostworklab.com/#plugins"], draw: tagSvg,
+    cmds: [{ svg: AT_ICON.tag, name: "Place Tag", en: "Adds automatically numbered multileader tags", de: "Setzt automatisch nummerierte Multiführungs-Tags" },
+      { svg: AT_ICON.bom, name: "BOM Table", en: "Builds the BOM as a native AutoCAD table", de: "Erstellt die Stückliste als native AutoCAD-Tabelle" },
+      { svg: AT_ICON.xls, name: "Export Excel", en: "Exports the BOM table to Excel", de: "Exportiert die Stücklistentabelle nach Excel" }],
+    en: { name: "Auto-Tag PRO", kind: "AutoCAD plugin", when: "In development", badge: "In development",
+      card: "AutoCAD plugin that numbers tags automatically and builds the bill of materials (BOM) from them, as an AutoCAD table or an Excel file.",
+      text: "Numbering tags and filling in BOM tables by hand is slow and error-prone. Auto-Tag PRO adds automatically numbered tags to the drawing and generates the BOM from them.",
+      stats: [], facts: [["Platform", "AutoCAD 2025\u2060–\u20602027"], ["Numbering", "One sequence per item type"], ["Output", "Multileader tags, BOM table, Excel"]],
+      how: { h: "How it works", text: "Each item type gets its own numbering sequence, such as FD-001, FD-002 for fire dampers, and the BOM lists one row per tag.",
+        cap: "Fire dampers on a duct, tagged and listed in a BOM table (illustration)", aria: "Drawing: three fire dampers on a duct, tagged FD-001 to FD-003, listed in a BOM table" },
+      cmdsH: "Commands", pub: "BoostWorkLab, where I publish my engineering tools" },
+    de: { name: "Auto-Tag PRO", kind: "AutoCAD-Plugin", when: "In Entwicklung", badge: "In Entwicklung",
+      card: "AutoCAD-Plugin, das Tags automatisch nummeriert und daraus die Stückliste (BOM) erstellt, als AutoCAD-Tabelle oder Excel-Datei.",
+      text: "Tags von Hand zu nummerieren und Stücklisten auszufüllen ist langsam und fehleranfällig. Auto-Tag PRO setzt automatisch nummerierte Tags in die Zeichnung und erzeugt daraus die Stückliste.",
+      stats: [], facts: [["Plattform", "AutoCAD 2025\u2060–\u20602027"], ["Nummerierung", "Eine Folge pro Bauteiltyp"], ["Ergebnis", "Multiführungs-Tags, Stücklistentabelle, Excel"]],
+      how: { h: "So funktioniert es", text: "Jeder Bauteiltyp erhält eine eigene Nummernfolge, etwa FD-001, FD-002 für Brandschutzklappen; die Stückliste führt eine Zeile pro Tag.",
+        cap: "Brandschutzklappen in einem Kanal, getaggt und in einer Stücklistentabelle aufgeführt (Illustration)", aria: "Zeichnung: drei Brandschutzklappen in einem Kanal, getaggt FD-001 bis FD-003, in einer Stücklistentabelle aufgeführt" },
+      cmdsH: "Befehle", pub: "BoostWorkLab, unter dem ich meine Engineering-Tools veröffentliche" } },
+  { id: "ducto", icon: "pics/tools/ducto-app-icon.png", logo: "pics/tools/ducto-glyph.png", dev: true, adsk: true,
+    site: ["boostworklab.com", "https://boostworklab.com/#software"],
+    en: { name: "DUCTo", kind: "Web app", when: "In development", badge: "In development",
+      card: "Web app for marine HVAC duct design: duct size, air velocity and pressure loss in seconds, with no spreadsheet.",
+      text: "Duct size, velocity and pressure loss in seconds, with no spreadsheet. Built for marine HVAC, with a marine mode that uses marine duct sizes.",
+      stats: [], facts: [["Platform", "Web app"], ["Checks", "Velocity, pressure loss, sound level"], ["Field", "HVAC duct design, with a marine mode"]],
+      how: { h: "What it calculates", cap: "Air velocity check, development build",
+        alt: "DUCTo Air Velocity screen: a 125 mm duct at 750 m³/h gives 16.98 m/s with a very high velocity warning, cross-section and sound power level",
+        feats: ["Duct size from airflow and velocity", "Velocity check with a high-velocity warning", "Round to rectangular, and back", "Pressure loss with fittings and a 15% fan margin", "Sound power level in dB", "Marine mode with marine duct sizes"] },
+      pub: "BoostWorkLab, where I publish my engineering tools" },
+    de: { name: "DUCTo", kind: "Webanwendung", when: "In Entwicklung", badge: "In Entwicklung",
+      card: "Webanwendung für die Luftkanalauslegung in der Schiffs-HLK: Kanalgröße, Luftgeschwindigkeit und Druckverlust in Sekunden, ohne Tabellenkalkulation.",
+      text: "Kanalgröße, Geschwindigkeit und Druckverlust in Sekunden, ohne Tabellenkalkulation. Für die Schiffs-HLK gebaut, mit einem Marine-Modus für Schiffskanalgrößen.",
+      stats: [], facts: [["Plattform", "Webanwendung"], ["Prüft", "Geschwindigkeit, Druckverlust, Schallpegel"], ["Bereich", "HLK-Kanalauslegung, mit Marine-Modus"]],
+      how: { h: "Was es berechnet", cap: "Prüfung der Luftgeschwindigkeit, Entwicklungsversion",
+        alt: "DUCTo-Bildschirm Luftgeschwindigkeit: ein 125-mm-Kanal mit 750 m³/h ergibt 16,98 m/s mit Warnung vor sehr hoher Geschwindigkeit, Querschnitt und Schallleistungspegel",
+        feats: ["Kanalgröße aus Luftmenge und Geschwindigkeit", "Geschwindigkeitsprüfung mit Warnung bei hoher Geschwindigkeit", "Rund in rechteckig und zurück", "Druckverlust mit Formteilen und 15 % Ventilatorreserve", "Schallleistungspegel in dB", "Marine-Modus mit Schiffskanalgrößen"] },
+      pub: "BoostWorkLab, unter dem ich meine Engineering-Tools veröffentliche" } }
+];
+const toolsEl = document.getElementById("toolCards");
+const codes = h => h.replace(/\b(FR12\+150|CL\+500|BL\+3000)/g, '<span class="code">$1</span>').replace(/\b(v\d+\.\d+\.\d+)/g, '<span class="nc">$1</span>');
+function renderTools() {
+  toolsEl.innerHTML = TOOLS.map(tl => {
+    const t = tl[lang];
+    // the icon is a mouse shortcut; Details is the one keyboard and screen-reader way in
+    return '<div class="card"><div class="tool-head"><button type="button" class="tool-btn" data-tool="' + tl.id + '" tabindex="-1" aria-hidden="true"><img class="tool-ico' + (tl.tile ? " tile" : "") + '" src="' + tl.icon + '"' + (tl.icon2x ? ' srcset="' + tl.icon + " 1x, " + tl.icon2x + ' 2x"' : "") + ' alt="" width="44" height="44"></button>'
+      + '<div><span class="badge' + (tl.dev ? " dev" : "") + '">' + codes(esc(t.badge)) + '</span><h3>' + esc(t.name) + '</h3></div></div><p>' + codes(esc(t.card)) + '</p>'
+      + (t.use ? '<div class="tool-use">' + (t.save ? '<div class="lead"><b>' + esc(t.save[0]) + '</b><span>' + esc(t.save[1]) + '</span></div>' : "")
+        + t.use.map(u => '<div><b>' + esc(u[0]) + '</b><span>' + esc(u[1]) + '</span></div>').join("") + '</div>' : "")
+      + '<button type="button" class="tool-more" data-tool="' + tl.id + '" aria-haspopup="dialog" aria-label="' + esc(TOOL_UI[lang].more + ": " + t.name) + '"><span>' + TOOL_UI[lang].more + '</span>' + ARROW(1) + '</button><span class="tool-url">' + esc(tl.site[0]) + '</span></div>';
+  }).join("");
+}
+function openTool(id) {
+  const tl = TOOLS.find(x => x.id === id); if (!tl) return;
+  const t = tl[lang], ui = TOOL_UI[lang];
+  orgHead(tl.logo, t.kind, t, tl.site);
+  dlg.classList.add("tool");
+  $d("k").innerHTML = '<span>' + esc(t.kind) + '</span><span class="pdlg-st' + (tl.dev ? " uc" : "") + '">' + codes(esc(t.when)) + '</span>';
+  const how = tl.draw
+    ? (t.how.text ? '<p>' + esc(t.how.text) + '</p>' : "") + '<figure class="pdlg-fig">' + tl.draw(t.how.aria, t.how.spacing) + '<figcaption>' + esc(t.how.cap) + '</figcaption></figure>'
+    : '<div class="pdlg-split"><figure class="pdlg-fig" style="margin:0"><img class="shot" src="pics/tools/ducto-app-408.webp" srcset="pics/tools/ducto-app-300.webp 300w, pics/tools/ducto-app-408.webp 408w" sizes="(max-width: 480px) 240px, 220px" width="408" height="787" alt="' + esc(t.how.alt) + '" loading="lazy" decoding="async"><figcaption>' + esc(t.how.cap) + '</figcaption></figure>'
+      + '<ul class="pdlg-feat">' + t.how.feats.map(f => '<li>' + esc(f) + '</li>').join("") + '</ul></div>';
+  const cmds = !tl.cmds ? "" : '<section class="pdlg-part"><h4>' + esc(t.cmdsH) + '</h4><ul class="pdlg-cmds">' + tl.cmds.map(c =>
+    (c.img ? '<li><img class="ico" src="' + c.img + '" alt="" width="36" height="36">' : '<li><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">' + c.svg + '</svg></span>')
+    + '<div><b>' + esc(c.name) + '</b>' + (c.code ? '<code>' + c.code + '</code>' : "") + '</div><p>' + esc(c[lang]) + '</p></li>').join("") + '</ul></section>';
+  $d("sec").innerHTML = '<section class="pdlg-part"><h4>' + esc(t.how.h) + '</h4>' + how + '</section>' + cmds
+    + '<section class="pdlg-part pdlg-pub"><h4>' + ui.pub + '</h4><div><b>' + esc(t.pub) + '</b>' + (tl.adsk ? ADSK : "") + '</div></section>';
+  $d("sec").hidden = false;
+  $d("tl").innerHTML = ""; $d("tl").hidden = true;
+  showDlg([]);
+  // the Autodesk badge needs its trademark notice
+  if (tl.adsk) { $d("src").textContent = ui.tm; $d("src").hidden = false; }
+}
+toolsEl.addEventListener("click", e => { const b = e.target.closest("[data-tool]"); if (b) openTool(b.dataset.tool); });
+
 $d("prev").addEventListener("click", () => stepProject(-1));
 $d("next").addEventListener("click", () => stepProject(1));
 dlg.addEventListener("keydown", e => {
@@ -1199,12 +1578,136 @@ window.addEventListener("resize", () => {
   lastW = innerWidth; clearTimeout(resizeT); resizeT = setTimeout(initShelves, 150);
 });
 
+// certificates in two groups, work-related ones first, then the online courses; newest first within each group (a date range counts by its end).
+// o: "p" marks a portrait sheet; t = title, by = issuer, d = date (as printed on the certificate)
+const CERT_GROUPS = [{ g: "work", en: "Industry training & honors", de: "Fachschulungen & Auszeichnungen" }, { g: "online", en: "Online courses", de: "Online-Kurse" }];
+const CERTS = [
+  { id: "ndar-proficiency", g: "work", by: "NDAR Academy", t: { en: "ShipConstructor Certificate of Proficiency, Advanced level", de: "ShipConstructor Certificate of Proficiency, Stufe Advanced" }, d: { en: "Apr 2024", de: "04/2024" } },
+  { id: "ndar-attendance", g: "work", by: "NDAR Academy", t: { en: "ShipConstructor training course, Basic to Advanced", de: "ShipConstructor-Schulung, Basic bis Advanced" }, d: { en: "Sep 2023 - Mar 2024", de: "09/2023 – 03/2024" } },
+  { id: "bsy-appreciation", g: "work", o: "p", by: "Baku Shipyard", t: { en: "Certificate of Appreciation", de: "Anerkennungsurkunde" }, d: { en: "Feb 2024", de: "02/2024" } },
+  { id: "bitzer", g: "work", o: "p", by: "Schaufler Academy", t: { en: "Bitzer Compressor Training", de: "Bitzer-Kompressorschulung" }, d: { en: "Jun 2021", de: "06/2021" } },
+  { id: "ai-app-deployment", g: "online", by: "Google, Coursera", t: { en: "AI for App Deployment", de: "AI for App Deployment" }, d: { en: "Aug 2026", de: "08/2026" } },
+  { id: "google-ai", g: "online", by: "Google, Coursera", t: { en: "Google AI Professional Certificate", de: "Google AI Professional Certificate" }, d: { en: "May 2026", de: "05/2026" } },
+  { id: "bim-fundamentals", g: "online", by: "National Taiwan University, Coursera", t: { en: "BIM Fundamentals for Engineers", de: "BIM Fundamentals for Engineers" }, d: { en: "Mar 2026", de: "03/2026" } },
+  { id: "fluid-power", g: "online", by: "University of Minnesota, Coursera", t: { en: "Fundamentals of Fluid Power", de: "Fundamentals of Fluid Power" }, d: { en: "Aug 2025", de: "08/2025" } }
+];
+// one line for the viewer's alt text, its dialog name and the screen-reader announcement
+const certLabel = c => c.t[lang] + ", " + c.by + " (" + c.d[lang] + ")";
+const CERT_UI = { en: { prev: "Previous certificate", next: "Next certificate", close: "Close", zoom: "Zoom", hint: "Click to read at full size" },
+                  de: { prev: "Vorheriges Zertifikat", next: "Nächstes Zertifikat", close: "Schließen", zoom: "Vergrößern", hint: "Zum Lesen in voller Größe klicken" } };
+const certsEl = document.getElementById("certs");
+const certSrc = (c, thumb) => "pics/certs/" + c.id + (thumb ? "-thumb" : "") + ".jpg";
+function renderCerts() {
+  certsEl.innerHTML = CERT_GROUPS.map(gr => '<div class="card"><h3>' + esc(gr[lang]) + '</h3><ul class="cert-list">' + CERTS.map((c, i) => c.g !== gr.g ? "" :
+    '<li><button type="button" class="cert" data-i="' + i + '" aria-haspopup="dialog"><span class="cert-th' + (c.o === "p" ? " is-p" : "") + '"><img src="' + certSrc(c, true) + '" alt="" loading="lazy" decoding="async"></span>'
+    + '<span><span class="cert-t">' + esc(c.t[lang]) + '</span><span class="cert-m">' + esc(c.by) + ' · <time>' + esc(c.d[lang]) + '</time></span></span></button></li>').join("") + '</ul></div>').join("");
+}
+const cdlg = document.getElementById("cdlg"), cImg = document.getElementById("cdlg-img"), cStage = document.getElementById("cdlg-stage");
+const $c = id => document.getElementById("cdlg-" + id);
+let certAt = 0, certFull = null;
+function showCert(i) {
+  certAt = Math.max(0, Math.min(CERTS.length - 1, i));
+  const c = CERTS[certAt], ui = CERT_UI[lang];
+  setZoom(false);
+  // the thumbnail shows at once and the full image replaces it when loaded
+  cImg.src = certSrc(c, true); cImg.alt = certLabel(c); cImg.title = ui.hint;
+  const full = certFull = new Image();
+  full.onload = () => { if (certFull === full) cImg.src = full.src; };
+  full.src = certSrc(c, false);
+  [certAt - 1, certAt + 1].forEach(j => { if (CERTS[j]) new Image().src = certSrc(CERTS[j], false); });
+  cdlg.setAttribute("aria-label", certLabel(c));
+  $c("n").textContent = (certAt + 1) + " / " + CERTS.length;
+  $c("live").textContent = (certAt + 1) + " / " + CERTS.length + ", " + certLabel(c);
+  // at either end, move focus to the other arrow before this one is disabled, so it is not dropped
+  const first = certAt === 0, last = certAt === CERTS.length - 1;
+  if (first && document.activeElement === $c("prev")) $c("next").focus();
+  if (last && document.activeElement === $c("next")) $c("prev").focus();
+  $c("prev").disabled = first; $c("next").disabled = last;
+  cStage.scrollTo(0, 0);
+}
+// fitted size: the largest that fits the stage, worked out from the image's own proportions,
+// so the small thumbnail shown while the full image loads already takes the final size
+function fitWidth() {
+  const cs = getComputedStyle(cStage), r = cImg.naturalWidth / cImg.naturalHeight;
+  if (!r) return 0;
+  const w = cStage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const h = cStage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  return w > 0 && h > 0 ? Math.floor(Math.min(w, h * r)) : 0;
+}
+// zoomed size for a given fitted width (see setZoom)
+const zoomWidth = fit => Math.max(fit * 1.6, Math.min((certFull && certFull.naturalWidth) || fit * 2.5, fit * 2.5));
+// on every image load: fit it, or, if zoomed while the full image was still loading, settle on the final reading size around the same spot
+function fitImg() {
+  const fit = fitWidth();
+  if (!cdlg.classList.contains("zoom")) { cImg.style.width = fit ? fit + "px" : ""; return; }
+  const old = cImg.clientWidth, w = zoomWidth(fit);
+  if (!fit || !old || Math.abs(w - old) < 2) return;
+  const k = w / old, cw = cStage.clientWidth, ch = cStage.clientHeight, x = cStage.scrollLeft + cw / 2, y = cStage.scrollTop + ch / 2;
+  cImg.style.width = w + "px";
+  cStage.scrollTo(x * k - cw / 2, y * k - ch / 2);
+}
+cImg.addEventListener("load", fitImg);
+addEventListener("resize", () => { if (cdlg.open) fitImg(); });
+// reading size: the full image's own width, at most 2.5 times the fitted width (enough to read on a phone) and at least 1.6 times,
+// so a zoom always enlarges, even before the full image has arrived; at = the spot to keep in view
+function setZoom(on, at) {
+  const fit = fitWidth();
+  if (on) {
+    cImg.style.width = zoomWidth(fit) + "px";
+  } else cImg.style.width = fit ? fit + "px" : "";
+  cdlg.classList.toggle("zoom", on);
+  $c("z").setAttribute("aria-pressed", on);
+  if (on) {
+    const r = at || { rx: .5, ry: .35, cx: cStage.clientWidth / 2, cy: cStage.clientHeight / 2 };
+    cStage.scrollTo(cImg.offsetLeft + r.rx * cImg.offsetWidth - r.cx, cImg.offsetTop + r.ry * cImg.offsetHeight - r.cy);
+  }
+}
+function openCert(i) {
+  const ui = CERT_UI[lang];
+  $c("prev").innerHTML = ARROW(-1); $c("prev").setAttribute("aria-label", ui.prev);
+  $c("next").innerHTML = ARROW(1); $c("next").setAttribute("aria-label", ui.next);
+  $c("x").setAttribute("aria-label", ui.close); $c("z").setAttribute("aria-label", ui.zoom);
+  showCert(i);
+  if (!cdlg.open) cdlg.showModal();
+  fitImg();
+}
+certsEl.addEventListener("click", e => { const b = e.target.closest(".cert"); if (b) openCert(+b.dataset.i); });
+$c("prev").addEventListener("click", () => showCert(certAt - 1));
+$c("next").addEventListener("click", () => showCert(certAt + 1));
+$c("x").addEventListener("click", () => cdlg.close());
+// the zoom button: for keyboard and touch; once zoomed, focus moves to the certificate so arrow and page keys scroll it
+$c("z").addEventListener("click", () => { const on = !cdlg.classList.contains("zoom"); setZoom(on); if (on) cStage.focus({ preventScroll: true }); });
+cdlg.addEventListener("keydown", e => {
+  const j = { ArrowLeft: certAt - 1, ArrowRight: certAt + 1, Home: 0, End: CERTS.length - 1 }[e.key];
+  if (j !== undefined && !cdlg.classList.contains("zoom")) { e.preventDefault(); showCert(j); }
+});
+// Esc while zoomed only zooms out; a second Esc closes the viewer
+cdlg.addEventListener("cancel", e => { if (cdlg.classList.contains("zoom")) { e.preventDefault(); setZoom(false); $c("z").focus(); } });
+// a click beside the certificate closes the viewer; a click on it toggles between fit and reading size, keeping the clicked spot in view
+let swiped = false;
+cStage.addEventListener("click", e => {
+  if (swiped) { swiped = false; return; }
+  if (e.target !== cImg) { cdlg.close(); return; }
+  setZoom(!cdlg.classList.contains("zoom"), { rx: e.offsetX / cImg.clientWidth, ry: e.offsetY / cImg.clientHeight, cx: e.clientX, cy: e.clientY });
+});
+// touch: swipe sideways to step through the certificates (not while zoomed, where a swipe scrolls)
+let swipeX = null;
+cStage.addEventListener("pointerdown", e => { swipeX = e.pointerType === "touch" && !cdlg.classList.contains("zoom") ? e.clientX : null; });
+cStage.addEventListener("pointercancel", () => { swipeX = null; });
+cStage.addEventListener("pointerup", e => {
+  if (swipeX === null) return;
+  const dx = e.clientX - swipeX; swipeX = null;
+  if (Math.abs(dx) > 50) { swiped = true; setTimeout(() => { swiped = false; }, 400); showCert(certAt + (dx < 0 ? 1 : -1)); }
+});
+cdlg.addEventListener("close", () => { const b = certsEl.querySelector('[data-i="' + certAt + '"]'); if (b) b.focus({ preventScroll: true }); });
+
 function setLang(l) {
   lang = l;
   if (dlg.open) dlg.close();
+  if (cdlg.open) cdlg.close();
   document.documentElement.lang = l;
   document.querySelectorAll(".skip, aside *, main *, .mbar *").forEach(el => {
-    if (el.children.length || el.closest("#roles, #filters, #subfilters, .lang") || el.id === "status" || el.id === "expTotal") return;
+    if (el.children.length || el.closest("#roles, #filters, #subfilters, .lang, #certs, #toolCards") || el.id === "status" || el.id === "expTotal") return;
     if (el.dataset.en === undefined) el.dataset.en = el.textContent;
     el.textContent = tr(el.dataset.en);
   });
@@ -1214,9 +1717,10 @@ function setLang(l) {
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l));
   document.querySelectorAll(".lang").forEach(g => g.setAttribute("aria-label", l === "de" ? "Sprache" : "Language"));
   document.getElementById("mnav").setAttribute("aria-label", l === "de" ? "Abschnitte" : "Sections");
+  eduEl.querySelector(".org-btn").setAttribute("aria-label", SCHOOLS.itu[l].label);
   syncFades();
   document.getElementById("expTotal").textContent = "(" + totalText() + ")";
-  renderRoles(); renderFilters(); apply(cur); initShelves();
+  renderRoles(); renderFilters(); apply(cur); initShelves(); renderCerts(); renderTools();
   try { localStorage.setItem("cv-lang", l); } catch (e) {}
 }
 document.querySelectorAll(".lang").forEach(g => g.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setLang(b.dataset.lang); }));
